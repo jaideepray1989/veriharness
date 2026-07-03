@@ -1,0 +1,13 @@
+experiment_id: coreai_freeform_humaneval_full
+benchmarks:
+  - name: humaneval
+    n_tasks: 0
+    seeds: [1]
+variants: [H0, H1, H2, H3, H4]
+model:
+  client: coreai_freeform
+budget:
+  max_retries: 2
+  veriharness_k: 2
+  max_leaf_calls_per_task: 6
+  max_wall_time_seconds: 7200

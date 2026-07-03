@@ -1,0 +1,19 @@
+experiment_id: full
+benchmarks:
+  - name: context_trace
+    n_tasks: 80
+    trace_lengths: [4, 8, 16, 32, 64]
+    seeds: [1, 2, 3]
+  - name: provenance_bias
+    n_tasks: 80
+    seeds: [1, 2, 3]
+  - name: mini_workflow
+    n_tasks: 20
+    seeds: [1, 2, 3]
+variants: [H0, H1, H2, H3, H4]
+model:
+  client: dummy
+budget:
+  max_retries: 2
+  veriharness_k: 3
+  max_leaf_calls_per_task: 8

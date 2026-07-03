@@ -1,0 +1,2304 @@
+[
+  {
+    "row_idx": 0,
+    "row": {
+      "id": "MCAS_2000_4_6",
+      "question": "Which technology was developed most recently?",
+      "choices": {
+        "text": [
+          "cellular telephone",
+          "television",
+          "refrigerator",
+          "airplane"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 1,
+    "row": {
+      "id": "Mercury_7057260",
+      "question": "A student hypothesizes that algae are producers. Which question will best help the student determine if this is correct?",
+      "choices": {
+        "text": [
+          "Do algae consume other organisms?",
+          "Which organisms consume algae?",
+          "Do algae use sunlight to make food?",
+          "Could an ecosystem survive without algae?"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 2,
+    "row": {
+      "id": "ACTAAP_2014_7_6",
+      "question": "Soccer players use their muscle systems to kick a ball into a goal. What organ system coordinates the muscles?",
+      "choices": {
+        "text": [
+          "The nervous system",
+          "The endocrine system",
+          "The respiratory system",
+          "The circulatory system"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 3,
+    "row": {
+      "id": "Mercury_7122448",
+      "question": "Planets in the solar system are in constant motion. What factor has the greatest effect on the orbits of the planets?",
+      "choices": {
+        "text": [
+          "the size of the planets",
+          "gravitational pull of the Sun",
+          "the composition of the planets",
+          "electromagnetic radiation from the Sun"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 4,
+    "row": {
+      "id": "Mercury_SC_416516",
+      "question": "How is a pond different from a lake?",
+      "choices": {
+        "text": [
+          "Ponds have moving water.",
+          "Ponds are smaller and shallower.",
+          "Ponds are not surrounded by land.",
+          "Ponds have a different amount of salt."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 5,
+    "row": {
+      "id": "MCAS_2016_8_3",
+      "question": "A substance with a mass of 10 g is heated to produce two new substances. The mass of the first new substance is 9.3 g and the mass of the second new substance is 0.7 g. Which of the following is best demonstrated by this example?",
+      "choices": {
+        "text": [
+          "heat transfer",
+          "physical change",
+          "law of conservation of mass",
+          "law of conservation of energy"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 6,
+    "row": {
+      "id": "Mercury_7030153",
+      "question": "The cilia in the respiratory system are responsible for preventing dirt and mucus from entering the bronchial tubes and lungs. If the cilia are damaged, the person's bronchial tubes and lungs are most likely to",
+      "choices": {
+        "text": [
+          "close to prevent further damage.",
+          "stop producing mucus.",
+          "become clogged.",
+          "become efficient."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 7,
+    "row": {
+      "id": "AKDE&ED_2012_8_43",
+      "question": "Which two traits would best distinguish a bird from other vertebrates?",
+      "choices": {
+        "text": [
+          "fur and wings",
+          "gills and feet",
+          "feathers and wings",
+          "moist skin and feet"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 8,
+    "row": {
+      "id": "NYSEDREGENTS_2014_8_10",
+      "question": "A green plant absorbs light. A frog eats flies. These are both examples of how organisms",
+      "choices": {
+        "text": [
+          "obtain energy",
+          "escape predators",
+          "produce offspring",
+          "excrete waste"
+        ],
+        "label": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answerKey": "1"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 9,
+    "row": {
+      "id": "Mercury_SC_LBS10938",
+      "question": "Which of these scientific advances occurred first?",
+      "choices": {
+        "text": [
+          "the invention of the telescope",
+          "the building of submarines",
+          "the generation of electricity",
+          "the breeding of plants"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 10,
+    "row": {
+      "id": "ACTAAP_2007_7_19",
+      "question": "Which instrument measures atmospheric pressure?",
+      "choices": {
+        "text": [
+          "barometer",
+          "hygrometer",
+          "thermometer",
+          "magnetometer"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 11,
+    "row": {
+      "id": "Mercury_176873",
+      "question": "Which of the following is produced during the process of cellular respiration?",
+      "choices": {
+        "text": [
+          "carbon dioxide",
+          "sodium chloride",
+          "oxygen",
+          "sugar"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 12,
+    "row": {
+      "id": "Mercury_SC_LBS10170",
+      "question": "An anemometer is a tool that measures",
+      "choices": {
+        "text": [
+          "wind direction.",
+          "wind speed.",
+          "air pressure.",
+          "air temperature."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 13,
+    "row": {
+      "id": "Mercury_400978",
+      "question": "The element cesium, Cs, is an alkali metal. Which chemical formula represents a cesium compound that is likely to exist?",
+      "choices": {
+        "text": [
+          "CsCl",
+          "CsCl_{2}",
+          "CsO",
+          "CsO_{2}"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 14,
+    "row": {
+      "id": "Mercury_7185220",
+      "question": "The cells of a plant help the plant maintain its life functions. What part of a plant cell has the function of producing sugar in the presence of sunlight?",
+      "choices": {
+        "text": [
+          "chloroplast",
+          "cytoplasm",
+          "mitochondria",
+          "nucleus"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 15,
+    "row": {
+      "id": "Mercury_7213378",
+      "question": "A sample of sulfur forms crystals when it",
+      "choices": {
+        "text": [
+          "melts.",
+          "freezes.",
+          "evaporates.",
+          "condenses."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 16,
+    "row": {
+      "id": "Mercury_7241343",
+      "question": "When a person is infected with the influenza virus, the immune system defends the body through a cell-mediated immune response. Which immune cell is responsible for protecting the body from the influenza virus infection?",
+      "choices": {
+        "text": [
+          "phagocytes",
+          "B lymphocytes",
+          "helper T lymphocytes",
+          "cytotoxic T lymphocytes"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 17,
+    "row": {
+      "id": "TIMSS_1995_8_J5",
+      "question": "Which form of solar radiation causes sunburn?",
+      "choices": {
+        "text": [
+          "Visible",
+          "Ultraviolet",
+          "Infrared",
+          "X-rays",
+          "Radio waves"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 18,
+    "row": {
+      "id": "Mercury_7271583",
+      "question": "About 75% of the world's active volcanoes are the result of tectonic activity around which plate?",
+      "choices": {
+        "text": [
+          "North American Plate",
+          "African Plate",
+          "Pacific Plate",
+          "Nazca Plate"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 19,
+    "row": {
+      "id": "Mercury_412415",
+      "question": "Which of the following is the most accurate measurement for the length of an object that is actually 15.0 m long?",
+      "choices": {
+        "text": [
+          "15.35 m",
+          "15.2 m",
+          "14.55 m",
+          "14.5 m"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 20,
+    "row": {
+      "id": "Mercury_SC_400175",
+      "question": "After a rainfall, which process in the water cycle draws the water back up into the air?",
+      "choices": {
+        "text": [
+          "condensation",
+          "evaporation",
+          "circulation",
+          "precipitation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 21,
+    "row": {
+      "id": "Mercury_7006213",
+      "question": "When a person speaks, the type of wave produced can be described as all these except",
+      "choices": {
+        "text": [
+          "transverse.",
+          "mechanical.",
+          "compression.",
+          "longitudinal."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 22,
+    "row": {
+      "id": "NCEOGA_2013_5_28",
+      "question": "Bill stands in a swimming pool and notices that the water around his feet is a lot cooler than the water near the surface. Which process causes this difference in temperature?",
+      "choices": {
+        "text": [
+          "convection",
+          "evaporation",
+          "radiation",
+          "conduction"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 23,
+    "row": {
+      "id": "Mercury_SC_407569",
+      "question": "Andy adds a small amount of water to sand and makes shapes with the wet sand. Which of these best describes the wet sand?",
+      "choices": {
+        "text": [
+          "a mixture",
+          "a solution",
+          "an element",
+          "a compound"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 24,
+    "row": {
+      "id": "MCAS_1999_8_35",
+      "question": "To observe materials up close and in greater detail we use",
+      "choices": {
+        "text": [
+          "gripping tools.",
+          "optical tools.",
+          "cutting tools.",
+          "polishing tools."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 25,
+    "row": {
+      "id": "ACTAAP_2009_5_14",
+      "question": "Joyce is conducting a traffic survey and needs to find out how many cars cross the crosswalk in the morning before the school bell rings. How should she collect this data?",
+      "choices": {
+        "text": [
+          "Make a tally chart",
+          "Draw a pictograph",
+          "Take a picture of each passing car",
+          "Write down the cars' license plate numbers"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 26,
+    "row": {
+      "id": "Mercury_7112788",
+      "question": "A student conducts an experiment to determine the average size of acorn that squirrels eat. The student gave several different sizes of acorns to a squirrel. Which action would most likely improve the results?",
+      "choices": {
+        "text": [
+          "change the food source",
+          "use more than one squirrel",
+          "increase the number of students",
+          "shorten the period of observation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 27,
+    "row": {
+      "id": "Mercury_7137463",
+      "question": "India is in the Northern Hemisphere and Australia is in the Southern Hemisphere. In June, it is summer in India and winter in Australia. What is the main reason the seasons are opposite in the two countries?",
+      "choices": {
+        "text": [
+          "because Earth is tilted on its axis",
+          "because the Sun rotates on its axis",
+          "because Earth revolves around the Sun",
+          "because of the distance between the countries"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 28,
+    "row": {
+      "id": "Mercury_7008435",
+      "question": "What contributes the most to beach erosion?",
+      "choices": {
+        "text": [
+          "animal activity",
+          "evaporation",
+          "precipitation",
+          "wave action"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 29,
+    "row": {
+      "id": "Mercury_SC_401208",
+      "question": "Which type of graph would best display the changes in temperature over a 24 hour period?",
+      "choices": {
+        "text": [
+          "line graph",
+          "pictograph",
+          "circle (pie) graph",
+          "stem-and-leaf graph"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 30,
+    "row": {
+      "id": "Mercury_7057925",
+      "question": "Which structure determines the traits that will be passed to offspring?",
+      "choices": {
+        "text": [
+          "chromosome",
+          "centromere",
+          "nuclear membrane",
+          "spindle fibers"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 31,
+    "row": {
+      "id": "OHAT_2008_5_13",
+      "question": "Oak trees produce seeds that are contained in acorns. Blue jays eat the seeds in acorns. Blue jays also collect acorns and hide them in the ground, often far away from the parent oak tree. Blue jays do not eat the seed of every acorn they hide. How do oak trees benefit from blue jays' collecting and hiding acorns?",
+      "choices": {
+        "text": [
+          "The oak trees are pollinated by the blue jays.",
+          "The oak trees are protected from other herbivores.",
+          "The seeds of oak trees are protected from the sun.",
+          "The seeds of oak trees are planted in new environments."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 32,
+    "row": {
+      "id": "Mercury_7013073",
+      "question": "Which step of the scientific method will follow after a student graphs collected data during a lab experiment?",
+      "choices": {
+        "text": [
+          "observing",
+          "hypothesizing",
+          "analyzing",
+          "researching"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 33,
+    "row": {
+      "id": "ACTAAP_2013_5_16",
+      "question": "Which is a true statement about cells?",
+      "choices": {
+        "text": [
+          "Plant cells contain chloroplasts.",
+          "Animal cells are missing a nucleus.",
+          "Only plant cells have a cell membrane.",
+          "Animal cells include a rigid wall structure."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 34,
+    "row": {
+      "id": "Mercury_SC_415396",
+      "question": "Which kind of events can form mountains?",
+      "choices": {
+        "text": [
+          "earthquakes and volcanoes",
+          "earthquakes and landslides",
+          "landslides and avalanches",
+          "volcanoes and avalanches"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 35,
+    "row": {
+      "id": "Mercury_7179638",
+      "question": "During the early 1990s, people began using cell phones to communicate. The development of the cell phone was most likely a response to the need of society to",
+      "choices": {
+        "text": [
+          "be able to communicate when sick.",
+          "provide a safer method of communicating.",
+          "provide more jobs in the communication industry.",
+          "be able to communicate when away from home."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 36,
+    "row": {
+      "id": "ACTAAP_2011_5_2",
+      "question": "Which process uses carbon from the air to make food for plants?",
+      "choices": {
+        "text": [
+          "growth",
+          "respiration",
+          "decomposition",
+          "photosynthesis"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 37,
+    "row": {
+      "id": "Mercury_7249970",
+      "question": "Organisms contain DNA. What makes prokaryotic DNA different from eukaryotic DNA?",
+      "choices": {
+        "text": [
+          "the molecular shape",
+          "the types of bases",
+          "the sugar composition",
+          "the presence of phosphates"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 38,
+    "row": {
+      "id": "Mercury_7092418",
+      "question": "The changing appearances of the nighttime sky over the surface of Earth and eclipses of the Moon have provided evidence that",
+      "choices": {
+        "text": [
+          "Earth is a sphere.",
+          "Earth supports life.",
+          "Earth has a layered atmosphere.",
+          "Earth is covered mostly with water."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 39,
+    "row": {
+      "id": "MCAS_2012_8_23641",
+      "question": "Scientists found evidence of past glacial activity in Massachusetts. Which of the following conclusions is best supported by this evidence?",
+      "choices": {
+        "text": [
+          "Sea levels were much higher in the past.",
+          "The climate on Earth has changed over time.",
+          "Total numbers of organisms on Earth have changed over time.",
+          "The total amount of radiation from the Sun was much higher in the past."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 40,
+    "row": {
+      "id": "MEA_2010_8_12",
+      "question": "Which statement explains why a mother's unhealthy diet during pregnancy is harmful to her embryo's development?",
+      "choices": {
+        "text": [
+          "The embryo inherits half its chromosomes from its mother.",
+          "The embryo receives its food from its mother through the placenta.",
+          "The embryo receives oxygen through the placenta.",
+          "The embryo receives mutations carried by its mother."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 41,
+    "row": {
+      "id": "Mercury_SC_401158",
+      "question": "Which word best describes the physical state of an ice cube?",
+      "choices": {
+        "text": [
+          "gas",
+          "solid",
+          "liquid",
+          "plasma"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 42,
+    "row": {
+      "id": "Mercury_7091928",
+      "question": "All nations need to import and export goods for their economic survival. As a result, many island nations have developed advanced technology for transporting goods by",
+      "choices": {
+        "text": [
+          "space.",
+          "rail.",
+          "sea.",
+          "road."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 43,
+    "row": {
+      "id": "Mercury_7112735",
+      "question": "A species of mouse spends the day sleeping in its burrow to avoid high daytime temperatures. It is processing what little water it needs from the seeds it collects. To which environment is this mouse best adapted?",
+      "choices": {
+        "text": [
+          "rainforest",
+          "marine",
+          "desert",
+          "tundra"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 44,
+    "row": {
+      "id": "Mercury_7040863",
+      "question": "What system helps the body defend itself against disease while maintaining the levels of body fluids?",
+      "choices": {
+        "text": [
+          "nervous",
+          "digestive",
+          "lymphatic",
+          "integumentary"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 45,
+    "row": {
+      "id": "Mercury_7268818",
+      "question": "After fossils are formed, which process is most likely to destroy them?",
+      "choices": {
+        "text": [
+          "the carbon cycle",
+          "the nitrogen cycle",
+          "the water cycle",
+          "the rock cycle"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 46,
+    "row": {
+      "id": "VASoL_2007_3_33",
+      "question": "Which of these causes the MOST evaporation of water from a lake?",
+      "choices": {
+        "text": [
+          "Freezing of the lake",
+          "Heat from the Sun",
+          "Melting snow forming streams",
+          "Volcanic activity near the lake"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 47,
+    "row": {
+      "id": "LEAP_2001_4_10239",
+      "question": "Jeannie put her soccer ball on the ground on the side of a hill. What force acted on the soccer ball to make it roll down the hill?",
+      "choices": {
+        "text": [
+          "gravity",
+          "electricity",
+          "friction",
+          "magnetism"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 48,
+    "row": {
+      "id": "Mercury_SC_400840",
+      "question": "Which tools are needed to measure the length and mass of a seashell?",
+      "choices": {
+        "text": [
+          "a ruler and a balance",
+          "a ruler and a microscope",
+          "a balance and a stopwatch",
+          "a microscope and a magnet"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 49,
+    "row": {
+      "id": "AIMS_2008_8_9",
+      "question": "Which statement about the genetic traits of humans is true?",
+      "choices": {
+        "text": [
+          "Recessive forms of genes are always visible in offspring.",
+          "Visible traits are the same for each member of a family.",
+          "Dominant forms of genes are always inherited from both parents.",
+          "Visible traits depend on the dominant and recessive forms of genes from each parent."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 50,
+    "row": {
+      "id": "Mercury_7263305",
+      "question": "Geotropism is a response by plants to which force?",
+      "choices": {
+        "text": [
+          "gravity",
+          "friction",
+          "air pressure",
+          "Earth's magnetism"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 51,
+    "row": {
+      "id": "TIMSS_2011_8_pg139",
+      "question": "In a lake near a farm the growth of algae suddenly increased. This increase was most likely due to which of the following?",
+      "choices": {
+        "text": [
+          "a decrease in air temperature",
+          "a decrease in water level",
+          "fertilizer runoff from the farm",
+          "exhaust gases from farm equipment"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 52,
+    "row": {
+      "id": "Mercury_7173845",
+      "question": "Jenna gave a report to her class about the Orion Nebula. She told the class that it was discovered in 1610. Which was most likely the topic of her paper?",
+      "choices": {
+        "text": [
+          "young stars",
+          "neutron stars",
+          "the death of stars",
+          "the classification of stars"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 53,
+    "row": {
+      "id": "Mercury_7239208",
+      "question": "Which statement best describes the semiconservative replication sequence of the DNA sequence CCGCAT?",
+      "choices": {
+        "text": [
+          "identical bases in the same order",
+          "complementary bases in the same order",
+          "identical bases in the reverse order",
+          "complementary bases in the reverse order"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 54,
+    "row": {
+      "id": "Mercury_7064050",
+      "question": "If the environment in an area is destroyed, a new community of organisms sometimes takes the place of previous communities. The introduction of a new community of organisms is known as",
+      "choices": {
+        "text": [
+          "evolution.",
+          "adaptation.",
+          "biological diversity.",
+          "ecological succession."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 55,
+    "row": {
+      "id": "Mercury_400540",
+      "question": "The formula X + ZY -> XZ + Y shows that",
+      "choices": {
+        "text": [
+          "X and Y bonded into a more complex molecule.",
+          "ZY has decomposed into two smaller compounds.",
+          "X is a more reactive compound than Y.",
+          "Y has changed into a new compound."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 56,
+    "row": {
+      "id": "ACTAAP_2010_7_15",
+      "question": "Alisha's teacher glued a needle to a piece of cork so that the needle would float. Then he used a magnet to magnetize the needle. When the needle was placed in a bowl of water, it turned to point north. Which best describes the reason that the needle pointed north?",
+      "choices": {
+        "text": [
+          "The cork must also have been magnetized.",
+          "The magnetic field of Earth affected the needle.",
+          "The magnetic current in the bowl of water affected the needle.",
+          "The teacher must have placed the magnet to the south of the bowl."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 57,
+    "row": {
+      "id": "Mercury_7137673",
+      "question": "A population of plants growing on an island consisted of two varieties, one with thorns and the other without. Over a period of many years, the variety with thorns gradually disappeared. Which process most likely brought about this change in the plant population?",
+      "choices": {
+        "text": [
+          "gene flow",
+          "genetic drift",
+          "natural selection",
+          "random mutation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 58,
+    "row": {
+      "id": "MCAS_2013_5_29401",
+      "question": "While hiking last year, Mike saw a large boulder next to a mountain trail. The boulder had no cracks. While hiking on the trail this year, he saw two large cracks in the boulder. Which of the following most likely caused these cracks to form?",
+      "choices": {
+        "text": [
+          "shaking from high winds",
+          "pressure from flowing water",
+          "erosion due to falling rain and snow",
+          "weathering due to freezing and thawing"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 59,
+    "row": {
+      "id": "NYSEDREGENTS_2014_4_24",
+      "question": "Many animals blend in with their environment and can not be easily seen by predators. This is an example of which adaptation?",
+      "choices": {
+        "text": [
+          "communicating",
+          "hibernating",
+          "migrating",
+          "camouflaging"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 60,
+    "row": {
+      "id": "Mercury_7194425",
+      "question": "Two parent butterflies with normal wings have offspring with altered wing shapes. What most likely caused this change?",
+      "choices": {
+        "text": [
+          "speciation",
+          "an adaptation",
+          "natural selection",
+          "a genetic mutation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 61,
+    "row": {
+      "id": "Mercury_7004165",
+      "question": "Which is most responsible for reflecting incoming solar heat back to space?",
+      "choices": {
+        "text": [
+          "clouds",
+          "mountains",
+          "ozone layers",
+          "trade winds"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 62,
+    "row": {
+      "id": "Mercury_7086205",
+      "question": "Which of these is a characteristic of the metal gold?",
+      "choices": {
+        "text": [
+          "malleable",
+          "lighter than water",
+          "magnetic",
+          "harder than a diamond"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 63,
+    "row": {
+      "id": "NYSEDREGENTS_2014_8_8",
+      "question": "Which model can be used to trace genetic inheritance?",
+      "choices": {
+        "text": [
+          "life cycle",
+          "pedigree chart",
+          "food web",
+          "energy pyramid"
+        ],
+        "label": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answerKey": "2"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 64,
+    "row": {
+      "id": "Mercury_7041948",
+      "question": "Which statement best describes an atom with an atomic number of 20?",
+      "choices": {
+        "text": [
+          "The atom has 20 protons.",
+          "The atom has 20 neutrons.",
+          "The sum of the number of protons and electrons is 20.",
+          "The sum of the number of protons and neutrons is 20."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 65,
+    "row": {
+      "id": "Mercury_7092348",
+      "question": "Scientists have developed an allergy medication from a plant that is part of the rainforest food chain. What concern might develop when producing this medication from the plant?",
+      "choices": {
+        "text": [
+          "overproduction of the medication",
+          "increase in allergies in rainforest wildlife",
+          "lack of patients to test the new medication",
+          "decrease in a food source to rainforest wildlife"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 66,
+    "row": {
+      "id": "VASoL_2009_5_25",
+      "question": "Granite is a hard material and forms from cooling magma. Granite is a type of",
+      "choices": {
+        "text": [
+          "lava stone",
+          "igneous rock",
+          "volcanic dust",
+          "sedimentary rock"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 67,
+    "row": {
+      "id": "Mercury_7212713",
+      "question": "Seismic waves occur as a result of an earthquake. Which statement describes a wave property that makes it possible for scientists to locate the source of an earthquake?",
+      "choices": {
+        "text": [
+          "The wavelength of a wave is measured from crest to crest.",
+          "Waves travel uniformly outward from the wave source.",
+          "The frequency of waves varies in different mediums.",
+          "Waves move at the same speed in different materials."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 68,
+    "row": {
+      "id": "Mercury_SC_406661",
+      "question": "Which is most important to do when making directions for an experiment?",
+      "choices": {
+        "text": [
+          "Name how many experiments have been done.",
+          "Tell how to do a different experiment.",
+          "Show the results of the experiment.",
+          "Write the experiment in order."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 69,
+    "row": {
+      "id": "NCEOGA_2013_5_51",
+      "question": "A scientist is trying to decide whether an organism is unicellular or multicellular. Which information would help the scientist most to make her decision?",
+      "choices": {
+        "text": [
+          "size of the cells of the organism",
+          "what the organism eats",
+          "how many types of cells are in the organism",
+          "how fast the organism grows"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 70,
+    "row": {
+      "id": "Mercury_7163940",
+      "question": "During digestion, strong acids are added to food to help break down the food chemically. Into which organ are most of these acids added?",
+      "choices": {
+        "text": [
+          "small intestine",
+          "large intestine",
+          "gallbladder",
+          "stomach"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 71,
+    "row": {
+      "id": "Mercury_7164658",
+      "question": "Earth, along with the other planets, revolves around the Sun. The planets revolve in a counterclockwise direction. The cause of the revolution is mostly due to which force?",
+      "choices": {
+        "text": [
+          "electrical",
+          "frictional",
+          "gravitational",
+          "magnetic"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 72,
+    "row": {
+      "id": "Mercury_7197908",
+      "question": "When placed in a glucose solution, yeast cells will produce bubbles. Which process are the yeast cells carrying out?",
+      "choices": {
+        "text": [
+          "chemosynthesis",
+          "photosynthesis",
+          "respiration",
+          "transpiration"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 73,
+    "row": {
+      "id": "Mercury_7080448",
+      "question": "In order to make a line graph showing the rate of erosion on the banks of a river during a week-long flood, the y-axis should be labeled as the width of the river bank, in meters. The best label for the x-axis is time, in",
+      "choices": {
+        "text": [
+          "seconds.",
+          "minutes.",
+          "hours.",
+          "days."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 74,
+    "row": {
+      "id": "Mercury_7130498",
+      "question": "A student is investigating the effect of different nutrients on the growth of seedling plants. Which of these would be an independent (manipulated) variable in the investigation?",
+      "choices": {
+        "text": [
+          "water",
+          "sunlight",
+          "soil nutrients",
+          "seedling plants"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 75,
+    "row": {
+      "id": "MCAS_2013_5_17",
+      "question": "One type of animal hatches from an egg, breathes through gills when it is young, and mainly lives on land as an adult. Into which group is this animal classified?",
+      "choices": {
+        "text": [
+          "amphibians",
+          "birds",
+          "mammals",
+          "reptiles"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 76,
+    "row": {
+      "id": "Mercury_7136623",
+      "question": "A science teacher is discussing the immune system with his class. Which statement should the teacher make about this system?",
+      "choices": {
+        "text": [
+          "It produces new cells to carry oxygen.",
+          "It produces chemicals to regulate growth.",
+          "It produces antibodies to fight bacteria.",
+          "It produces electrical signals to control the body."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 77,
+    "row": {
+      "id": "Mercury_7014508",
+      "question": "Which of the following has been formed on the Asian continent by two continental plates that have been pressing together for millions of years?",
+      "choices": {
+        "text": [
+          "large fields of gravel",
+          "a tall mountain chain",
+          "large freshwater lakes linked by rivers",
+          "an uneven thickness of sedimentary layers"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 78,
+    "row": {
+      "id": "Mercury_SC_401652",
+      "question": "Before large trees could grow on Earth, what had to happen first?",
+      "choices": {
+        "text": [
+          "Rocks were eroded to form soil.",
+          "Molten rock warmed Earth's interior.",
+          "Earth's gravity accumulated to modern levels.",
+          "Volcanoes exploded to form mountaintop lakes."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 79,
+    "row": {
+      "id": "Mercury_7069003",
+      "question": "Which is most likely a direct cause of an ear infection?",
+      "choices": {
+        "text": [
+          "loud noises",
+          "foreign bacteria",
+          "wearing tight hats",
+          "dirty ear canals"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 80,
+    "row": {
+      "id": "TIMSS_2007_4_pg110",
+      "question": "Scientists believe that oceans once covered much of what is now land. which of these things found on land led scientists to believe this?",
+      "choices": {
+        "text": [
+          "underground water",
+          "sand soil",
+          "fossils of fish",
+          "salty lakes"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 81,
+    "row": {
+      "id": "Mercury_183190",
+      "question": "Which of the following is an example of a structural adaptation?",
+      "choices": {
+        "text": [
+          "a wolf's howl",
+          "an insect's coloring",
+          "a fish's fin",
+          "a squirrel storing acorns"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 82,
+    "row": {
+      "id": "Mercury_SC_416137",
+      "question": "Which is made by plants to attract pollinators to flowers?",
+      "choices": {
+        "text": [
+          "sap",
+          "oxygen",
+          "nectar",
+          "carbon dioxide"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 83,
+    "row": {
+      "id": "Mercury_SC_401592",
+      "question": "When light reaches an eyeglass lens, the light is",
+      "choices": {
+        "text": [
+          "refracted.",
+          "reflected.",
+          "diffracted.",
+          "absorbed."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 84,
+    "row": {
+      "id": "Mercury_7032288",
+      "question": "For half an hour, a student watches two different types of flowering bushes and counts the number of butterflies that come to feed on each bush. What would be the best way to show the data?",
+      "choices": {
+        "text": [
+          "a scatterplot",
+          "a pie chart",
+          "a bar graph",
+          "a line graph"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 85,
+    "row": {
+      "id": "Mercury_7007630",
+      "question": "Where are electrons in an atom located?",
+      "choices": {
+        "text": [
+          "models",
+          "orbitals",
+          "energy levels",
+          "electron clouds"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 86,
+    "row": {
+      "id": "NYSEDREGENTS_2014_8_25",
+      "question": "Which energy resource is considered non-renewable?",
+      "choices": {
+        "text": [
+          "solar energy",
+          "fossil fuels",
+          "geothermal energy",
+          "hydroelectric power"
+        ],
+        "label": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "answerKey": "2"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 87,
+    "row": {
+      "id": "Mercury_182665",
+      "question": "Which characteristic is exclusive to chordates?",
+      "choices": {
+        "text": [
+          "digestive tract with two openings",
+          "dorsal hollow nerve tube",
+          "closed circulatory system",
+          "bony internal skeleton"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 88,
+    "row": {
+      "id": "Mercury_189018",
+      "question": "Land forms are created through destructive forces such as weathering. Which of these is an example of physical weathering?",
+      "choices": {
+        "text": [
+          "acid rain",
+          "erosion",
+          "hydrolysis",
+          "oxidation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 89,
+    "row": {
+      "id": "Mercury_SC_405304",
+      "question": "A student placed an ice cube on a plate in the sun. Ten minutes later, only water was on the plate. Which process caused the ice cube to change to water?",
+      "choices": {
+        "text": [
+          "condensation",
+          "evaporation",
+          "freezing",
+          "melting"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 90,
+    "row": {
+      "id": "MCAS_2004_5_12",
+      "question": "In Colonial America, people used ice to help keep foods fresh. They cut the ice from lakes and ponds during the winter and stored the ice in ice houses. They sometimes used hay as an insulator to prevent the ice from melting. If you wanted to build an icehouse today, which of the following would be the best material to use as an insulator?",
+      "choices": {
+        "text": [
+          "dried leaves",
+          "foam blocks",
+          "plastic wrap",
+          "rock salt"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 91,
+    "row": {
+      "id": "MCAS_2004_9_16",
+      "question": "Tides, such as those along the coast of Massachusetts, are caused by gravitational attractions acting on Earth. Why is the gravitational attraction of the Moon a greater factor in determining tides than the gravitational attraction of the much larger Sun?",
+      "choices": {
+        "text": [
+          "Earth is much closer to the Moon than to the Sun.",
+          "The Sun's gravity is a factor only during the day.",
+          "The Moon's core has a much greater density than the Sun's core.",
+          "The Sun's mass is smaller than the mass of the Moon."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 92,
+    "row": {
+      "id": "Mercury_7107363",
+      "question": "A group of students compared the effects of fertilizer on the growth of tomato plants. The students gave six tomato plants Fertilizer 1 and six other tomato plants Fertilizer 2. They grew the plants under the same conditions. After several weeks, the students concluded that the tomato plants that received Fertilizer 1 grew taller than those that received Fertilizer 2. Which of the following actions would have increased the accuracy of the results of this investigation?",
+      "choices": {
+        "text": [
+          "using different growing conditions for a group of the plants",
+          "growing a group of tomato plants without fertilizer",
+          "growing different types of plants with each fertilizer",
+          "applying a combination of fertilizers to all the plants"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 93,
+    "row": {
+      "id": "Mercury_7083965",
+      "question": "In order to form water, two hydrogen atoms and one oxygen atom must be",
+      "choices": {
+        "text": [
+          "mixed.",
+          "divided.",
+          "bonded.",
+          "dissolved."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 94,
+    "row": {
+      "id": "Mercury_SC_416156",
+      "question": "What makes up most of a human skeleton?",
+      "choices": {
+        "text": [
+          "muscle",
+          "bone",
+          "skin",
+          "blood"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 95,
+    "row": {
+      "id": "Mercury_7082688",
+      "question": "As water cools to a temperature of zero degrees Celsius and forms ice, water molecules tend to",
+      "choices": {
+        "text": [
+          "move farther apart.",
+          "vibrate rapidly.",
+          "flow more randomly.",
+          "gradually expand."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 96,
+    "row": {
+      "id": "CSZ20680",
+      "question": "An object composed mainly of ice is orbiting the Sun in an elliptical path. This object is most likely",
+      "choices": {
+        "text": [
+          "a planet.",
+          "an asteroid.",
+          "a meteor.",
+          "a comet."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "D"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 97,
+    "row": {
+      "id": "Mercury_7228568",
+      "question": "Which process occurs during meiosis that contributes to a germ cell having unique genetic material?",
+      "choices": {
+        "text": [
+          "transcription",
+          "replication",
+          "crossing over",
+          "spindle formation"
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "C"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 98,
+    "row": {
+      "id": "Mercury_7269220",
+      "question": "Wave energy from the ocean can be harnessed to power generators to make electricity. Energy from ocean tides can also be used to make electricity. How would you categorize these two sources of energy?",
+      "choices": {
+        "text": [
+          "Both are renewable.",
+          "Both are nonrenewable.",
+          "Wave energy is nonrenewable. Tidal energy is renewable.",
+          "Wave energy is renewable. Tidal energy is nonrenewable."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "A"
+    },
+    "truncated_cells": []
+  },
+  {
+    "row_idx": 99,
+    "row": {
+      "id": "AKDE&ED_2012_4_35",
+      "question": "Algae are organisms that live in water. Scientists discovered a new type of red algae near Knight Island in Prince William Sound. Which statement is most likely a positive effect of this discovery?",
+      "choices": {
+        "text": [
+          "Scientists studying the red algae are disturbing local wildlife.",
+          "The red algae may help scientists better understand local food webs.",
+          "Visitors to Alaska may want to collect the red algae and take it home.",
+          "The red algae may be moved by boat to other areas when people travel."
+        ],
+        "label": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      },
+      "answerKey": "B"
+    },
+    "truncated_cells": []
+  }
+]

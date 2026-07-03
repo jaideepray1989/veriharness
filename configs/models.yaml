@@ -1,0 +1,145 @@
+models:
+  dummy:
+    client: dummy
+    provider: local
+    parameter_count_label: mock
+  coreai:
+    client: coreai
+    provider: apple
+    model_name: SystemLanguageModel.default
+    parameter_count: 3000000000
+    parameter_count_label: "~3B"
+  coreai_structured:
+    client: coreai
+    provider: apple
+    model_name: SystemLanguageModel.default
+    parameter_count: 3000000000
+    parameter_count_label: "~3B"
+  coreai_freeform:
+    client: coreai_freeform
+    provider: apple
+    model_name: SystemLanguageModel.default
+    parameter_count: 3000000000
+    parameter_count_label: "~3B"
+  local:
+    client: local
+    provider: local
+    model_name: local
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_openai_compatible:
+    client: local
+    provider: local
+    model_name: local
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen:
+    client: local
+    provider: ollama
+    model_name: qwen2.5:7b
+    parameter_count: 7600000000
+    parameter_count_label: 7.6B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_3b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5:3b
+    parameter_count: 3000000000
+    parameter_count_label: 3B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_14b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5:14b
+    parameter_count: 14700000000
+    parameter_count_label: 14.7B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_32b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5:32b
+    parameter_count: 32500000000
+    parameter_count_label: 32.5B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_llama:
+    client: local
+    provider: ollama
+    model_name: llama3.1:8b
+    parameter_count: 8000000000
+    parameter_count_label: 8B
+    endpoint: http://localhost:11434/v1/chat/completions
+    max_output_tokens: 512
+    temperature: 0.0
+    timeout_seconds: 120
+  local_ollama_gemma:
+    client: local
+    provider: ollama
+    model_name: gemma2:9b
+    parameter_count: 9000000000
+    parameter_count_label: 9B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_llama_70b:
+    client: local
+    provider: ollama
+    model_name: llama3.1:70b
+    parameter_count: 70000000000
+    parameter_count_label: 70B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_72b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5:72b
+    parameter_count: 72000000000
+    parameter_count_label: 72B
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_coder_7b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5-coder:7b
+    parameter_count: 7600000000
+    parameter_count_label: 7.6B coder
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_qwen_coder_14b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5-coder:14b
+    parameter_count: 14700000000
+    parameter_count_label: 14.7B coder
+    endpoint: http://localhost:11434/v1/chat/completions
+    max_output_tokens: 512
+    temperature: 0.0
+    timeout_seconds: 120
+  local_ollama_qwen_coder_32b:
+    client: local
+    provider: ollama
+    model_name: qwen2.5-coder:32b
+    parameter_count: 32500000000
+    parameter_count_label: 32.5B coder
+    endpoint: http://localhost:11434/v1/chat/completions
+  local_ollama_gpt_oss_20b:
+    client: local
+    provider: ollama
+    model_name: gpt-oss:20b
+    parameter_count: 21000000000
+    active_parameter_count: 3600000000
+    parameter_count_label: "21B total / 3.6B active"
+    endpoint: http://localhost:11434/v1/chat/completions
+    max_output_tokens: 512
+    temperature: 0.0
+    timeout_seconds: 120
+  local_ollama_mixtral_8x22b:
+    client: local
+    provider: ollama
+    model_name: mixtral:8x22b-instruct
+    parameter_count: 141000000000
+    active_parameter_count: 39000000000
+    parameter_count_label: "141B total / 39B active"
+    endpoint: http://localhost:11434/v1/chat/completions
+  openai_gpt4_1_mini:
+    client: openai
+    provider: openai
+    model_name: gpt-4.1-mini
+    parameter_count_label: undisclosed
+  openai:
+    client: openai
+    provider: openai
+    model_name: gpt-4.1-mini
+    parameter_count_label: undisclosed

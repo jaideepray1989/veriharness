@@ -1,0 +1,26 @@
+experiment_id: coreai_suitable_probe
+benchmarks:
+  - name: boolq
+    n_tasks: 5
+    seeds: [1]
+  - name: squad
+    n_tasks: 5
+    seeds: [1]
+  - name: context_trace
+    n_tasks: 5
+    trace_lengths: [4, 8, 16]
+    seeds: [1]
+  - name: provenance_bias
+    n_tasks: 5
+    seeds: [1]
+  - name: mini_workflow
+    n_tasks: 5
+    seeds: [1]
+variants: [H0, H3, H4]
+model:
+  client: coreai_freeform
+budget:
+  max_retries: 2
+  veriharness_k: 2
+  max_leaf_calls_per_task: 6
+  max_wall_time_seconds: 900

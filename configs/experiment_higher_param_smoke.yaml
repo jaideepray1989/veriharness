@@ -1,0 +1,26 @@
+experiment_id: higher_param_smoke
+benchmarks:
+  - name: boolq
+    n_tasks: 1
+    seeds: [1]
+  - name: sciq
+    n_tasks: 1
+    seeds: [1]
+  - name: context_trace
+    n_tasks: 1
+    trace_lengths: [16]
+    seeds: [1]
+  - name: provenance_bias
+    n_tasks: 1
+    seeds: [1]
+  - name: mini_workflow
+    n_tasks: 1
+    seeds: [1]
+variants: [H0, H3, H4]
+model:
+  client: coreai_freeform
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 600

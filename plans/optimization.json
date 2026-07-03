@@ -1,0 +1,58 @@
+{
+  "plans": [
+    {
+      "id": "hpo-strategy",
+      "title": "Hyperparameter Optimization Strategy For Expensive Models",
+      "objective": "Develop a practical decision framework for choosing HPO methods under low, medium, and high evaluation budgets, including multi-fidelity settings.",
+      "questions": [
+        "Which HPO method families are strongest under different budget regimes?",
+        "How should search spaces, priors, and early stopping rules be designed to avoid misleading results?",
+        "When do multi-fidelity schedulers such as Hyperband, ASHA, BOHB, or population-based training dominate?",
+        "What evaluation protocol avoids leakage, lucky seeds, and overfitting to validation feedback?"
+      ],
+      "constraints": [
+        "Assume evaluations can be expensive and noisy.",
+        "Prefer operational guidance a research engineering team can apply.",
+        "Make uncertainty explicit where remembered literature details may be incomplete."
+      ],
+      "lenses": ["Bayesian optimization", "multi-fidelity", "evaluation design", "engineering practicality"],
+      "worker_budget": 4
+    },
+    {
+      "id": "accelerator-kernel-design",
+      "title": "Accelerator Kernel Design And Autotuning",
+      "objective": "Map the optimization choices that matter most when designing high-performance GPU or accelerator kernels, including manual design and automated tuning.",
+      "questions": [
+        "Which kernel design levers usually matter most for throughput and latency?",
+        "How should tiling, memory layout, vectorization, fusion, and register pressure be balanced?",
+        "Where do autotuners, cost models, and compiler schedules help or mislead?",
+        "What minimal benchmark protocol should compare kernel variants fairly?"
+      ],
+      "constraints": [
+        "Focus on CUDA/Triton-like workflows without assuming one specific hardware generation.",
+        "Prefer durable principles over vendor-specific trivia.",
+        "Call out numerical correctness and maintainability tradeoffs."
+      ],
+      "lenses": ["GPU architecture", "autotuning", "compiler scheduling", "benchmark methodology"],
+      "worker_budget": 4
+    },
+    {
+      "id": "optimizer-selection",
+      "title": "Optimizer And Schedule Selection For Deep Learning",
+      "objective": "Create a compact research brief on choosing optimizers, learning-rate schedules, and stability tactics across common deep learning workloads.",
+      "questions": [
+        "When should teams prefer SGD, AdamW, Adafactor-like methods, Lion-like methods, or second-order approximations?",
+        "Which learning-rate schedules and warmup choices are robust defaults?",
+        "How do batch size, gradient clipping, normalization, and weight decay interact?",
+        "What ablations best separate optimizer gains from tuning-budget artifacts?"
+      ],
+      "constraints": [
+        "Assume teams care about wall-clock, final quality, and reproducibility.",
+        "Avoid one-size-fits-all claims.",
+        "Distinguish training stability from final generalization."
+      ],
+      "lenses": ["optimization theory", "large-scale training", "ablation design", "reproducibility"],
+      "worker_budget": 4
+    }
+  ]
+}

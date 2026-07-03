@@ -1,0 +1,16 @@
+experiment_id: smoke
+benchmarks:
+  - name: context_trace
+    n_tasks: 10
+    trace_lengths: [4, 8]
+    seeds: [1]
+  - name: provenance_bias
+    n_tasks: 10
+    seeds: [1]
+variants: [H0, H1, H2, H3, H4]
+model:
+  client: dummy
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4

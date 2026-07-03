@@ -1,0 +1,28 @@
+experiment_id: coreai_more_suitable_probe
+benchmarks:
+  - name: sciq
+    n_tasks: 3
+    seeds: [1]
+  - name: arc_easy
+    n_tasks: 3
+    seeds: [1]
+  - name: glue_sst2
+    n_tasks: 3
+    seeds: [1]
+  - name: glue_rte
+    n_tasks: 3
+    seeds: [1]
+  - name: glue_mrpc
+    n_tasks: 3
+    seeds: [1]
+  - name: trec_qc
+    n_tasks: 3
+    seeds: [1]
+variants: [H0, H3, H4]
+model:
+  client: coreai_freeform
+budget:
+  max_retries: 2
+  veriharness_k: 2
+  max_leaf_calls_per_task: 6
+  max_wall_time_seconds: 900

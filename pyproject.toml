@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veriharness"
+version = "0.1.0"
+description = "Verifiable agent harnesses for long-horizon LLM automation experiments."
+requires-python = ">=3.9"
+readme = "README.md"
+dependencies = [
+  "pydantic>=2",
+  "typer>=0.9",
+  "rich>=13",
+  "pyyaml>=6",
+  "pandas>=1.5",
+  "numpy>=1.23",
+  "scipy>=1.9",
+  "matplotlib>=3.7",
+  "pytest>=7",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+veriharness = "veriharness.cli.main:app"
+autoresearch = "autoresearch.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["autoresearch*", "veriharness*"]
+
+[tool.setuptools.package-data]
+veriharness = ["coreai_bridge/*.swift"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+extend-exclude = ["artifacts", "runs", "data", ".veriharness_cache"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+strict = false

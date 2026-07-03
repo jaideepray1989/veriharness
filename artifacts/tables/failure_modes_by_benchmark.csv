@@ -1,0 +1,4 @@
+benchmark,variant,n,success_rate,context_bloat_proxy_rate,self_biased_acceptance_rate,wrong_claim_acceptance_rate,accepted_by_agent_rate,accepted_by_gate_rate,failure_taxonomy
+context_trace,H0,1,0.0,1.0,1.0,0.0,1.0,0.0,"{""constraint_forgotten"": 1}"
+context_trace,H3,1,1.0,0.0,0.0,0.0,0.0,1.0,{}
+context_trace,H4,1,1.0,0.0,0.0,0.0,0.0,1.0,{}

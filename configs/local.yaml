@@ -1,0 +1,7 @@
+backend: local
+model:
+  client: dummy
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4

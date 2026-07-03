@@ -1,0 +1,16 @@
+experiment_id: coreai_freeform_ablation
+benchmarks:
+  - name: context_trace
+    n_tasks: 6
+    trace_lengths: [4, 8, 16]
+    seeds: [1]
+  - name: provenance_bias
+    n_tasks: 8
+    seeds: [1]
+variants: [H0, H1, H2, H3, H4]
+model:
+  client: coreai_freeform
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4

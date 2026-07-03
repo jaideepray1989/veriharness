@@ -1,0 +1,45 @@
+experiment_id: practical_matrix_oracle_guided_upper_bound_budget_1
+benchmarks:
+  - name: boolq
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: squad
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: sciq
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: arc_easy
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_sst2
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_rte
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_mrpc
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: trec_qc
+    n_tasks: 10
+    seeds: [1, 2, 3]
+  - name: mini_workflow
+    n_tasks: 30
+    seeds: [1, 2, 3]
+variants: [H0, H3, generic-retry, H4]
+model:
+  client: coreai_freeform
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: oracle_guided_upper_bound
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 1
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: practical_workshop_claim_calibration_upper_bound
+  leaf_tasks_per_seed: 150
+  workflow_tasks_per_seed: 30
+  call_budget: 1

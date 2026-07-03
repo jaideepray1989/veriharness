@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+.veriharness_cache/
+.DS_Store
+
+# Local benchmark outputs can be large and are regenerated from configs.
+runs/
+artifacts/leaves/
