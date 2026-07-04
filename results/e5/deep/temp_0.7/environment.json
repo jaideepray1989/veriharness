@@ -1,0 +1,7 @@
+{
+  "model_client_name": "local",
+  "model_name": "qwen2.5-coder:14b",
+  "platform": "macOS-26.3.1-arm64-arm-64bit",
+  "python": "3.9.6 (default, Apr 17 2026, 18:15:52) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "timestamp": "2026-07-04T23:13:23.006103+00:00"
+}

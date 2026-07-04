@@ -1,0 +1,5 @@
+comparison,baseline,treatment,n_pairs,baseline_success,treatment_success,treatment_only,baseline_only,same_pass,same_fail,delta_success_rate,ci_low,ci_high,mcnemar_exact_p
+H3_vs_H0,H0,H3,120,20,33,18,5,15,82,0.10833333333333334,0.03333333333333333,0.18333333333333332,0.010622024536132812
+generic-retry_vs_H3,H3,generic-retry,120,33,0,0,33,0,87,-0.275,-0.36666666666666664,-0.2,2.3283064365386963e-10
+H4_vs_generic-retry,generic-retry,H4,120,0,81,81,0,0,39,0.675,0.575,0.7416666666666667,8.271806125530277e-25
+H4_vs_H3,H3,H4,120,33,81,55,7,26,32,0.4,0.2916666666666667,0.49166666666666664,2.4300843108615577e-10

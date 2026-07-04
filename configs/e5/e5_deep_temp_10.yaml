@@ -1,0 +1,45 @@
+experiment_id: e5_deep_temp_10
+# E5 DEEP: seed-robust hardening of the E5 probe. mini_workflow is where 100% of the
+# H4 signal lives; scale it to 3 seeds x 30 tasks to (a) get statistical power and
+# (b) stress the F2 caveat (only 5 templates). boolq kept as a QA control. T=1.0 arm.
+benchmarks:
+- name: mini_workflow
+  n_tasks: 30
+  seeds:
+  - 1
+  - 2
+  - 3
+- name: boolq
+  n_tasks: 10
+  seeds:
+  - 1
+  - 2
+  - 3
+variants:
+- H0
+- H3
+- generic-retry
+- H4
+model:
+  client: local
+  provider: ollama
+  model_name: qwen2.5-coder:14b
+  endpoint: http://localhost:11434/v1/chat/completions
+  parameter_count: 14700000000
+  parameter_count_label: 14.7B coder
+  max_output_tokens: 512
+  temperature: 1.0
+  timeout_seconds: 120
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: primary_oracle_blind
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: e5_temperature_deep
+  experiment: E5-deep
+  temperature_arm: '1.0'
+  call_budget: 4
