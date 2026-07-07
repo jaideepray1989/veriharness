@@ -16,6 +16,7 @@ from veriharness.core.orchestrator import Orchestrator
 from veriharness.core.types import ExperimentConfig
 from veriharness.experiments.aggregate import read_results, write_aggregate
 from veriharness.experiments.plots import write_plots
+from veriharness.experiments.replay_repair import ReplayRepairRunner
 from veriharness.experiments.runner import load_config, run_config
 from veriharness.experiments.workshop_report import compile_workshop_bundle
 from veriharness.llm.coreai_client import CoreAIClient
@@ -54,6 +55,20 @@ def run(
 ) -> None:
     run_dir = run_config(config, backend=backend)
     console.print(f"Run complete: {run_dir}")
+
+
+@app.command("run-replay-repair")
+def run_replay_repair(
+    config: Path = typer.Option(..., help="Experiment config YAML."),
+    backend: str = typer.Option("local", help="Execution backend: local only for replay repair."),
+) -> None:
+    """Run repair-policy variants from identical frozen failed attempts."""
+    if backend != "local":
+        raise typer.BadParameter("replay repair currently supports only the local backend")
+    config_obj, raw = load_config(config)
+    config_obj.backend = backend
+    run_dir = ReplayRepairRunner(config_obj, raw_config=raw).run()
+    console.print(f"Replay repair run complete: {run_dir}")
 
 
 @app.command("resume-run")

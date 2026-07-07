@@ -1,0 +1,6 @@
+comparison,baseline,treatment,n_pairs,baseline_success,treatment_success,treatment_only,baseline_only,same_pass,same_fail,delta_success_rate,ci_low,ci_high,mcnemar_exact_p
+generic+diagnostics_vs_generic-retry,generic-retry,generic+diagnostics,24,17,19,4,2,15,3,0.08333333333333333,-0.125,0.2916666666666667,0.6875
+typed-label-only_vs_generic+diagnostics,generic+diagnostics,typed-label-only,24,19,19,2,2,17,3,0.0,-0.16666666666666666,0.16666666666666666,1.0
+typed-fields_vs_typed-label-only,typed-label-only,typed-fields,24,19,18,1,2,17,4,-0.041666666666666664,-0.16666666666666666,0.08333333333333333,1.0
+typed-preserve_vs_typed-fields,typed-fields,typed-preserve,24,18,15,3,6,12,3,-0.125,-0.375,0.125,0.5078125
+typed-preserve_vs_generic-retry,generic-retry,typed-preserve,24,17,15,6,8,9,1,-0.08333333333333333,-0.4166666666666667,0.25,0.79052734375

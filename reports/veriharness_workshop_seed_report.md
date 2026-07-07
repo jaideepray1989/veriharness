@@ -205,6 +205,8 @@ All row-level data are persisted. The report tables below are compiled from thes
 | Practical Qwen2.5-Coder 14B primary, budget 1 | 2160 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_1_local_ollama_qwen_coder_14b-20260620T073838Z/results.jsonl` |
 | Practical Qwen2.5-Coder 14B primary, budget 2 | 2160 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_2_local_ollama_qwen_coder_14b/results.jsonl` |
 | Practical Qwen2.5-Coder 14B primary, budget 4 | 2160 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_4_local_ollama_qwen_coder_14b/results.jsonl` |
+| CoreAI Freeform replay repair ablation | 120 | `/Users/jaray/Documents/autoresearch/runs/replay_repair_3bench_coreai/results.jsonl` |
+| CoreAI Freeform replay repair committed data | 120 | `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/results.jsonl` |
 | Failure examples | selected examples | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/failure_examples.md` |
 | Baseline comparison | paired H0-vs-H3/H4 | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/baseline_comparison.md` |
 
@@ -257,6 +259,26 @@ The first budget-3 primary oracle-blind replication completed for Qwen2.5-Coder 
 Paired budget-3 result: H4 beats `generic-retry` by +13.7 percentage points on matched instances, with 95% paired bootstrap CI +10.9 to +16.7 points and exact McNemar p=1.4e-19. Relative to `generic-retry`, H4 adds about 4,489 prompt tokens across the whole run and about 153 prompt tokens per retry prompt on average, but solves 74 more rows.
 
 The budget-3 multi-model command is still running for `qwen2.5-coder:7b` and `qwen2.5:7b`.
+
+### CoreAI Freeform Replay Repair Ablation
+
+Replay repair freezes one deterministic failed first attempt per task, then gives every repair policy exactly one CoreAI Freeform repair call from that identical failure state. This isolates repair-message content from first-attempt generation drift. The full report is `/Users/jaray/Documents/autoresearch/reports/replay_repair_coreai_freeform_results.md`.
+
+Config: `/Users/jaray/Documents/autoresearch/configs/experiment_replay_repair_3bench_coreai.yaml`
+
+Run: `/Users/jaray/Documents/autoresearch/runs/replay_repair_3bench_coreai`
+
+Committed compact data: `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai`
+
+| Policy | Success, 95% bootstrap CI | Premature wrong done | Client errors |
+|---|---:|---:|---:|
+| `generic-retry` | 17/24 (70.8%, CI 50.0%-91.7%) | 7 | 0 |
+| `generic+diagnostics` | 19/24 (79.2%, CI 62.5%-95.8%) | 4 | 1 |
+| `typed-label-only` | 19/24 (79.2%, CI 62.5%-91.7%) | 4 | 1 |
+| `typed-fields` | 18/24 (75.0%, CI 54.2%-91.7%) | 3 | 3 |
+| `typed-preserve` | 15/24 (62.5%, CI 45.8%-79.2%) | 8 | 1 |
+
+By benchmark: BoolQ favored diagnostics/typed variants at 7/8 versus `generic-retry` at 5/8; SciQ favored `typed-preserve` at 8/8; MiniWorkflow rejected `typed-preserve` at 0/8 because it often fixed the result marker but omitted explicit evidence. The paper should use this as a diagnostic caution: typed or diagnostic payloads can reduce wrong-answer acceptance, but full preserve-set prompting is not uniformly better on CoreAI Freeform.
 
 ### Reviewer Feedback Response Plan
 
@@ -650,7 +672,12 @@ passed
 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_4_local_ollama_qwen_coder_14b/paired_policy_tests.csv` | Paired bootstrap and McNemar tests for budget-4 primary rows. |
 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_4_local_ollama_qwen_coder_14b/prompt_token_overhead.csv` | Prompt-token overhead table from saved transcripts; legacy budget-4 artifact count is incomplete because old paths collided across repeated task ids. |
 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_oracle_guided_upper_bound_budget_1_local_ollama_qwen_coder_14b/results.jsonl` | Separate completed oracle-guided upper-bound budget-1 run. |
+| `/Users/jaray/Documents/autoresearch/runs/replay_repair_3bench_coreai/results.jsonl` | CoreAI Freeform replay repair ablation rows. |
+| `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/results.jsonl` | Committed compact copy of CoreAI replay row-level data. |
+| `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/aggregate.json` | Committed aggregate for the CoreAI replay run. |
+| `/Users/jaray/Documents/autoresearch/reports/replay_repair_coreai_freeform_results.md` | CoreAI-only replay repair report. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_3.yaml` | Budget-3 practical primary config. |
+| `/Users/jaray/Documents/autoresearch/configs/experiment_replay_repair_3bench_coreai.yaml` | CoreAI replay repair config with 24 tasks and 5 repair-message policies. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_repair_factor_ablation_budget_4.yaml` | Repair-factor ablation config for candidate retention, natural-language errors, targeted untyped repair, typed no-retain, and H4. |
 
 ## Bottom Line

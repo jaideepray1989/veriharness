@@ -1,0 +1,40 @@
+experiment_id: replay_repair_3bench_coreai
+benchmarks:
+  - name: boolq
+    n_tasks: 8
+    seeds: [1]
+  - name: sciq
+    n_tasks: 8
+    seeds: [1]
+  - name: mini_workflow
+    n_tasks: 8
+    seeds: [1]
+variants:
+  - generic-retry
+  - generic+diagnostics
+  - typed-label-only
+  - typed-fields
+  - typed-preserve
+model:
+  client: coreai_freeform
+  provider: apple
+  model_name: SystemLanguageModel.default
+  parameter_count: 3000000000
+  parameter_count_label: "~3B"
+  max_output_tokens: 768
+  temperature: 0.0
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: replay_repair_oracle_guided
+budget:
+  max_retries: 1
+  veriharness_k: 1
+  max_leaf_calls_per_task: 1
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: replay_repair_message_visibility_ablation
+  rows_expected: 120
+  tasks_total: 24
+  tasks_per_benchmark: 8
+  replay_repair: true
+  model_family_scope: coreai_freeform_only

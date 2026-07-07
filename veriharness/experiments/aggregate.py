@@ -361,9 +361,16 @@ def prompt_token_overhead(run_dir: Path) -> Dict[str, Any]:
         if not parts:
             continue
         variant = parts[0]
-        attempt = next((part for part in parts if part.startswith("attempt_")), "attempt_0")
+        attempt = next(
+            (
+                part
+                for part in parts
+                if part.startswith("attempt_") or part.startswith("replay_attempt_")
+            ),
+            "attempt_0",
+        )
         try:
-            attempt_index = int(attempt.split("_", 1)[1])
+            attempt_index = int(attempt.rsplit("_", 1)[1])
         except Exception:
             attempt_index = 0
         tokens = len(transcript.read_text(encoding="utf-8", errors="replace").split())
