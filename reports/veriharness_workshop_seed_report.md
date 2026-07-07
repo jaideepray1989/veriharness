@@ -207,6 +207,7 @@ All row-level data are persisted. The report tables below are compiled from thes
 | Practical Qwen2.5-Coder 14B primary, budget 4 | 2160 | `/Users/jaray/Documents/autoresearch/runs/practical_matrix_budget_4_local_ollama_qwen_coder_14b/results.jsonl` |
 | CoreAI Freeform replay repair ablation | 120 | `/Users/jaray/Documents/autoresearch/runs/replay_repair_3bench_coreai/results.jsonl` |
 | CoreAI Freeform replay repair committed data | 120 | `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/results.jsonl` |
+| Oracle-blind primary evaluation report | summary | `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` |
 | Failure examples | selected examples | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/failure_examples.md` |
 | Baseline comparison | paired H0-vs-H3/H4 | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/baseline_comparison.md` |
 
@@ -676,6 +677,7 @@ passed
 | `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/results.jsonl` | Committed compact copy of CoreAI replay row-level data. |
 | `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/aggregate.json` | Committed aggregate for the CoreAI replay run. |
 | `/Users/jaray/Documents/autoresearch/reports/replay_repair_coreai_freeform_results.md` | CoreAI-only replay repair report. |
+| `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` | Paper-facing oracle-blind primary result report. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_3.yaml` | Budget-3 practical primary config. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_replay_repair_3bench_coreai.yaml` | CoreAI replay repair config with 24 tasks and 5 repair-message policies. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_repair_factor_ablation_budget_4.yaml` | Repair-factor ablation config for candidate retention, natural-language errors, targeted untyped repair, typed no-retain, and H4. |
