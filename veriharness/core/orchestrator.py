@@ -11,9 +11,13 @@ from veriharness.core.artifact_store import ArtifactStore
 from veriharness.core.context_pack import build_context_pack
 from veriharness.core.event_log import EventLog
 from veriharness.core.repair_policy import (
+    build_diagnostic_retry_feedback,
+    build_full_typed_preserve_feedback,
     build_natural_retry_feedback,
     build_retry_feedback,
     build_targeted_untyped_feedback,
+    build_typed_field_feedback,
+    build_typed_label_only_feedback,
 )
 from veriharness.core.run_manager import RunManager
 from veriharness.core.scheduler import schedule_tasks
@@ -428,10 +432,18 @@ class Orchestrator:
     ) -> List[str]:
         if variant.uses_generic_retry:
             return self._generic_retry_feedback(candidate_results)
+        if variant.uses_diagnostic_retry:
+            return self._diagnostic_retry_feedback(task, context, candidate_results)
         if variant.uses_natural_retry:
             return self._natural_retry_feedback(task, context, candidate_results)
         if variant.uses_targeted_untyped_repair:
             return self._targeted_untyped_feedback(task, context, candidate_results)
+        if variant.uses_typed_label_only_repair:
+            return self._typed_label_only_feedback(task, context, candidate_results)
+        if variant.uses_typed_field_repair:
+            return self._typed_field_feedback(task, context, candidate_results)
+        if variant.uses_full_typed_preserve_repair:
+            return self._full_typed_preserve_feedback(task, context, candidate_results)
         if not variant.uses_typed_repair:
             return []
         feedback: List[str] = []
@@ -482,6 +494,20 @@ class Orchestrator:
                     feedback.append(item)
         return feedback
 
+    def _diagnostic_retry_feedback(
+        self,
+        task: TaskSpec,
+        context: Any,
+        candidate_results: List[tuple[bool, LeafOutput, List[GateResult], str]],
+    ) -> List[str]:
+        feedback: List[str] = []
+        for _passed, output, gate_results, _leaf_dir in candidate_results:
+            visible_results = self._repair_visible_results(gate_results)
+            for item in build_diagnostic_retry_feedback(task, context, output, visible_results):
+                if item not in feedback:
+                    feedback.append(item)
+        return feedback
+
     def _targeted_untyped_feedback(
         self,
         task: TaskSpec,
@@ -496,13 +522,63 @@ class Orchestrator:
                     feedback.append(item)
         return feedback
 
+    def _typed_label_only_feedback(
+        self,
+        task: TaskSpec,
+        context: Any,
+        candidate_results: List[tuple[bool, LeafOutput, List[GateResult], str]],
+    ) -> List[str]:
+        feedback: List[str] = []
+        for _passed, output, gate_results, _leaf_dir in candidate_results:
+            visible_results = self._repair_visible_results(gate_results)
+            for item in build_typed_label_only_feedback(task, context, output, visible_results):
+                if item not in feedback:
+                    feedback.append(item)
+        return feedback
+
+    def _typed_field_feedback(
+        self,
+        task: TaskSpec,
+        context: Any,
+        candidate_results: List[tuple[bool, LeafOutput, List[GateResult], str]],
+    ) -> List[str]:
+        feedback: List[str] = []
+        for _passed, output, gate_results, _leaf_dir in candidate_results:
+            visible_results = self._repair_visible_results(gate_results)
+            for item in build_typed_field_feedback(task, context, output, visible_results):
+                if item not in feedback:
+                    feedback.append(item)
+        return feedback
+
+    def _full_typed_preserve_feedback(
+        self,
+        task: TaskSpec,
+        context: Any,
+        candidate_results: List[tuple[bool, LeafOutput, List[GateResult], str]],
+    ) -> List[str]:
+        feedback: List[str] = []
+        for _passed, output, gate_results, _leaf_dir in candidate_results:
+            visible_results = self._repair_visible_results(gate_results)
+            for item in build_full_typed_preserve_feedback(task, context, output, visible_results):
+                if item not in feedback:
+                    feedback.append(item)
+        return feedback
+
     def _repair_policy_name(self, variant: HarnessVariant) -> str:
         if variant.uses_generic_retry:
             return "generic"
+        if variant.uses_diagnostic_retry:
+            return "generic_raw_validation_message"
         if variant.uses_natural_retry:
             return "natural_language_gate_error"
         if variant.uses_targeted_untyped_repair:
             return "targeted_untyped"
+        if variant.uses_typed_label_only_repair:
+            return "typed_failure_label_only"
+        if variant.uses_typed_field_repair:
+            return "typed_failure_location_expected_observed"
+        if variant.uses_full_typed_preserve_repair:
+            return "full_typed_repair_preserve_set"
         if variant.uses_typed_repair:
             return "typed_failure_payload"
         return "none"
@@ -510,9 +586,15 @@ class Orchestrator:
     def _repair_target_policy_name(self, variant: HarnessVariant) -> str:
         if variant.uses_targeted_untyped_repair:
             return "priority_single_locus"
+        if variant.uses_typed_label_only_repair:
+            return "all_visible_failure_labels"
+        if variant.uses_typed_field_repair:
+            return "all_visible_failure_fields"
+        if variant.uses_full_typed_preserve_repair:
+            return "all_visible_failure_fields_plus_preserve_set"
         if variant.uses_typed_repair:
             return "all_visible_failures_in_gate_order"
-        if variant.uses_generic_retry or variant.uses_natural_retry:
+        if variant.uses_generic_retry or variant.uses_diagnostic_retry or variant.uses_natural_retry:
             return "all_visible_failures_unprioritized"
         return "none"
 

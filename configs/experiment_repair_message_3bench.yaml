@@ -1,0 +1,44 @@
+experiment_id: repair_message_3bench
+benchmarks:
+  - name: boolq
+    n_tasks: 5
+    seeds: [1]
+  - name: sciq
+    n_tasks: 5
+    seeds: [1]
+  - name: mini_workflow
+    n_tasks: 5
+    seeds: [1]
+variants:
+  - generic-retry
+  - generic+diagnostics
+  - typed-label-only
+  - typed-fields
+  - typed-preserve
+model:
+  client: local
+  provider: ollama
+  model_name: qwen2.5-coder:7b
+  parameter_count: 7600000000
+  parameter_count_label: 7.6B coder
+  endpoint: http://localhost:11434/v1/chat/completions
+  max_output_tokens: 512
+  temperature: 0.0
+  timeout_seconds: 120
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: diagnostic_oracle_guided
+budget:
+  max_retries: 3
+  veriharness_k: 1
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: repair_message_visibility_ablation
+  benchmark_count: 3
+  variants:
+    generic-retry: generic retry only
+    generic+diagnostics: generic retry plus raw validation messages
+    typed-label-only: typed failure label only
+    typed-fields: typed failure label plus location/expected/observed fields
+    typed-preserve: full typed repair with preserve-set instructions

@@ -52,6 +52,11 @@ RESULT_COLUMNS = [
 POLICY_TEST_PAIRS = [
     ("H0", "H3"),
     ("H3", "generic-retry"),
+    ("generic-retry", "generic+diagnostics"),
+    ("generic+diagnostics", "typed-label-only"),
+    ("typed-label-only", "typed-fields"),
+    ("typed-fields", "typed-preserve"),
+    ("generic-retry", "typed-preserve"),
     ("generic-retry", "natural-retry"),
     ("generic-retry", "retain+generic"),
     ("natural-retry", "targeted+untyped"),

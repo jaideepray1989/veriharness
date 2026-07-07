@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from typing import Iterable, List
+import json
+import re
+from typing import Any, Dict, Iterable, List
 
 from veriharness.core.types import ContextPack, GateResult, LeafOutput, TaskSpec
 
@@ -135,6 +137,119 @@ def build_retry_feedback(
 
     if output.answer:
         add(f"Previous answer was rejected: {output.answer[:240]}")
+    return feedback
+
+
+def build_diagnostic_retry_feedback(
+    _task: TaskSpec,
+    _context: ContextPack,
+    output: LeafOutput,
+    gate_results: List[GateResult],
+) -> List[str]:
+    """Generic retry plus raw validation messages, without typed fields."""
+    feedback: List[str] = []
+
+    def add(item: str) -> None:
+        if item and item not in feedback:
+            feedback.append(item)
+
+    failures = [failure for result in gate_results for failure in result.failures]
+    if not failures:
+        return []
+
+    add("Previous attempt failed acceptance checks. Try again with a complete valid answer.")
+    add("Keep the requested output schema and artifacts, and do not add prose outside the structured output.")
+    for result in gate_results:
+        for failure in result.failures:
+            add(f"Raw validation message from {result.gate_name}: {failure.message}")
+    if output.answer:
+        add(f"Previous answer was rejected: {output.answer[:240]}")
+    return feedback
+
+
+def build_typed_label_only_feedback(
+    _task: TaskSpec,
+    _context: ContextPack,
+    output: LeafOutput,
+    gate_results: List[GateResult],
+) -> List[str]:
+    """Expose only typed failure labels, with no message or payload fields."""
+    feedback: List[str] = []
+
+    def add(item: str) -> None:
+        if item and item not in feedback:
+            feedback.append(item)
+
+    failures = [failure for result in gate_results for failure in result.failures]
+    if not failures:
+        return []
+
+    add("Previous attempt failed typed validation labels. Return a corrected complete LeafOutput JSON object.")
+    for result in gate_results:
+        for failure in result.failures:
+            add(f"failure_label={result.gate_name}.{failure.code}")
+    if output.answer:
+        add(f"Previous answer was rejected: {output.answer[:240]}")
+    return feedback
+
+
+def build_typed_field_feedback(
+    task: TaskSpec,
+    _context: ContextPack,
+    output: LeafOutput,
+    gate_results: List[GateResult],
+) -> List[str]:
+    """Expose typed labels plus location/expected/observed fields."""
+    feedback: List[str] = []
+
+    def add(item: str) -> None:
+        if item and item not in feedback:
+            feedback.append(item)
+
+    failures = [failure for result in gate_results for failure in result.failures]
+    if not failures:
+        return []
+
+    add("Previous attempt failed typed validation. Repair the listed typed fields.")
+    for result in gate_results:
+        for failure in result.failures:
+            record = _typed_failure_record(task, output, result, failure)
+            add(
+                "typed_failure="
+                + json.dumps(
+                    {
+                        "label": record["label"],
+                        "location": record["location"],
+                        "expected": record["expected"],
+                        "observed": record["observed"],
+                    },
+                    sort_keys=True,
+                )
+            )
+    if output.answer:
+        add(f"Previous answer was rejected: {output.answer[:240]}")
+    return feedback
+
+
+def build_full_typed_preserve_feedback(
+    task: TaskSpec,
+    context: ContextPack,
+    output: LeafOutput,
+    gate_results: List[GateResult],
+) -> List[str]:
+    """Full typed repair: typed fields, task guidance, and preserve-set instructions."""
+    feedback: List[str] = []
+
+    def add(item: str) -> None:
+        if item and item not in feedback:
+            feedback.append(item)
+
+    for item in build_typed_field_feedback(task, context, output, gate_results):
+        add(item)
+    for item in build_retry_feedback(task, context, output, gate_results):
+        add(item)
+    for item in _preserve_set_instructions(task, output, gate_results):
+        add(item)
     return feedback
 
 
@@ -287,6 +402,124 @@ def _dedupe(items: List[str]) -> List[str]:
         if item and item not in result:
             result.append(item)
     return result
+
+
+def _typed_failure_record(task: TaskSpec, output: LeafOutput, result: GateResult, failure: Any) -> Dict[str, str]:
+    details = failure.details or {}
+    return {
+        "label": f"{result.gate_name}.{failure.code}",
+        "location": _failure_location(task, result.gate_name, failure.code, failure.message, details),
+        "expected": _failure_expected(task, output, failure.code, details),
+        "observed": _failure_observed(output, failure.code, details),
+    }
+
+
+def _failure_location(
+    task: TaskSpec,
+    gate_name: str,
+    code: str,
+    message: str,
+    details: Dict[str, Any],
+) -> str:
+    if code == "artifact_missing":
+        return "LeafOutput.artifacts"
+    if code == "claim_without_evidence":
+        return "LeafOutput.claims[].evidence_refs"
+    if code in {"schema_invalid", "empty_answer", "task_id_mismatch", "client_error"}:
+        return "LeafOutput"
+    if code in {"answer_mismatch", "test_failed", "constraint_forgotten", "distractor_adopted"}:
+        return "LeafOutput.answer"
+    if code == "required_field_missing":
+        return "LeafOutput.answer.fields"
+    if code == "json_field_mismatch":
+        field = _json_field_from_message(message)
+        return f"LeafOutput.answer.{field}" if field else "LeafOutput.answer"
+    if code in {"entry_point_missing", "code_missing", "syntax_error", "timeout", "runtime_error", "unit_test_failed"}:
+        entry_point = str(task.input_payload.get("entry_point", ""))
+        return f"LeafOutput.answer.{entry_point}" if entry_point else "LeafOutput.answer"
+    if "actual" in details:
+        return f"{gate_name}.actual"
+    return f"{gate_name}.{code}"
+
+
+def _failure_expected(task: TaskSpec, output: LeafOutput, code: str, details: Dict[str, Any]) -> str:
+    if "expected" in details:
+        return _short(details["expected"])
+    if "expected_label" in details:
+        return _short(details["expected_label"])
+    if "expected_text" in details:
+        return _short(details["expected_text"])
+    if code == "artifact_missing":
+        return required_artifact_for(task)
+    if code == "claim_without_evidence":
+        return "at least one claim with evidence_refs"
+    if code == "empty_answer":
+        return "non-empty answer string"
+    if code == "task_id_mismatch":
+        return task.task_id
+    if code == "required_field_missing":
+        return ", ".join(task.input_payload.get("required_fields", ["id", "value"]))
+    if code in {"constraint_forgotten", "json_field_mismatch"} and task.family == "context_trace":
+        return "jsonl"
+    if code == "test_failed" and task.family == "mini_workflow":
+        return str(task.hidden_oracle_payload.get("expected_substring", ""))
+    if code == "answer_mismatch":
+        return "expected oracle answer"
+    if code == "entry_point_missing":
+        return str(task.input_payload.get("entry_point", ""))
+    if code == "code_missing":
+        return "Python source code"
+    return "gate pass"
+
+
+def _failure_observed(output: LeafOutput, code: str, details: Dict[str, Any]) -> str:
+    for key in ["actual", "action", "answer", "stdout", "stderr"]:
+        if key in details:
+            return _short(details[key])
+    if code == "artifact_missing":
+        return _short(output.artifacts)
+    if code == "claim_without_evidence":
+        return _short([{"claim": claim.claim, "evidence_refs": len(claim.evidence_refs)} for claim in output.claims])
+    if code in {"empty_answer", "answer_mismatch", "test_failed", "constraint_forgotten", "distractor_adopted"}:
+        return _short(output.answer)
+    if code == "task_id_mismatch":
+        return output.task_id
+    return _short(output.answer)
+
+
+def _preserve_set_instructions(task: TaskSpec, output: LeafOutput, gate_results: List[GateResult]) -> List[str]:
+    failed_codes = {failure.code for result in gate_results for failure in result.failures}
+    instructions = [
+        "Preserve-set: keep every already-valid field unchanged unless its typed failure location says to change it.",
+        f"Preserve-set: keep task_id exactly {task.task_id}.",
+    ]
+    if output.artifacts and "artifact_missing" not in failed_codes:
+        instructions.append(f"Preserve-set: keep listed artifacts unchanged: {', '.join(output.artifacts)}.")
+    if output.claims and "claim_without_evidence" not in failed_codes:
+        instructions.append("Preserve-set: keep existing claims/evidence and only repair the failing answer locus.")
+    if task.family == "mini_workflow":
+        instructions.append('Preserve-set: keep artifact="workflow_patch.txt" while changing only the result marker if needed.')
+    elif task.family == "context_trace":
+        instructions.append("Preserve-set: keep fields id,value while changing only export_format if needed.")
+    elif task.family in {"boolq", "squad", "multiple_choice", "text_classification"}:
+        instructions.append("Preserve-set: keep the answer JSON shape and change only the rejected answer value.")
+    return instructions
+
+
+def _json_field_from_message(message: str) -> str:
+    match = re.search(r"JSON field ([A-Za-z0-9_.-]+) mismatch", str(message))
+    return match.group(1) if match else ""
+
+
+def _short(value: Any, limit: int = 240) -> str:
+    if isinstance(value, str):
+        text = value
+    else:
+        try:
+            text = json.dumps(value, sort_keys=True)
+        except TypeError:
+            text = str(value)
+    return text[:limit]
 
 
 def _code_target_guidance(task: TaskSpec, target_codes: set[str]) -> List[str]:

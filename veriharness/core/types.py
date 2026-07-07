@@ -22,10 +22,14 @@ class HarnessVariant(str, Enum):
     H2 = "H2"
     H3 = "H3"
     GENERIC_RETRY = "generic-retry"
+    GENERIC_DIAGNOSTICS = "generic+diagnostics"
     NATURAL_RETRY = "natural-retry"
     RETAIN_GENERIC = "retain+generic"
     TARGETED_UNTYPED = "targeted+untyped"
+    TYPED_LABEL_ONLY = "typed-label-only"
+    TYPED_FIELDS = "typed-fields"
     TYPED_NO_RETAIN = "typed+no-retain"
+    TYPED_PRESERVE = "typed-preserve"
     H4 = "H4"
 
     @property
@@ -34,10 +38,14 @@ class HarnessVariant(str, Enum):
             HarnessVariant.H2,
             HarnessVariant.H3,
             HarnessVariant.GENERIC_RETRY,
+            HarnessVariant.GENERIC_DIAGNOSTICS,
             HarnessVariant.NATURAL_RETRY,
             HarnessVariant.RETAIN_GENERIC,
             HarnessVariant.TARGETED_UNTYPED,
+            HarnessVariant.TYPED_LABEL_ONLY,
+            HarnessVariant.TYPED_FIELDS,
             HarnessVariant.TYPED_NO_RETAIN,
+            HarnessVariant.TYPED_PRESERVE,
             HarnessVariant.H4,
         }
 
@@ -46,10 +54,14 @@ class HarnessVariant(str, Enum):
         return self in {
             HarnessVariant.H3,
             HarnessVariant.GENERIC_RETRY,
+            HarnessVariant.GENERIC_DIAGNOSTICS,
             HarnessVariant.NATURAL_RETRY,
             HarnessVariant.RETAIN_GENERIC,
             HarnessVariant.TARGETED_UNTYPED,
+            HarnessVariant.TYPED_LABEL_ONLY,
+            HarnessVariant.TYPED_FIELDS,
             HarnessVariant.TYPED_NO_RETAIN,
+            HarnessVariant.TYPED_PRESERVE,
             HarnessVariant.H4,
         }
 
@@ -66,6 +78,10 @@ class HarnessVariant(str, Enum):
         return self in {HarnessVariant.GENERIC_RETRY, HarnessVariant.RETAIN_GENERIC}
 
     @property
+    def uses_diagnostic_retry(self) -> bool:
+        return self == HarnessVariant.GENERIC_DIAGNOSTICS
+
+    @property
     def uses_natural_retry(self) -> bool:
         return self == HarnessVariant.NATURAL_RETRY
 
@@ -74,8 +90,26 @@ class HarnessVariant(str, Enum):
         return self == HarnessVariant.TARGETED_UNTYPED
 
     @property
+    def uses_typed_label_only_repair(self) -> bool:
+        return self == HarnessVariant.TYPED_LABEL_ONLY
+
+    @property
+    def uses_typed_field_repair(self) -> bool:
+        return self == HarnessVariant.TYPED_FIELDS
+
+    @property
+    def uses_full_typed_preserve_repair(self) -> bool:
+        return self in {HarnessVariant.TYPED_PRESERVE, HarnessVariant.H4}
+
+    @property
     def uses_typed_repair(self) -> bool:
-        return self in {HarnessVariant.TYPED_NO_RETAIN, HarnessVariant.H4}
+        return self in {
+            HarnessVariant.TYPED_LABEL_ONLY,
+            HarnessVariant.TYPED_FIELDS,
+            HarnessVariant.TYPED_NO_RETAIN,
+            HarnessVariant.TYPED_PRESERVE,
+            HarnessVariant.H4,
+        }
 
 
 class TaskInput(BaseModel):

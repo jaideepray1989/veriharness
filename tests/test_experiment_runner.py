@@ -256,6 +256,76 @@ def test_natural_retry_verbalizes_gate_error_without_typed_codes(tmp_path):
     assert "artifact.artifact_missing" not in retry_context
 
 
+def _run_missing_artifact_repair(tmp_path, variant: HarnessVariant):
+    task = generate_boolq_tasks(n_tasks=1, seed=1)[0]
+    correct_answer = bool(task.hidden_oracle_payload["answer"])
+    config = ExperimentConfig(
+        experiment_id=f"{variant.value}-test",
+        benchmarks=[],
+        variants=[variant],
+        budget=BudgetConfig(max_retries=2, max_leaf_calls_per_task=2),
+        evaluation={"oracle_guided_acceptance": False},
+    )
+    missing_artifact = {
+        "task_id": task.task_id,
+        "answer": json.dumps({"answer": correct_answer}),
+        "artifacts": [],
+        "claims": [{"claim": "answer derived from passage", "evidence_refs": [{"source": "passage"}]}],
+        "self_assessment": {},
+        "done": True,
+    }
+    repaired = dict(missing_artifact)
+    repaired["artifacts"] = ["answer.json"]
+    client = ScriptedClient({task.task_id: [missing_artifact, repaired]})
+    orch = Orchestrator(config, client=client, run_manager=RunManager(tmp_path))
+    _, run_dir, store, event_log, state = orch.run_manager.create(config, config.model_dump())
+    result = orch.run_task_variant(task, variant, store, event_log, state)
+    retry_context = (run_dir / result.run_path / "context_pack.md").read_text()
+    return result, retry_context
+
+
+def test_generic_diagnostics_adds_raw_validation_message_without_typed_payload(tmp_path):
+    result, retry_context = _run_missing_artifact_repair(tmp_path, HarnessVariant.GENERIC_DIAGNOSTICS)
+
+    assert result.success
+    assert "Raw validation message from artifact" in retry_context
+    assert "Required artifact not listed" in retry_context
+    assert "artifact.artifact_missing" not in retry_context
+    assert '"location"' not in retry_context
+
+
+def test_typed_label_only_exposes_label_without_message_or_fields(tmp_path):
+    result, retry_context = _run_missing_artifact_repair(tmp_path, HarnessVariant.TYPED_LABEL_ONLY)
+
+    assert result.success
+    assert "failure_label=artifact.artifact_missing" in retry_context
+    assert "Required artifact not listed" not in retry_context
+    assert '"location"' not in retry_context
+    assert '"expected"' not in retry_context
+
+
+def test_typed_fields_exposes_location_expected_observed(tmp_path):
+    result, retry_context = _run_missing_artifact_repair(tmp_path, HarnessVariant.TYPED_FIELDS)
+
+    assert result.success
+    assert "artifact.artifact_missing" in retry_context
+    assert "LeafOutput.artifacts" in retry_context
+    assert "answer.json" in retry_context
+    assert "observed" in retry_context
+    assert "Required artifact not listed" not in retry_context
+
+
+def test_typed_preserve_adds_full_typed_repair_and_preserve_set(tmp_path):
+    result, retry_context = _run_missing_artifact_repair(tmp_path, HarnessVariant.TYPED_PRESERVE)
+
+    assert result.success
+    assert "artifact.artifact_missing" in retry_context
+    assert "LeafOutput.artifacts" in retry_context
+    assert "artifact.artifact_missing" in retry_context
+    assert "Required artifact not listed" in retry_context
+    assert "Preserve-set: keep task_id exactly" in retry_context
+
+
 def test_retain_generic_uses_candidate_retention_without_typed_repair(tmp_path):
     task = generate_context_trace_tasks(n_tasks=1, seed=1)[0]
     config = ExperimentConfig(
