@@ -1,0 +1,21 @@
+experiment_id: mini_workflow_budget_16
+benchmarks:
+  - name: mini_workflow
+    n_tasks: 30
+    seeds: [1, 2, 3]
+variants: [H3, generic-retry, H4]
+model:
+  client: coreai_freeform
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: primary_oracle_blind_budget_verification
+budget:
+  max_retries: 15
+  veriharness_k: 2
+  max_leaf_calls_per_task: 16
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: mini_workflow_budget_sensitivity_check
+  workflow_tasks_per_seed: 30
+  call_budget: 16
+  parent_matrix: practical_matrix

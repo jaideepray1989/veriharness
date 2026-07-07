@@ -124,3 +124,21 @@ For a perfectly rectangular matrix, the remaining missing full cells are:
 - `llama3.1:8b`: budgets 2, 3, and 4
 
 The first missing budget-1 `qwen2.5:7b` attempt was started on 2026-07-07 and stopped at 24/2160 rows because the projected runtime was several hours per 2160-row run.
+
+## Budget 8/16 Verification
+
+Budget-8 and budget-16 configs were added on 2026-07-07:
+
+- `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_8.yaml`
+- `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_16.yaml`
+
+Targeted MiniWorkflow verification configs were also added:
+
+- `/Users/jaray/Documents/autoresearch/configs/experiment_mini_workflow_budget_8.yaml`
+- `/Users/jaray/Documents/autoresearch/configs/experiment_mini_workflow_budget_16.yaml`
+
+The full budget-8 `qwen2.5-coder:14b` run was started and stopped at 5/2160 rows because projected runtime was too high for an interactive pass. MiniWorkflow budget-8 and budget-16 probes confirmed the budget-4 trace analysis: H3 repeats artifact-correct but evidence-empty outputs through 8 and 16 calls, while H4 has no budget-sensitive failures left at budget 4.
+
+Full details:
+
+- `/Users/jaray/Documents/autoresearch/reports/budget_8_16_verification.md`
