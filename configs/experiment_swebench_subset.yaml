@@ -1,0 +1,24 @@
+experiment_id: swebench_subset
+benchmarks:
+  - name: swebench_lite
+    n_tasks: 25
+    seeds: [1]
+  - name: swebench_verified
+    n_tasks: 25
+    seeds: [1]
+variants: [H0, H3, generic-retry, H4]
+model:
+  client: coreai_freeform
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: external_official_eval_required
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: swebench_lite_verified_subset
+  official_evaluator: swebench.harness.run_evaluation
+  official_eval_required: true
+  note: Local oracle validates patch/reference-adapter smoke only; paper scoring must run SWE-bench containers.

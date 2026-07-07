@@ -78,6 +78,47 @@ def build_context_pack(
             current_state["entry_point"] = entry_point
             accepted.append(f"Implement the HumanEval entry point: {entry_point}.")
             accepted.append("Output should be a Python module that can be saved as solution.py.")
+    elif task.family == "swebench_patch":
+        current_state["repo"] = payload.get("repo", "")
+        current_state["instance_id"] = payload.get("instance_id", "")
+        current_state["base_commit"] = payload.get("base_commit", "")
+        current_state["problem_statement"] = payload.get("problem_statement", "")
+        current_state["hints_text"] = payload.get("hints_text", "")
+        current_state["fail_to_pass"] = payload.get("fail_to_pass", [])
+        current_state["pass_to_pass"] = payload.get("pass_to_pass", [])
+        constraints.extend(
+            [
+                "Return a unified diff patch only in the answer field.",
+                "Patch paths must be relative to the repository root.",
+                "List patch.diff in artifacts.",
+            ]
+        )
+        accepted.append("SWE-bench scoring requires the official containerized test harness.")
+    elif task.family == "ds1000":
+        current_state["prompt"] = payload.get("prompt", "")
+        current_state["library"] = payload.get("library", "")
+        current_state["problem_id"] = payload.get("problem_id", "")
+        constraints.extend(
+            [
+                "Return Python code that sets a variable named result.",
+                "Do not include markdown fences in the answer field.",
+                "List solution.py in artifacts.",
+            ]
+        )
+        accepted.append("DS-1000 code is executed in the benchmark-provided test context.")
+    elif task.family == "mlagentbench":
+        current_state["task_name"] = payload.get("task_name", "")
+        current_state["research_problem"] = payload.get("research_problem", "")
+        current_state["upstream_repo"] = payload.get("upstream_repo", "")
+        current_state["benchmark_path"] = payload.get("benchmark_path", "")
+        constraints.extend(
+            [
+                "Return a JSON research plan in the answer field.",
+                "Name train and evaluation commands.",
+                "List research_plan.json in artifacts.",
+            ]
+        )
+        accepted.append("Paper-quality MLAgentBench scoring must run the upstream runner and eval scripts.")
     elif task.family in {"boolq", "squad"}:
         current_state["question"] = payload.get("question", "")
         current_state["passage"] = payload.get("passage", "")

@@ -3,6 +3,11 @@ from __future__ import annotations
 from typing import Iterable, List
 
 from veriharness.benchmarks.context_trace import generate_context_trace_tasks
+from veriharness.benchmarks.external_benchmarks import (
+    generate_ds1000_tasks,
+    generate_mlagentbench_tasks,
+    generate_swebench_tasks,
+)
 from veriharness.benchmarks.humaneval import generate_humaneval_tasks
 from veriharness.benchmarks.mini_workflow import generate_mini_workflow_tasks
 from veriharness.benchmarks.provenance_bias import generate_provenance_bias_tasks
@@ -39,6 +44,14 @@ def generate_named_tasks(
         return generate_mini_workflow_tasks(n_tasks=n_tasks, seed=seed)
     if benchmark in {"humaneval", "human-eval"}:
         return generate_humaneval_tasks(n_tasks=n_tasks, seed=seed)
+    if benchmark in {"swebench_lite", "swebench-lite", "swe-bench-lite"}:
+        return generate_swebench_tasks("swebench_lite", n_tasks=n_tasks, seed=seed)
+    if benchmark in {"swebench_verified", "swebench-verified", "swe-bench-verified"}:
+        return generate_swebench_tasks("swebench_verified", n_tasks=n_tasks, seed=seed)
+    if benchmark in {"ds1000", "ds-1000"}:
+        return generate_ds1000_tasks(n_tasks=n_tasks, seed=seed)
+    if benchmark in {"mlagentbench", "ml-agent-bench", "mlagent-bench"}:
+        return generate_mlagentbench_tasks(n_tasks=n_tasks, seed=seed)
     if benchmark in {"boolq", "bool-q"}:
         return generate_boolq_tasks(n_tasks=n_tasks, seed=seed)
     if benchmark in {"squad", "squad-v1", "squad_v1"}:

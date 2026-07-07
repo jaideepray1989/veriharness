@@ -209,6 +209,7 @@ All row-level data are persisted. The report tables below are compiled from thes
 | CoreAI Freeform replay repair committed data | 120 | `/Users/jaray/Documents/autoresearch/reports/data/replay_repair_3bench_coreai/results.jsonl` |
 | Oracle-blind primary evaluation report | summary | `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` |
 | Budget 8/16 verification | targeted probes and trace analysis | `/Users/jaray/Documents/autoresearch/reports/budget_8_16_verification.md` |
+| External benchmark integration | adapter smoke and subset configs | `/Users/jaray/Documents/autoresearch/reports/external_benchmark_integration.md` |
 | Failure examples | selected examples | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/failure_examples.md` |
 | Baseline comparison | paired H0-vs-H3/H4 | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/baseline_comparison.md` |
 
@@ -680,11 +681,16 @@ passed
 | `/Users/jaray/Documents/autoresearch/reports/replay_repair_coreai_freeform_results.md` | CoreAI-only replay repair report. |
 | `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` | Paper-facing oracle-blind primary result report. |
 | `/Users/jaray/Documents/autoresearch/reports/budget_8_16_verification.md` | Budget-8/16 configs, partial probes, and trace-based plateau verification. |
+| `/Users/jaray/Documents/autoresearch/reports/external_benchmark_integration.md` | SWE-bench, DS-1000, and MLAgentBench integration report. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_3.yaml` | Budget-3 practical primary config. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_8.yaml` | Full practical matrix config for call budget 8. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_16.yaml` | Full practical matrix config for call budget 16. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_mini_workflow_budget_8.yaml` | Targeted MiniWorkflow verification config for call budget 8. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_mini_workflow_budget_16.yaml` | Targeted MiniWorkflow verification config for call budget 16. |
+| `/Users/jaray/Documents/autoresearch/configs/experiment_swebench_subset.yaml` | SWE-bench Lite/Verified subset config. |
+| `/Users/jaray/Documents/autoresearch/configs/experiment_ds1000_subset.yaml` | DS-1000 executable code-repair subset config. |
+| `/Users/jaray/Documents/autoresearch/configs/experiment_mlagentbench_subset.yaml` | MLAgentBench manifest adapter config. |
+| `/Users/jaray/Documents/autoresearch/configs/experiment_external_benchmarks_smoke.yaml` | Dummy-client smoke config across external benchmark adapters. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_replay_repair_3bench_coreai.yaml` | CoreAI replay repair config with 24 tasks and 5 repair-message policies. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_repair_factor_ablation_budget_4.yaml` | Repair-factor ablation config for candidate retention, natural-language errors, targeted untyped repair, typed no-retain, and H4. |
 

@@ -63,6 +63,27 @@ Requested entry point: {entry_point}
 
 Official HumanEval prompt:
 {prompt}"""
+    if family == "swebench_patch":
+        return """For this swebench_patch task:
+- Read the GitHub issue statement, hints, repo, and base commit in the context pack.
+- The LeafOutput.answer field must be a unified diff patch string.
+- Do not include markdown fences inside the answer field.
+- List "patch.diff" in artifacts.
+- This local harness checks patch structure/reference overlap only; official SWE-bench scoring must run separately."""
+    if family == "ds1000":
+        return """For this ds1000 task:
+- Solve the data-science coding problem in the context pack.
+- The LeafOutput.answer field must be Python code.
+- The code must set a variable named result.
+- Do not include markdown fences inside the answer field.
+- List "solution.py" in artifacts."""
+    if family == "mlagentbench":
+        return """For this mlagentbench task:
+- Read the ML research problem in the context pack.
+- The LeafOutput.answer field must itself be a JSON string.
+- That answer JSON must include task_name, train_command, eval_command, and expected_artifacts.
+- List "research_plan.json" in artifacts.
+- Official scoring must run the upstream MLAgentBench runner and eval scripts."""
     if family == "boolq":
         return """For this boolq task:
 - Read the passage and question in the context pack.

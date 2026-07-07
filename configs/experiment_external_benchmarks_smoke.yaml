@@ -1,0 +1,26 @@
+experiment_id: external_benchmarks_smoke
+benchmarks:
+  - name: swebench_lite
+    n_tasks: 1
+    seeds: [1]
+  - name: ds1000
+    n_tasks: 1
+    seeds: [1]
+  - name: mlagentbench
+    n_tasks: 1
+    seeds: [1]
+variants: [H3, H4]
+model:
+  client: dummy
+  provider: local
+  model_name: dummy
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: adapter_smoke
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 2
+metadata:
+  matrix_purpose: external_benchmark_adapter_smoke
+  note: SWE-bench and MLAgentBench rows require official external evaluators for paper scoring.

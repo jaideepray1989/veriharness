@@ -30,6 +30,12 @@ def evaluate_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
         return mini_workflow_oracle(task, output)
     if oracle_type == "humaneval":
         return humaneval_oracle(task, output)
+    if oracle_type == "swebench_patch":
+        return swebench_patch_oracle(task, output)
+    if oracle_type == "ds1000":
+        return ds1000_oracle(task, output)
+    if oracle_type == "mlagentbench_manifest":
+        return mlagentbench_manifest_oracle(task, output)
     if oracle_type == "boolq":
         return boolq_oracle(task, output)
     if oracle_type == "squad":
@@ -124,6 +130,87 @@ def humaneval_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
         )
     )
     return GateResult(gate_name="oracle", passed=False, score=0.0, failures=failures)
+
+
+def swebench_patch_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
+    candidate = _candidate_patch(output.answer)
+    reference = str(task.hidden_oracle_payload.get("reference_patch", ""))
+    failures: List[GateFailure] = []
+    if "diff --git " not in candidate and "--- " not in candidate:
+        failures.append(GateFailure(code="patch_missing", message="Candidate did not provide a unified diff patch."))
+    if reference and _normalize_patch(candidate) != _normalize_patch(reference):
+        failures.append(
+            GateFailure(
+                code="reference_patch_mismatch",
+                message="Candidate patch does not match the SWE-bench reference patch used for smoke validation.",
+                details={
+                    "external_eval_required": True,
+                    "candidate_chars": len(candidate),
+                    "reference_chars": len(reference),
+                },
+            )
+        )
+    result = GateResult(gate_name="oracle", passed=not failures, score=0.0 if failures else 1.0, failures=failures)
+    result.metadata["external_eval_required"] = True
+    result.metadata["official_runner"] = "swebench.harness.run_evaluation"
+    result.metadata["oracle_scope"] = "adapter_smoke_reference_patch"
+    return result
+
+
+def ds1000_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
+    solution = _candidate_code(output.answer)
+    code_context = str(task.hidden_oracle_payload.get("code_context", ""))
+    timeout = int(task.hidden_oracle_payload.get("timeout_seconds", 8))
+    if not solution.strip():
+        return GateResult(
+            gate_name="oracle",
+            passed=False,
+            score=0.0,
+            failures=[GateFailure(code="code_missing", message="Candidate did not provide Python code.")],
+        )
+    result = _run_ds1000_tests(code_context, solution, timeout)
+    if result["passed"]:
+        return GateResult(gate_name="oracle", passed=True, score=1.0)
+    return GateResult(
+        gate_name="oracle",
+        passed=False,
+        score=0.0,
+        failures=[
+            GateFailure(
+                code=result["code"],
+                message=result["message"],
+                details={"stdout": result.get("stdout", "")[-1200:], "stderr": result.get("stderr", "")[-1200:]},
+            )
+        ],
+    )
+
+
+def mlagentbench_manifest_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
+    data = _answer_dict(output)
+    failures: List[GateFailure] = []
+    expected_task = str(task.hidden_oracle_payload.get("task_name", ""))
+    if str(data.get("task_name", "")) != expected_task:
+        failures.append(
+            GateFailure(
+                code="task_name_mismatch",
+                message="MLAgentBench manifest did not name the expected task.",
+                details={"expected": expected_task, "actual": data.get("task_name")},
+            )
+        )
+    for key in ["train_command", "eval_command", "expected_artifacts"]:
+        if key not in data:
+            failures.append(GateFailure(code="manifest_field_missing", message=f"Missing manifest field: {key}"))
+    artifacts = data.get("expected_artifacts", [])
+    if isinstance(artifacts, str):
+        artifacts = [artifacts]
+    if not isinstance(artifacts, list) or not artifacts:
+        failures.append(GateFailure(code="manifest_artifact_missing", message="Manifest did not list output artifacts."))
+    result = GateResult(gate_name="oracle", passed=not failures, score=0.0 if failures else 1.0, failures=failures)
+    result.metadata["external_eval_required"] = True
+    result.metadata["official_runner"] = "python -m MLAgentBench.runner"
+    result.metadata["official_eval"] = "python -m MLAgentBench.eval"
+    result.metadata["oracle_scope"] = "adapter_manifest_smoke"
+    return result
 
 
 def boolq_oracle(task: TaskSpec, output: LeafOutput) -> GateResult:
@@ -245,6 +332,27 @@ def _candidate_code(answer: str) -> str:
     if isinstance(data, str):
         return _strip_code_fences(data.strip())
     return stripped
+
+
+def _candidate_patch(answer: str) -> str:
+    stripped = _strip_code_fences(answer.strip())
+    try:
+        data = json.loads(stripped)
+    except Exception:
+        return stripped
+    if isinstance(data, dict):
+        for key in ["patch", "diff", "answer", "solution"]:
+            value = data.get(key)
+            if isinstance(value, str):
+                return _strip_code_fences(value.strip())
+    if isinstance(data, str):
+        return _strip_code_fences(data.strip())
+    return stripped
+
+
+def _normalize_patch(patch: str) -> str:
+    lines = [line.rstrip() for line in _strip_code_fences(patch).splitlines()]
+    return "\n".join(line for line in lines if line.strip())
 
 
 def _answer_bool(answer: str) -> Optional[bool]:
@@ -446,6 +554,59 @@ def _run_humaneval_tests(solution: str, test: str, entry_point: str, timeout: in
         "code": code,
         "message": _humaneval_failure_message(stderr)
         or f"HumanEval subprocess failed with exit code {completed.returncode}.",
+        "stdout": completed.stdout or "",
+        "stderr": stderr,
+    }
+
+
+def _run_ds1000_tests(code_context: str, solution: str, timeout: int) -> Dict[str, Any]:
+    runner = "\n".join(
+        [
+            "import faulthandler",
+            "faulthandler.enable()",
+            code_context,
+            "",
+            f"solution = {solution!r}",
+            "test_execution(solution)",
+            "",
+        ]
+    )
+    with tempfile.TemporaryDirectory(prefix="veriharness_ds1000_") as tmp_dir:
+        script = Path(tmp_dir) / "candidate.py"
+        script.write_text(runner, encoding="utf-8")
+        try:
+            completed = subprocess.run(
+                [sys.executable, str(script)],
+                cwd=tmp_dir,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=timeout,
+                check=False,
+            )
+        except subprocess.TimeoutExpired as exc:
+            return {
+                "passed": False,
+                "code": "timeout",
+                "message": f"DS-1000 tests timed out after {timeout}s.",
+                "stdout": exc.stdout or "",
+                "stderr": exc.stderr or "",
+            }
+    if completed.returncode == 0:
+        return {"passed": True}
+    stderr = completed.stderr or ""
+    if "SyntaxError" in stderr or "IndentationError" in stderr:
+        code = "syntax_error"
+    elif "AssertionError" in stderr:
+        code = "unit_test_failed"
+    elif "ModuleNotFoundError" in stderr or "ImportError" in stderr:
+        code = "dependency_missing"
+    else:
+        code = "runtime_error"
+    return {
+        "passed": False,
+        "code": code,
+        "message": _last_error_line(stderr) or f"DS-1000 subprocess failed with exit code {completed.returncode}.",
         "stdout": completed.stdout or "",
         "stderr": stderr,
     }

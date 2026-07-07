@@ -1,0 +1,21 @@
+experiment_id: mlagentbench_subset
+benchmarks:
+  - name: mlagentbench
+    n_tasks: 13
+    seeds: [1]
+variants: [H0, H3, generic-retry, H4]
+model:
+  client: coreai_freeform
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: manifest_adapter_probe
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: mlagentbench_manifest_adapter
+  official_evaluator: python -m MLAgentBench.eval
+  official_eval_required: true
+  note: Manifest oracle validates plan shape only; paper scoring must run upstream MLAgentBench tasks.

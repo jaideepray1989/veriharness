@@ -1,0 +1,200 @@
+{
+  "by_variant": {
+    "H3": {
+      "accepted_by_agent_rate": 1.0,
+      "accepted_by_gate_rate": 1.0,
+      "constraint_violation_rate": 0.0,
+      "context_bloat_proxy_rate": 0.0,
+      "n": 3,
+      "premature_stop_rate": 0.0,
+      "retries_per_success": 0.3333333333333333,
+      "self_biased_acceptance_rate": 0.0,
+      "success_rate": 1.0,
+      "success_rate_ci": [
+        1.0,
+        1.0
+      ],
+      "tokens_per_success": 427.6666666666667,
+      "wrong_claim_acceptance_rate": 0.0
+    },
+    "H4": {
+      "accepted_by_agent_rate": 1.0,
+      "accepted_by_gate_rate": 1.0,
+      "constraint_violation_rate": 0.0,
+      "context_bloat_proxy_rate": 0.0,
+      "n": 3,
+      "premature_stop_rate": 0.0,
+      "retries_per_success": 0.0,
+      "self_biased_acceptance_rate": 0.0,
+      "success_rate": 1.0,
+      "success_rate_ci": [
+        1.0,
+        1.0
+      ],
+      "tokens_per_success": 427.6666666666667,
+      "wrong_claim_acceptance_rate": 0.0
+    }
+  },
+  "context_overload_slope": {},
+  "failure_modes_by_benchmark": {
+    "ds1000": {
+      "H3": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      },
+      "H4": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      }
+    },
+    "mlagentbench": {
+      "H3": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      },
+      "H4": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      }
+    },
+    "swebench_lite": {
+      "H3": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      },
+      "H4": {
+        "accepted_by_agent_rate": 1.0,
+        "accepted_by_gate_rate": 1.0,
+        "context_bloat_proxy_rate": 0.0,
+        "failure_taxonomy": {},
+        "n": 1,
+        "self_biased_acceptance_rate": 0.0,
+        "success_rate": 1.0,
+        "wrong_claim_acceptance_rate": 0.0
+      }
+    }
+  },
+  "failure_taxonomy": {},
+  "n_rows": 6,
+  "paired_deltas_by_benchmark": {
+    "ds1000": {
+      "H4_vs_H3": {
+        "baseline_only": 0,
+        "same_fail": 0,
+        "same_pass": 1,
+        "treatment_only": 0
+      }
+    },
+    "mlagentbench": {
+      "H4_vs_H3": {
+        "baseline_only": 0,
+        "same_fail": 0,
+        "same_pass": 1,
+        "treatment_only": 0
+      }
+    },
+    "swebench_lite": {
+      "H4_vs_H3": {
+        "baseline_only": 0,
+        "same_fail": 0,
+        "same_pass": 1,
+        "treatment_only": 0
+      }
+    }
+  },
+  "paired_policy_tests": {
+    "H4_vs_H3": {
+      "baseline": "H3",
+      "baseline_only": 0,
+      "baseline_success": 3,
+      "delta_success_rate": 0.0,
+      "delta_success_rate_ci": [
+        0.0,
+        0.0
+      ],
+      "mcnemar_exact_p": 1.0,
+      "n_pairs": 3,
+      "same_fail": 0,
+      "same_pass": 3,
+      "treatment": "H4",
+      "treatment_only": 0,
+      "treatment_success": 3
+    }
+  },
+  "per_seed_results": {
+    "1": {
+      "H3": {
+        "n": 3,
+        "num_leaf_calls": 4,
+        "num_retries": 1,
+        "premature_stop_count": 0,
+        "success_count": 3,
+        "success_rate": 1.0
+      },
+      "H4": {
+        "n": 3,
+        "num_leaf_calls": 3,
+        "num_retries": 0,
+        "premature_stop_count": 0,
+        "success_count": 3,
+        "success_rate": 1.0
+      }
+    }
+  },
+  "prompt_token_overhead": {
+    "by_variant": {
+      "H3": {
+        "avg_prompt_tokens": 745.25,
+        "avg_retry_prompt_tokens": 488.0,
+        "leaf_count": 4,
+        "retry_leaf_count": 1,
+        "total_prompt_tokens": 2981
+      },
+      "H4": {
+        "avg_prompt_tokens": 831.0,
+        "avg_retry_prompt_tokens": 0.0,
+        "leaf_count": 3,
+        "retry_leaf_count": 0,
+        "total_prompt_tokens": 2493
+      }
+    },
+    "comparisons": {
+      "H4_vs_H3": {
+        "avg_prompt_token_delta": 85.75,
+        "avg_retry_prompt_token_delta": -488.0,
+        "total_prompt_token_delta": -488
+      }
+    }
+  },
+  "self_evaluation_bias_gap": {}
+}

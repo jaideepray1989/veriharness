@@ -1,0 +1,19 @@
+experiment_id: ds1000_subset
+benchmarks:
+  - name: ds1000
+    n_tasks: 100
+    seeds: [1]
+variants: [H0, H3, generic-retry, H4]
+model:
+  client: coreai_freeform
+evaluation:
+  oracle_guided_acceptance: true
+  result_role: executable_gate_visible_probe
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: ds1000_executable_code_repair_probe
+  note: DS-1000 test_execution is used as an executable oracle/gate for repair visibility.

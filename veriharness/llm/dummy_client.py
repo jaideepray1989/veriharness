@@ -16,6 +16,12 @@ class DummyClient:
             return self._context_trace(request, variant)
         if task.family == "provenance_bias":
             return self._provenance_bias(request, variant)
+        if task.family == "swebench_patch":
+            return self._swebench_patch(request)
+        if task.family == "ds1000":
+            return self._ds1000(request)
+        if task.family == "mlagentbench":
+            return self._mlagentbench(request)
         if task.family in {"boolq", "squad", "multiple_choice", "text_classification"}:
             return self._public_nlp(request)
         return self._mini_workflow(request, variant)
@@ -111,5 +117,50 @@ class DummyClient:
             artifacts=["answer.json"],
             claims=[],
             self_assessment={"done_reason": "dummy public NLP answer"},
+            done=True,
+        )
+
+    def _swebench_patch(self, request: LeafRequest) -> LeafOutput:
+        task = request.task
+        patch = str(task.hidden_oracle_payload.get("reference_patch", ""))
+        return LeafOutput(
+            task_id=task.task_id,
+            answer=patch,
+            artifacts=["patch.diff"],
+            claims=[self._claim("Patch follows the SWE-bench reference patch for smoke validation.")],
+            self_assessment={"done_reason": "dummy SWE-bench patch"},
+            done=True,
+        )
+
+    def _ds1000(self, request: LeafRequest) -> LeafOutput:
+        task = request.task
+        code = str(task.hidden_oracle_payload.get("reference_code", ""))
+        return LeafOutput(
+            task_id=task.task_id,
+            answer=code,
+            artifacts=["solution.py"],
+            claims=[self._claim("Solution uses the DS-1000 reference code for smoke validation.")],
+            self_assessment={"done_reason": "dummy DS-1000 solution"},
+            done=True,
+        )
+
+    def _mlagentbench(self, request: LeafRequest) -> LeafOutput:
+        task = request.task
+        task_name = str(task.input_payload.get("task_name", ""))
+        answer = json.dumps(
+            {
+                "task_name": task_name,
+                "train_command": "python train.py",
+                "eval_command": f"python -m MLAgentBench.eval --task {task_name}",
+                "expected_artifacts": ["submission.csv", "metrics.json"],
+            },
+            sort_keys=True,
+        )
+        return LeafOutput(
+            task_id=task.task_id,
+            answer=answer,
+            artifacts=["research_plan.json"],
+            claims=[self._claim(f"MLAgentBench plan targets {task_name}.")],
+            self_assessment={"done_reason": "dummy MLAgentBench manifest"},
             done=True,
         )
