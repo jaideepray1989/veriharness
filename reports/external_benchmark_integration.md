@@ -83,6 +83,20 @@ These integrations enable the next paper lanes:
 
 The immediate strongest next run is DS-1000 because it has an executable local oracle and does not require Docker/Kaggle orchestration. SWE-bench and MLAgentBench require official external runners before their results can be cited as benchmark scores.
 
+## Official Runner Bridge
+
+Follow-up bridge code now converts preserved VeriHarness traces into official runner inputs:
+
+- SWE-bench: `export-swebench-predictions` writes official `instance_id` / `model_name_or_path` / `model_patch` JSONL.
+- SWE-bench: `run-swebench-official` prints or executes `swebench.harness.run_evaluation`.
+- MLAgentBench: `export-mlagentbench-manifests` materializes `research_plan.json` artifacts and an index.
+- MLAgentBench: `run-mlagentbench-official` prints or executes upstream `prepare_task`, `runner`, and `eval` commands.
+
+Bridge report and smoke artifacts:
+
+- `/Users/jaray/Documents/autoresearch/reports/official_runner_bridge.md`
+- `/Users/jaray/Documents/autoresearch/reports/data/official_runner_bridge_smoke/`
+
 ## Recommended Next Commands
 
 DS-1000 local model probe:

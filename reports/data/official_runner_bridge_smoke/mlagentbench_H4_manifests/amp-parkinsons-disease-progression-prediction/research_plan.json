@@ -1,0 +1,9 @@
+{
+  "eval_command": "python -m MLAgentBench.eval --task amp-parkinsons-disease-progression-prediction",
+  "expected_artifacts": [
+    "submission.csv",
+    "metrics.json"
+  ],
+  "task_name": "amp-parkinsons-disease-progression-prediction",
+  "train_command": "python train.py"
+}

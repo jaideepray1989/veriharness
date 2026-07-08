@@ -1,0 +1,53 @@
+[
+  {
+    "command": [
+      ".venv/bin/python",
+      "-u",
+      "-m",
+      "MLAgentBench.prepare_task",
+      "amp-parkinsons-disease-progression-prediction",
+      ".venv/bin/python"
+    ],
+    "phase": "prepare",
+    "task": "amp-parkinsons-disease-progression-prediction"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-u",
+      "-m",
+      "MLAgentBench.runner",
+      "--python",
+      ".venv/bin/python",
+      "--task",
+      "amp-parkinsons-disease-progression-prediction",
+      "--device",
+      "0",
+      "--log-dir",
+      "reports/data/official_runner_bridge_smoke/mlagentbench_logs/amp-parkinsons-disease-progression-prediction",
+      "--work-dir",
+      "reports/data/official_runner_bridge_smoke/mlagentbench_workspace/amp-parkinsons-disease-progression-prediction",
+      "--agent_type",
+      "Agent"
+    ],
+    "phase": "runner",
+    "stdout_log": "reports/data/official_runner_bridge_smoke/mlagentbench_logs/amp-parkinsons-disease-progression-prediction/log",
+    "task": "amp-parkinsons-disease-progression-prediction"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "MLAgentBench.eval",
+      "--log-folder",
+      "reports/data/official_runner_bridge_smoke/mlagentbench_logs/amp-parkinsons-disease-progression-prediction",
+      "--task",
+      "amp-parkinsons-disease-progression-prediction",
+      "--output-file",
+      "reports/data/official_runner_bridge_smoke/mlagentbench_eval/amp-parkinsons-disease-progression-prediction.json"
+    ],
+    "output_file": "reports/data/official_runner_bridge_smoke/mlagentbench_eval/amp-parkinsons-disease-progression-prediction.json",
+    "phase": "eval",
+    "task": "amp-parkinsons-disease-progression-prediction"
+  }
+]

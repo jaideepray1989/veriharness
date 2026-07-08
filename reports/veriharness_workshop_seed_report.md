@@ -210,6 +210,7 @@ All row-level data are persisted. The report tables below are compiled from thes
 | Oracle-blind primary evaluation report | summary | `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` |
 | Budget 8/16 verification | targeted probes and trace analysis | `/Users/jaray/Documents/autoresearch/reports/budget_8_16_verification.md` |
 | External benchmark integration | adapter smoke and subset configs | `/Users/jaray/Documents/autoresearch/reports/external_benchmark_integration.md` |
+| Official runner bridge | SWE-bench JSONL export and MLAgentBench command-plan smoke | `/Users/jaray/Documents/autoresearch/reports/official_runner_bridge.md` |
 | Failure examples | selected examples | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/failure_examples.md` |
 | Baseline comparison | paired H0-vs-H3/H4 | `/Users/jaray/Documents/autoresearch/runs/workshop_model_compiled/baseline_comparison.md` |
 
@@ -682,6 +683,7 @@ passed
 | `/Users/jaray/Documents/autoresearch/reports/oracle_blind_evaluation_results.md` | Paper-facing oracle-blind primary result report. |
 | `/Users/jaray/Documents/autoresearch/reports/budget_8_16_verification.md` | Budget-8/16 configs, partial probes, and trace-based plateau verification. |
 | `/Users/jaray/Documents/autoresearch/reports/external_benchmark_integration.md` | SWE-bench, DS-1000, and MLAgentBench integration report. |
+| `/Users/jaray/Documents/autoresearch/reports/official_runner_bridge.md` | Official SWE-bench/MLAgentBench runner bridge report. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_3.yaml` | Budget-3 practical primary config. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_8.yaml` | Full practical matrix config for call budget 8. |
 | `/Users/jaray/Documents/autoresearch/configs/experiment_practical_matrix_budget_16.yaml` | Full practical matrix config for call budget 16. |

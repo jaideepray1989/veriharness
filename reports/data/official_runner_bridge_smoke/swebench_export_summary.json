@@ -1,0 +1,9 @@
+{
+  "benchmark": "swebench_lite",
+  "dataset_name": "princeton-nlp/SWE-bench_Lite",
+  "n_predictions": 1,
+  "out_path": "reports/data/official_runner_bridge_smoke/swebench_lite_H4_predictions.jsonl",
+  "run_dir": "runs/external_benchmarks_smoke",
+  "skipped": 0,
+  "variant": "H4"
+}

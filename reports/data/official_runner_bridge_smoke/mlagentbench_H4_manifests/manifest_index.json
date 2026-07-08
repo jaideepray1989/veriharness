@@ -1,0 +1,10 @@
+[
+  {
+    "manifest_path": "reports/data/official_runner_bridge_smoke/mlagentbench_H4_manifests/amp-parkinsons-disease-progression-prediction/research_plan.json",
+    "run_path": "artifacts/leaves/H4/mlagentbench/seed_1/mlagentbench-amp-parkinsons-disease-progression-prediction/attempt_0/candidate-0",
+    "success": true,
+    "task_id": "mlagentbench-amp-parkinsons-disease-progression-prediction",
+    "task_name": "amp-parkinsons-disease-progression-prediction",
+    "variant": "H4"
+  }
+]

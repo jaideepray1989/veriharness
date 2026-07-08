@@ -1,0 +1,8 @@
+{
+  "index_path": "reports/data/official_runner_bridge_smoke/mlagentbench_H4_manifests/manifest_index.json",
+  "n_manifests": 1,
+  "out_dir": "reports/data/official_runner_bridge_smoke/mlagentbench_H4_manifests",
+  "run_dir": "runs/external_benchmarks_smoke",
+  "skipped": 0,
+  "variant": "H4"
+}

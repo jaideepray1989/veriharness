@@ -15,6 +15,15 @@ from veriharness.benchmarks.generators import generate_named_tasks
 from veriharness.core.orchestrator import Orchestrator
 from veriharness.core.types import ExperimentConfig
 from veriharness.experiments.aggregate import read_results, write_aggregate
+from veriharness.experiments.official_runners import (
+    build_mlagentbench_commands,
+    build_swebench_command,
+    export_mlagentbench_manifests,
+    export_swebench_predictions,
+    run_command,
+    run_mlagentbench_plan,
+    write_command_plan,
+)
 from veriharness.experiments.plots import write_plots
 from veriharness.experiments.replay_repair import ReplayRepairRunner
 from veriharness.experiments.runner import load_config, run_config
@@ -31,6 +40,14 @@ def _resolve_run_dir(run_dir: Path) -> Path:
         if latest_file.exists():
             return Path(latest_file.read_text(encoding="utf-8").strip())
     return run_dir
+
+
+def _emit_json(payload: object, out: Optional[Path] = None) -> None:
+    text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+    if out is not None:
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(text, encoding="utf-8")
+    typer.echo(text, nl=False)
 
 
 @app.command("generate-tasks")
@@ -130,6 +147,124 @@ def aggregate(run_dir: Path = typer.Option(..., help="Run directory.")) -> None:
     run_dir = _resolve_run_dir(run_dir)
     aggregate_data = write_aggregate(run_dir)
     console.print(json.dumps(aggregate_data, indent=2, sort_keys=True))
+
+
+@app.command("export-swebench-predictions")
+def export_swebench_predictions_cmd(
+    run_dir: Path = typer.Option(..., help="VeriHarness run directory."),
+    out: Path = typer.Option(..., help="Official SWE-bench predictions JSONL path."),
+    variant: str = typer.Option(..., help="Variant to export, e.g. H4."),
+    benchmark: str = typer.Option("swebench_lite", help="swebench_lite or swebench_verified."),
+    model_name: Optional[str] = typer.Option(None, help="Override model_name_or_path in predictions."),
+    include_empty: bool = typer.Option(True, "--include-empty/--drop-empty", help="Include empty patches as unresolved predictions."),
+    only_success: bool = typer.Option(False, help="Export only rows marked successful by VeriHarness local gates."),
+    summary_out: Optional[Path] = typer.Option(None, help="Optional path for machine-readable export summary."),
+) -> None:
+    """Export VeriHarness SWE-bench patch artifacts to official prediction JSONL."""
+    run_dir = _resolve_run_dir(run_dir)
+    summary = export_swebench_predictions(
+        run_dir,
+        out,
+        variant=variant,
+        benchmark=benchmark,
+        model_name=model_name,
+        include_empty=include_empty,
+        only_success=only_success,
+    )
+    _emit_json(summary, summary_out)
+
+
+@app.command("run-swebench-official")
+def run_swebench_official_cmd(
+    predictions_path: Path = typer.Option(..., help="Official SWE-bench predictions JSONL."),
+    dataset_name: str = typer.Option("princeton-nlp/SWE-bench_Lite", help="Official SWE-bench dataset name."),
+    run_id: str = typer.Option(..., help="Official SWE-bench run id."),
+    python_bin: str = typer.Option(".venv/bin/python", help="Python executable with swebench installed."),
+    max_workers: int = typer.Option(4, help="SWE-bench max_workers."),
+    timeout: int = typer.Option(1800, help="Per-instance timeout in seconds."),
+    cache_level: str = typer.Option("env", help="SWE-bench cache level."),
+    report_dir: Optional[Path] = typer.Option(None, help="Optional SWE-bench report directory."),
+    instance_ids: Optional[str] = typer.Option(None, help="Optional comma-separated instance IDs."),
+    modal: bool = typer.Option(False, help="Run via SWE-bench Modal support."),
+    dry_run: bool = typer.Option(True, "--dry-run/--execute", help="Print command without executing by default."),
+    summary_out: Optional[Path] = typer.Option(None, help="Optional path for machine-readable command summary."),
+) -> None:
+    """Run or print the official SWE-bench evaluator command."""
+    ids = [item.strip() for item in instance_ids.split(",")] if instance_ids else None
+    command = build_swebench_command(
+        predictions_path,
+        dataset_name=dataset_name,
+        run_id=run_id,
+        python_bin=python_bin,
+        max_workers=max_workers,
+        timeout=timeout,
+        cache_level=cache_level,
+        report_dir=report_dir,
+        instance_ids=ids,
+        modal=modal,
+    )
+    summary = run_command(command, dry_run=dry_run)
+    _emit_json(summary, summary_out)
+
+
+@app.command("export-mlagentbench-manifests")
+def export_mlagentbench_manifests_cmd(
+    run_dir: Path = typer.Option(..., help="VeriHarness run directory."),
+    out_dir: Path = typer.Option(..., help="Directory for exported MLAgentBench manifests."),
+    variant: str = typer.Option(..., help="Variant to export, e.g. H4."),
+    include_unsuccessful: bool = typer.Option(False, help="Include rows that failed local manifest gates."),
+    summary_out: Optional[Path] = typer.Option(None, help="Optional path for machine-readable export summary."),
+) -> None:
+    """Export VeriHarness MLAgentBench research plans from leaf artifacts."""
+    run_dir = _resolve_run_dir(run_dir)
+    summary = export_mlagentbench_manifests(
+        run_dir,
+        out_dir,
+        variant=variant,
+        include_unsuccessful=include_unsuccessful,
+    )
+    _emit_json(summary, summary_out)
+
+
+@app.command("run-mlagentbench-official")
+def run_mlagentbench_official_cmd(
+    tasks: str = typer.Option(..., help="Comma-separated MLAgentBench task names."),
+    python_bin: str = typer.Option(".venv/bin/python", help="Python executable with MLAgentBench installed."),
+    task_python: str = typer.Option(".venv/bin/python", help="Python executable passed to MLAgentBench tasks."),
+    log_root: Path = typer.Option(Path("official_runs/mlagentbench/logs"), help="MLAgentBench log root."),
+    work_root: Path = typer.Option(Path("official_runs/mlagentbench/workspace"), help="MLAgentBench work root."),
+    eval_root: Path = typer.Option(Path("official_runs/mlagentbench/eval"), help="MLAgentBench eval output root."),
+    out_plan: Optional[Path] = typer.Option(None, help="Optional JSON command plan path; a .sh script is also written."),
+    cwd: Optional[Path] = typer.Option(None, help="MLAgentBench repo root or execution directory."),
+    device: str = typer.Option("0", help="MLAgentBench device argument."),
+    agent_type: Optional[str] = typer.Option("Agent", help="MLAgentBench agent_type; use empty string to omit."),
+    llm_name: Optional[str] = typer.Option(None, help="Optional --llm-name."),
+    edit_script_llm_name: Optional[str] = typer.Option(None, help="Optional --edit-script-llm-name."),
+    fast_llm_name: Optional[str] = typer.Option(None, help="Optional --fast-llm-name."),
+    prepare: bool = typer.Option(True, "--prepare/--no-prepare", help="Include prepare_task step."),
+    dry_run: bool = typer.Option(True, "--dry-run/--execute", help="Print command plan without executing by default."),
+    summary_out: Optional[Path] = typer.Option(None, help="Optional path for machine-readable command summary."),
+) -> None:
+    """Run or print official MLAgentBench prepare/runner/eval commands."""
+    task_names = [item.strip() for item in tasks.split(",") if item.strip()]
+    plan = build_mlagentbench_commands(
+        task_names,
+        python_bin=python_bin,
+        task_python=task_python,
+        log_root=log_root,
+        work_root=work_root,
+        eval_root=eval_root,
+        device=device,
+        agent_type=agent_type or None,
+        llm_name=llm_name,
+        edit_script_llm_name=edit_script_llm_name,
+        fast_llm_name=fast_llm_name,
+        prepare=prepare,
+    )
+    summary = run_mlagentbench_plan(plan, cwd=cwd, dry_run=dry_run)
+    if out_plan is not None:
+        summary["written_plan"] = write_command_plan(plan, out_plan)
+    _emit_json(summary, summary_out)
 
 
 @app.command("compile-workshop")

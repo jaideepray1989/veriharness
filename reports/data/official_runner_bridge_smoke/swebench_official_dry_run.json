@@ -1,0 +1,26 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "swebench.harness.run_evaluation",
+    "--dataset_name",
+    "princeton-nlp/SWE-bench_Lite",
+    "--predictions_path",
+    "reports/data/official_runner_bridge_smoke/swebench_lite_H4_predictions.jsonl",
+    "--max_workers",
+    "1",
+    "--run_id",
+    "veriharness_bridge_smoke_h4",
+    "--timeout",
+    "1800",
+    "--cache_level",
+    "env",
+    "--report_dir",
+    "reports/data/official_runner_bridge_smoke/swebench_reports",
+    "--instance_ids",
+    "django__django-13321"
+  ],
+  "cwd": null,
+  "dry_run": true,
+  "shell_command": ".venv/bin/python -m swebench.harness.run_evaluation --dataset_name princeton-nlp/SWE-bench_Lite --predictions_path reports/data/official_runner_bridge_smoke/swebench_lite_H4_predictions.jsonl --max_workers 1 --run_id veriharness_bridge_smoke_h4 --timeout 1800 --cache_level env --report_dir reports/data/official_runner_bridge_smoke/swebench_reports --instance_ids django__django-13321"
+}
