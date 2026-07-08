@@ -117,3 +117,11 @@ The bridge can run official MLAgentBench prepare/runner/eval commands and archiv
 ## Local Evaluator Status
 
 This Mac environment is `arm64`, has no `docker` command on `PATH`, and the current `.venv` does not have `swebench` or `MLAgentBench` installed. Therefore this commit demonstrates bridge correctness with dry-run official commands and machine-readable artifacts, but does not claim completed official SWE-bench or MLAgentBench benchmark scores.
+
+## Follow-up Official Run
+
+An actual SWE-bench Lite evaluation was run later through the official Modal path. The reference-patch bridge validation resolved `1/1`, while a CoreAI H4 model attempt produced an empty patch and should be counted as `0/1`.
+
+Report:
+
+- `/Users/jaray/Documents/autoresearch/reports/official_swebench_real_results.md`

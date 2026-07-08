@@ -1,0 +1,20 @@
+{
+  "benchmark": "SWE-bench Lite",
+  "completed_instances": 0,
+  "dataset_name": "princeton-nlp/SWE-bench_Lite",
+  "empty_patch_instances": 1,
+  "executor": "swebench.harness.run_evaluation --modal true",
+  "instance_ids": [
+    "django__django-13447"
+  ],
+  "model_name_or_path": "veriharness-coreai-H4-short",
+  "note": "SWE-bench filtered this prediction before container execution because model_patch was empty.",
+  "official_harness_message": "No instances to run.",
+  "prediction_file": "reports/data/official_swebench_real/swebench_lite_coreai_short_H4_predictions.jsonl",
+  "resolved_instances": 0,
+  "resolved_rate": 0.0,
+  "run_id": "veriharness_real_swebench_coreai_short_1",
+  "split": "test",
+  "total_predictions": 1,
+  "unresolved_instances": 1
+}

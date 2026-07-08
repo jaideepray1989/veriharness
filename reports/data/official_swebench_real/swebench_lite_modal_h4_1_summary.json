@@ -1,0 +1,21 @@
+{
+  "benchmark": "SWE-bench Lite",
+  "completed_instances": 1,
+  "dataset_name": "princeton-nlp/SWE-bench_Lite",
+  "empty_patch_instances": 0,
+  "error_instances": 0,
+  "executor": "swebench.harness.run_evaluation --modal true",
+  "instance_ids": [
+    "django__django-13321"
+  ],
+  "modal_app_url": "https://modal.com/apps/jaideepray1989/main/ap-vXWhR5kcnlnxbO73Zc23iT",
+  "model_name_or_path": "veriharness-dummy-H4",
+  "prediction_file": "reports/data/official_runner_bridge_smoke/swebench_lite_H4_predictions.jsonl",
+  "resolved_instances": 1,
+  "resolved_rate": 1.0,
+  "run_id": "veriharness_real_swebench_modal_1",
+  "split": "test",
+  "submitted_instances": 1,
+  "total_instances": 1,
+  "unresolved_instances": 0
+}

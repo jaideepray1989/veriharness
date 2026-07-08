@@ -4,9 +4,12 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 .venv/
+.venv-swebench/
 .veriharness_cache/
 .DS_Store
 
 # Local benchmark outputs can be large and are regenerated from configs.
 runs/
+logs/
+official_runs/
 artifacts/leaves/

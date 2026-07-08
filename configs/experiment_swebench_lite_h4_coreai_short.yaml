@@ -1,0 +1,22 @@
+experiment_id: swebench_lite_h4_coreai_short
+benchmarks:
+  - name: swebench_lite
+    n_tasks: 1
+    seeds: [20]
+variants: [H4]
+model:
+  client: coreai_freeform
+  max_output_tokens: 2048
+  temperature: 0.0
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: external_official_eval_required
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 2
+  max_wall_time_seconds: 3600
+metadata:
+  matrix_purpose: swebench_lite_coreai_official_short_single_instance
+  official_evaluator: swebench.harness.run_evaluation
+  official_eval_required: true

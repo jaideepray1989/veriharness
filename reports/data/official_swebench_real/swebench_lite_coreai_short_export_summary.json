@@ -1,0 +1,9 @@
+{
+  "benchmark": "swebench_lite",
+  "dataset_name": "princeton-nlp/SWE-bench_Lite",
+  "n_predictions": 1,
+  "out_path": "reports/data/official_swebench_real/swebench_lite_coreai_short_H4_predictions.jsonl",
+  "run_dir": "runs/swebench_lite_h4_coreai_short",
+  "skipped": 0,
+  "variant": "H4"
+}
