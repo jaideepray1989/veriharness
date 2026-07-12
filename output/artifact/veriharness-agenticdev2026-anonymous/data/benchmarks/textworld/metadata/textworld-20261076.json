@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedroom =-\nWell I'll be, you are in the place we're calling the bedroom. You begin looking for stuff.\n\nAn open normal looking locker is nearby. The locker is empty! What a waste of a day!\n\nThere is an unguarded exit to the west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261076.z8",
+  "game_seed": 20261076,
+  "inventory": "You are carrying: a key.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, you could, like, assure that the locker is closed. Then, make it so that the locker is locked with the key. And if you do that, you're the winner!"
+}

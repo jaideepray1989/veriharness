@@ -1,0 +1,8 @@
+{
+  "description": "-= Recreation Zone =-\nYou arrive in a recreation zone. The room is well lit.\n\nYou can see a closed safe.\n\nThere is an exit to the west. Don't worry, it is unblocked.\n\nThere is a key on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261054.z8",
+  "game_seed": 20261054,
+  "inventory": "You are carrying: a lightbulb.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First, it would be a great idea if you could recover the key from the floor of the recreation zone. Then, doublecheck that the safe within the recreation zone is locked with the key. Alright, thanks!"
+}

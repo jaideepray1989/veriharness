@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedchamber =-\nYou arrive in a bedchamber. A normal kind of place.\n\nYou can see an opened rectangular locker. What a letdown! The rectangular locker is empty!\n\nYou don't like doors? Why not try going west, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261091.z8",
+  "game_seed": 20261091,
+  "inventory": "You are carrying: a garlic clove and a rectangular passkey.",
+  "max_score": 1,
+  "objective": "Welcome to TextWorld! Here is your task for today. First of all, make it so that the rectangular locker in the bedchamber is closed. After that, make absolutely sure the rectangular locker within the bedchamber is locked. And once you've done that, you win!"
+}

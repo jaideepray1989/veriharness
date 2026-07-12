@@ -1,0 +1,4 @@
+contrast,baseline,treatment,n_game_clusters,repeats_per_game,delta,ci_low,ci_high,p,holm_p
+structured_feedback,generic+diagnostics,same-info-natural,20,3,0.39999999999999997,0.2,0.6,0.0017599824001759982,0.0052799472005279945
+full_interface,generic+diagnostics,typed-fields,20,3,0.45,0.23333333333333334,0.6666666666666666,0.0017599824001759982,0.0052799472005279945
+typed_structure,same-info-natural,typed-fields,20,3,0.05,-0.03333333333333333,0.14999999999999997,0.4991350086499135,0.4991350086499135

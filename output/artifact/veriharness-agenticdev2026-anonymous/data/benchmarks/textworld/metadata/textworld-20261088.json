@@ -1,0 +1,8 @@
+{
+  "description": "-= Studio =-\nYou're now in a studio.\n\nWhat's that over there? It looks like it's a rectangular safe.\n\nYou don't like doors? Why not try going west, that entranceway is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261088.z8",
+  "game_seed": 20261088,
+  "inventory": "You are carrying: a rectangular keycard.",
+  "max_score": 1,
+  "objective": "Welcome to TextWorld! First off, if it's not too much trouble, I need you to assure that the rectangular safe is wide open. After that, take the printer from the rectangular safe. Once that's all handled, you can stop!"
+}

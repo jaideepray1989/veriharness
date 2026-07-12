@@ -1,0 +1,8 @@
+{
+  "description": "-= Garage =-\nThis might come as a shock to you, but you've just come into a garage.\n\nYou can make out a spherical locker. Oh wow! Is that what I think it is? It is! It's a counter. On the counter you make out a spherical key.\n\nThere is an unguarded exit to the west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261075.z8",
+  "game_seed": 20261075,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "It's time to explore the amazing world of TextWorld! First stop, retrieve the spherical key from the counter in the garage. After that, check that the spherical locker is unlocked with the spherical key. That's it!"
+}

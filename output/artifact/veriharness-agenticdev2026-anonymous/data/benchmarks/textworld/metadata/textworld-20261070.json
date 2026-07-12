@@ -1,0 +1,8 @@
+{
+  "description": "-= Spare Room =-\nYou're now in a spare room. You begin to take stock of what's here.\n\n\n\nThere is an exit to the east. Don't worry, it is unguarded. There is an exit to the north. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261070.z8",
+  "game_seed": 20261070,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Welcome to another life changing round of TextWorld! Here is your task for today. Your first objective is to venture east. That done, recover the teapot from the floor of the cookhouse. And if you do that, you're the winner!"
+}

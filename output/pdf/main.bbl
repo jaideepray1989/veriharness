@@ -1,0 +1,182 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{8}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Chen et~al\mbox{.}(2024)]%
+        {chen2024selfdebug}
+\bibfield{author}{\bibinfo{person}{Xinyun Chen}, \bibinfo{person}{Maxwell Lin},
+  \bibinfo{person}{Nathanael Schaerli}, {and} \bibinfo{person}{Denny Zhou}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Teaching Large Language Models to Self-Debug}. In
+  \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations}}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.iclr.cc/paper_files/paper/2024/hash/2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[C\^ot\'e et~al\mbox{.}(2018)]%
+        {cote2018textworld}
+\bibfield{author}{\bibinfo{person}{Marc-Alexandre C\^ot\'e},
+  \bibinfo{person}{\`Akos K\'ad\'ar}, \bibinfo{person}{Xingdi Yuan},
+  \bibinfo{person}{Ben Kybartas}, \bibinfo{person}{Tavian Barnes},
+  \bibinfo{person}{Emery Fine}, \bibinfo{person}{James Moore},
+  \bibinfo{person}{Ruo~Yu Tao}, \bibinfo{person}{Matthew Hausknecht},
+  \bibinfo{person}{Layla El~Asri}, \bibinfo{person}{Mahmoud Adada},
+  \bibinfo{person}{Wendy Tay}, {and} \bibinfo{person}{Adam Trischler}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{TextWorld: A Learning Environment for Text-Based
+  Games}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1806.11532}
+  (\bibinfo{year}{2018}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/1806.11532}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Hui et~al\mbox{.}(2024)]%
+        {hui2024qwen25coder}
+\bibfield{author}{\bibinfo{person}{Binyuan Hui}, \bibinfo{person}{Jian Yang},
+  \bibinfo{person}{Zeyu Cui}, \bibinfo{person}{Jiaxi Yang},
+  \bibinfo{person}{Dayiheng Liu}, \bibinfo{person}{Lei Zhang},
+  \bibinfo{person}{Tianyu Liu}, \bibinfo{person}{Jiajun Zhang},
+  \bibinfo{person}{Bowen Yu}, \bibinfo{person}{Kai Dang}, \bibinfo{person}{An
+  Yang}, \bibinfo{person}{Rui Men}, \bibinfo{person}{Fei Huang},
+  \bibinfo{person}{Xingzhang Ren}, \bibinfo{person}{Xuancheng Ren},
+  \bibinfo{person}{Jingren Zhou}, {and} \bibinfo{person}{Junyang Lin}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{Qwen2.5-Coder} Technical Report}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/2409.12186}
+  (\bibinfo{year}{2024}).
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2409.12186}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Jimenez et~al\mbox{.}(2024)]%
+        {jimenez2024swebench}
+\bibfield{author}{\bibinfo{person}{Carlos~E. Jimenez}, \bibinfo{person}{John
+  Yang}, \bibinfo{person}{Alexander Wettig}, \bibinfo{person}{Shunyu Yao},
+  \bibinfo{person}{Kexin Pei}, \bibinfo{person}{Ofir Press}, {and}
+  \bibinfo{person}{Karthik Narasimhan}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{SWE-bench}: Can Language Models Resolve Real-World
+  {GitHub} Issues?}. In \bibinfo{booktitle}{\emph{International Conference on
+  Learning Representations}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2310.06770}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Madaan et~al\mbox{.}(2023)]%
+        {madaan2023selfrefine}
+\bibfield{author}{\bibinfo{person}{Aman Madaan}, \bibinfo{person}{Niket
+  Tandon}, \bibinfo{person}{Prakhar Gupta}, \bibinfo{person}{Skyler Hallinan},
+  \bibinfo{person}{Luyu Gao}, \bibinfo{person}{Sarah Wiegreffe},
+  \bibinfo{person}{Uri Alon}, \bibinfo{person}{Nouha Dziri},
+  \bibinfo{person}{Shrimai Prabhumoye}, \bibinfo{person}{Yiming Yang},
+  \bibinfo{person}{Shashank Gupta}, \bibinfo{person}{Bodhisattwa~Prasad
+  Majumder}, \bibinfo{person}{Katherine Hermann}, \bibinfo{person}{Sean
+  Welleck}, \bibinfo{person}{Amir Yazdanbakhsh}, {and} \bibinfo{person}{Peter
+  Clark}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Self-Refine: Iterative Refinement with
+  Self-Feedback}. In \bibinfo{booktitle}{\emph{Advances in Neural Information
+  Processing Systems}}, Vol.~\bibinfo{volume}{36}.
+\newblock
+\urldef\tempurl%
+\url{https://proceedings.neurips.cc/paper_files/paper/2023/hash/91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Shinn et~al\mbox{.}(2023)]%
+        {shinn2023reflexion}
+\bibfield{author}{\bibinfo{person}{Noah Shinn}, \bibinfo{person}{Federico
+  Cassano}, \bibinfo{person}{Edward Berman}, \bibinfo{person}{Ashwin Gopinath},
+  \bibinfo{person}{Karthik Narasimhan}, {and} \bibinfo{person}{Shunyu Yao}.}
+  \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Reflexion: Language Agents with Verbal
+  Reinforcement Learning}. In \bibinfo{booktitle}{\emph{Advances in Neural
+  Information Processing Systems}}, Vol.~\bibinfo{volume}{36}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2303.11366}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yang et~al\mbox{.}(2024)]%
+        {yang2024sweagent}
+\bibfield{author}{\bibinfo{person}{John Yang}, \bibinfo{person}{Carlos~E.
+  Jimenez}, \bibinfo{person}{Alexander Wettig}, \bibinfo{person}{Kilian
+  Lieret}, \bibinfo{person}{Shunyu Yao}, \bibinfo{person}{Karthik Narasimhan},
+  {and} \bibinfo{person}{Ofir Press}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{SWE-agent}: Agent-Computer Interfaces Enable
+  Automated Software Engineering}. In \bibinfo{booktitle}{\emph{Advances in
+  Neural Information Processing Systems}}, Vol.~\bibinfo{volume}{37}.
+\newblock
+\urldef\tempurl%
+\url{https://papers.nips.cc/paper_files/paper/2024/hash/5a7c947568c1b1328ccc5230172e1e7c-Abstract-Conference.html}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Yao et~al\mbox{.}(2023)]%
+        {yao2023react}
+\bibfield{author}{\bibinfo{person}{Shunyu Yao}, \bibinfo{person}{Jeffrey Zhao},
+  \bibinfo{person}{Dian Yu}, \bibinfo{person}{Nan Du}, \bibinfo{person}{Izhak
+  Shafran}, \bibinfo{person}{Karthik Narasimhan}, {and} \bibinfo{person}{Yuan
+  Cao}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{ReAct: Synergizing Reasoning and Acting in Language
+  Models}. In \bibinfo{booktitle}{\emph{International Conference on Learning
+  Representations}}.
+\newblock
+\urldef\tempurl%
+\url{https://arxiv.org/abs/2210.03629}
+\showURL{%
+\tempurl}
+
+
+\end{thebibliography}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Dish-Pit =-\nYou've just sauntered into a dish-pit. You begin looking for stuff.\n\nYou make out a closed usual looking Canadian style locker close by. You see a fridge. The fridge contains a Canadian style passkey and a mug.\n\nThere is an unblocked exit to the north. There is an exit to the west. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261080.z8",
+  "game_seed": 20261080,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Welcome to another life changing session of TextWorld! Here is your task for today. First thing I need you to do is to retrieve the Canadian style passkey from the fridge in the dish-pit. And then, lock the Canadian style locker with the Canadian style passkey. Once that's all handled, you can stop!"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedchamber =-\nYou're now in a bedchamber.\n\nYou can make out an opened dresser right there by you. The dresser contains a chocolate bar and a book.\n\nYou need an unguarded exit? You should try going north. You don't like doors? Why not try going west, that entranceway is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261092.z8",
+  "game_seed": 20261092,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Who's got a virtual machine and is about to play through an fast paced round of TextWorld? You do! Here is how to play! First off, if it's not too much trouble, I need you to take the chocolate bar from the dresser inside the bedchamber. After taking the chocolate bar, eat the chocolate bar. And once you've done that, you win!"
+}

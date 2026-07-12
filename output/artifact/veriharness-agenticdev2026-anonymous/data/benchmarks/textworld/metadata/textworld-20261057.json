@@ -1,0 +1,8 @@
+{
+  "description": "-= Restroom =-\nWell, here we are in a restroom.\n\nYou lean against the wall, inadvertently pressing a secret button. The wall opens up to reveal a bench. The bench is standard. But the thing is empty, unfortunately.\n\nYou need an unblocked exit? You should try going east. There is an exit to the south. Don't worry, it is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261057.z8",
+  "game_seed": 20261057,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Welcome to another fast paced session of TextWorld! Here is your task for today. First step, travel east. And then, pick up the tv from the bed stand inside the bedchamber. Alright, thanks!"
+}

@@ -1,0 +1,9 @@
+model,variant,action_invalid_final_rows,final_failures
+Qwen2.5-Coder-14B-AWQ/L4,generic+diagnostics,35,36
+Qwen2.5-Coder-14B-AWQ/L4,location-observed,26,32
+Qwen2.5-Coder-14B-AWQ/L4,same-info-natural,2,15
+Qwen2.5-Coder-14B-AWQ/L4,typed-fields,8,14
+Llama-3.1-8B-AWQ/T4,generic+diagnostics,41,42
+Llama-3.1-8B-AWQ/T4,location-observed,39,41
+Llama-3.1-8B-AWQ/T4,same-info-natural,4,21
+Llama-3.1-8B-AWQ/T4,typed-fields,6,21

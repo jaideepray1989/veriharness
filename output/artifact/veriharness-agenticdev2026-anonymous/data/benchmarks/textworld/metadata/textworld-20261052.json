@@ -1,0 +1,8 @@
+{
+  "description": "-= Workshop =-\nYou find yourself in a workshop. A normal one. Let's see what's in here.\n\n\n\nYou need an unblocked exit? You should try going east. You don't like doors? Why not try going south, that entranceway is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261052.z8",
+  "game_seed": 20261052,
+  "inventory": "You are carrying: a cookie.",
+  "max_score": 1,
+  "objective": "You are now playing a exciting session of TextWorld! Here is your task for today. First thing I need you to do is to travel east. Next, pick up the spork from the type 4 chest. And once you've done that, you win!"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Laundromat =-\nYou've entered a laundromat. You decide to start listing off everything you see in the room, as if you were in a text adventure.\n\nAn open drawer, which looks standard, is nearby. The drawer contains a candy bar. You make out a table! The table is normal. But the thing is empty, unfortunately. It would have been so cool if there was stuff on the table.\n\nThere is an exit to the west. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261055.z8",
+  "game_seed": 20261055,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First, it would be a great idea if you could take the candy bar from the drawer. If you can get your hands on the candy bar, eat the candy bar. That's it!"
+}

@@ -4,7 +4,7 @@ benchmarks:
     n_tasks: 20
     trace_lengths: [4, 8, 16, 32, 64]
     seeds: [1]
-variants: [H0, H1, H2, H3, H4]
+variants: [self-accept, H1, H2, gated-resample, typed-repair+retain]
 model:
   client: dummy
 budget:

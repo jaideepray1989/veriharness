@@ -1,0 +1,8 @@
+{
+  "description": "-= Garage =-\nYou're now in the garage. You try to gain information on your surroundings by using a technique you call \"looking.\"\n\n\n\nThere is an unblocked exit to the east.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261069.z8",
+  "game_seed": 20261069,
+  "inventory": "You are carrying: a printer.",
+  "max_score": 1,
+  "objective": "Get ready to pick stuff up and put it in places, because you've just entered TextWorld! First off, move east. Okay, and then, close the case. Got that? Good!"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Sauna =-\nYou've just walked into a sauna.\n\nYou scan the room, seeing a table. The table is standard. Unfortunately, there isn't a thing on it.\n\nYou need an unblocked exit? You should try going east. There is an unguarded exit to the north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261094.z8",
+  "game_seed": 20261094,
+  "inventory": "You are carrying: a keyboard.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First off, if it's not too much trouble, I need you to attempt to go east. Next, lift the broom from the floor of the shower. That's it!"
+}

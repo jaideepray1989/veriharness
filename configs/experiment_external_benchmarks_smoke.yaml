@@ -9,7 +9,7 @@ benchmarks:
   - name: mlagentbench
     n_tasks: 1
     seeds: [1]
-variants: [H3, H4]
+variants: [gated-resample, typed-repair+retain]
 model:
   client: dummy
   provider: local

@@ -1,0 +1,8 @@
+{
+  "description": "-= Sauna =-\nYou've entered a sauna. You start to take note of what's in the room.\n\n\n\nYou need an unguarded exit? You should try going south.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261097.z8",
+  "game_seed": 20261097,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Welcome to another exciting round of TextWorld! First of all, take a trip south. Following that, open the Canadian style box in the workshop. That's it!"
+}

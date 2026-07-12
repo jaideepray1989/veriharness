@@ -1,0 +1,8 @@
+{
+  "description": "-= Study =-\nYou've just walked into a study.\n\nYou can make out a table. The table is typical. But the thing hasn't got anything on it.\n\nThere is an exit to the east. Don't worry, it is unguarded. There is an unblocked exit to the north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261071.z8",
+  "game_seed": 20261071,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, attempt to go to the east. And then, pick up the folder from the floor of the workshop. And if you do that, you're the winner!"
+}

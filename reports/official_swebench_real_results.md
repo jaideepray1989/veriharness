@@ -38,7 +38,7 @@ This run used the dummy/reference patch exported by the VeriHarness adapter smok
 | Split | `test` |
 | Instance | `django__django-13321` |
 | Prediction file | `/Users/jaray/Documents/autoresearch/reports/data/official_runner_bridge_smoke/swebench_lite_H4_predictions.jsonl` |
-| `model_name_or_path` | `veriharness-dummy-H4` |
+| `model_name_or_path` | `veriharness-dummy-typed-repair+retain` |
 | Run ID | `veriharness_real_swebench_modal_1` |
 | Submitted | 1 |
 | Completed | 1 |
@@ -57,9 +57,9 @@ Artifacts:
 
 The official log shows the patch applied cleanly, Django session tests ran, and the instance was graded `resolved: True`.
 
-## Result 2: CoreAI H4 Attempt
+## Result 2: CoreAI typed-repair+retain Attempt
 
-Two CoreAI H4 attempts were run locally before official scoring:
+Two CoreAI typed-repair+retain attempts were run locally before official scoring:
 
 | Config | Instance | Local outcome |
 |---|---|---|
@@ -74,7 +74,7 @@ For the short attempt, the empty prediction was exported and passed to the offic
 | Split | `test` |
 | Instance | `django__django-13447` |
 | Prediction file | `/Users/jaray/Documents/autoresearch/reports/data/official_swebench_real/swebench_lite_coreai_short_H4_predictions.jsonl` |
-| `model_name_or_path` | `veriharness-coreai-H4-short` |
+| `model_name_or_path` | `veriharness-coreai-typed-repair+retain-short` |
 | Run ID | `veriharness_real_swebench_coreai_short_1` |
 | Official harness message | `No instances to run.` |
 | Empty patches | 1 |
@@ -96,6 +96,6 @@ The official runner bridge is validated end-to-end: VeriHarness exported a predi
 For paper claims:
 
 - Cite the bridge/reference-patch run only as official-evaluator plumbing validation: `1/1 resolved`.
-- Cite the CoreAI H4 attempt as model-result evidence only with the negative result: `0/1 resolved`, because the local CoreAI model emitted no patch.
-- Do not claim a positive H4 model result on SWE-bench from this run.
+- Cite the CoreAI typed-repair+retain attempt as model-result evidence only with the negative result: `0/1 resolved`, because the local CoreAI model emitted no patch.
+- Do not claim a positive typed-repair+retain model result on SWE-bench from this run.
 - A paper-quality SWE-bench model result needs a stronger code model, a smaller SWE-bench prompt pack, or repository-retrieval tooling before patch generation.

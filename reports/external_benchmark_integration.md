@@ -64,12 +64,12 @@ Smoke results:
 
 | Benchmark | Variant | Success | Artifact |
 |---|---|---:|---|
-| SWE-bench Lite | H3 | pass | `patch.diff` |
-| SWE-bench Lite | H4 | pass | `patch.diff` |
-| DS-1000 | H3 | pass | `solution.py` |
-| DS-1000 | H4 | pass | `solution.py` |
-| MLAgentBench | H3 | pass | `research_plan.json` |
-| MLAgentBench | H4 | pass | `research_plan.json` |
+| SWE-bench Lite | gated-resample | pass | `patch.diff` |
+| SWE-bench Lite | typed-repair+retain | pass | `patch.diff` |
+| DS-1000 | gated-resample | pass | `solution.py` |
+| DS-1000 | typed-repair+retain | pass | `solution.py` |
+| MLAgentBench | gated-resample | pass | `research_plan.json` |
+| MLAgentBench | typed-repair+retain | pass | `research_plan.json` |
 
 The smoke run uses the dummy client, so it validates adapters, gates, artifacts, and aggregation. It is not model-performance evidence.
 

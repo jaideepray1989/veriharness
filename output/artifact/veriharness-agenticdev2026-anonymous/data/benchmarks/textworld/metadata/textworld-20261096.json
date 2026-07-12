@@ -1,0 +1,8 @@
+{
+  "description": "-= Chamber =-\nYou've entered a chamber.\n\nYou see a chest. The chest is empty! This is the worst thing that could possibly happen, ever!\n\nThere is an unguarded exit to the north. There is an unblocked exit to the west.\n\nThere is a lamp on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261096.z8",
+  "game_seed": 20261096,
+  "inventory": "You are carrying: a sandwich and a key.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First stop, close the chest within the chamber. After shutting the chest, make it so the chest inside the chamber is locked. And if you do that, you're the winner!"
+}

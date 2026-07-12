@@ -1,0 +1,9 @@
+model,contrast,baseline,treatment,n,baseline_success,treatment_success,delta,ci_low,ci_high,treatment_only,baseline_only,same_pass,same_fail,p,delta_calls,delta_calls_ci_low,delta_calls_ci_high,holm_p
+Qwen2.5-Coder-14B-AWQ/L4,structured_feedback,generic+diagnostics,same-info-natural,50,14,35,0.42,0.28,0.56,21,0,14,15,9.5367431640625e-07,-0.34,-0.48,-0.2,3.814697265625e-06
+Qwen2.5-Coder-14B-AWQ/L4,full_interface,generic+diagnostics,typed-fields,50,14,36,0.44,0.28,0.6,24,2,12,12,1.049041748046875e-05,-0.68,-0.98,-0.36,3.147125244140625e-05
+Qwen2.5-Coder-14B-AWQ/L4,typed_structure,same-info-natural,typed-fields,50,35,36,0.02,-0.08,0.12,4,3,32,11,1.0,-0.34,-0.6,-0.06,1.0
+Qwen2.5-Coder-14B-AWQ/L4,expected_alternatives,location-observed,typed-fields,50,18,36,0.36,0.2,0.52,20,2,16,12,0.00012111663818359375,-0.5,-0.8,-0.18,0.0002422332763671875
+Llama-3.1-8B-AWQ/T4,structured_feedback,generic+diagnostics,same-info-natural,50,8,29,0.42,0.28,0.56,21,0,8,21,9.5367431640625e-07,-0.36,-0.5,-0.22,3.814697265625e-06
+Llama-3.1-8B-AWQ/T4,full_interface,generic+diagnostics,typed-fields,50,8,29,0.42,0.28,0.56,21,0,8,21,9.5367431640625e-07,-0.6,-0.84,-0.38,3.814697265625e-06
+Llama-3.1-8B-AWQ/T4,typed_structure,same-info-natural,typed-fields,50,29,29,0.0,-0.12,0.12,5,5,24,16,1.0,-0.24,-0.44,-0.04,1.0
+Llama-3.1-8B-AWQ/T4,expected_alternatives,location-observed,typed-fields,50,9,29,0.4,0.26,0.54,21,1,8,20,1.0967254638671875e-05,-0.5,-0.76,-0.24,2.193450927734375e-05

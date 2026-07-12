@@ -1,0 +1,25 @@
+experiment_id: typed_repair_cross_benchmark_smoke
+benchmarks:
+  - name: humaneval
+    n_tasks: 1
+    seeds: [1]
+  - name: textworld
+    n_tasks: 1
+    seeds: [1]
+  - name: mini_workflow_heldout
+    n_tasks: 1
+    seeds: [1]
+  - name: ds1000
+    n_tasks: 1
+    seeds: [1]
+variants: [generic+diagnostics, typed-fields, typed-repair+retain]
+model:
+  client: dummy
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: adapter_smoke
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 2
+  max_wall_time_seconds: 600

@@ -1,0 +1,8 @@
+{
+  "description": "-= Bar =-\nYou find yourself in a bar. An usual one.\n\nYou see a gleam over in a corner, where you can see a safe. You make out an opened box. The box contains a passkey.\n\nYou need an unblocked exit? You should try going west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261060.z8",
+  "game_seed": 20261060,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "I hope you're ready to go into rooms and interact with objects, because you've just entered TextWorld! Here is your task for today. First off, if it's not too much trouble, I need you to pick up the passkey from the box within the bar. After that, check that the safe is unlocked with the passkey. Once that's all handled, you can stop!"
+}

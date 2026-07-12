@@ -27,7 +27,7 @@ benchmarks:
   - name: mini_workflow
     n_tasks: 30
     seeds: [1, 2, 3]
-variants: [H0, H3, generic-retry, H4]
+variants: [self-accept, gated-resample, generic-retry, typed-repair+retain]
 model:
   client: coreai_freeform
 evaluation:

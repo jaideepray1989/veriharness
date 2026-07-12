@@ -1,0 +1,8 @@
+{
+  "description": "-= Basement =-\nWell, here we are in the basement.\n\nYou can see a non-euclidean safe. Wow, check out the price tag that the non-euclidean safe's owner still hasn't taken off! Thirty bucks! You see a gleam over in a corner, where you can see a display. Make a note of this, you might have to put stuff on or in it later on. The display contains a non-euclidean latchkey.\n\nYou need an unguarded exit? You should try going west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261089.z8",
+  "game_seed": 20261089,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "I hope you're ready to go into rooms and interact with objects, because you've just entered TextWorld! Here is your task for today. First stop, retrieve the non-euclidean latchkey from the display. With the non-euclidean latchkey, lock the non-euclidean safe inside the basement. Once that's all handled, you can stop!"
+}

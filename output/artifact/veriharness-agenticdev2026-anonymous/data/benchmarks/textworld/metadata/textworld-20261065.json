@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedchamber =-\nYou've entered a bedchamber.\n\nYou see a suitcase. Something scurries by right in the corner of your eye. Probably nothing. The suitcase contains a sandwich.\n\nThere is an unblocked exit to the west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261065.z8",
+  "game_seed": 20261065,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First, it would be good if you could recover the sandwich from the suitcase within the bedchamber. And then, eat the sandwich. Got that? Good!"
+}

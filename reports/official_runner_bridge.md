@@ -67,9 +67,9 @@ Export one prediction file per policy and dataset:
 .venv/bin/python -m veriharness.cli.main export-swebench-predictions \
   --run-dir <veriharness_run_dir> \
   --out official_runs/swebench/H4_lite_predictions.jsonl \
-  --variant H4 \
+  --variant typed-repair+retain \
   --benchmark swebench_lite \
-  --model-name veriharness-H4-qwen-coder-14b
+  --model-name veriharness-typed-repair+retain-qwen-coder-14b
 ```
 
 Run official SWE-bench in an evaluator environment with Docker and `swebench` installed:
@@ -94,8 +94,8 @@ Export VeriHarness plans for auditing:
 ```bash
 .venv/bin/python -m veriharness.cli.main export-mlagentbench-manifests \
   --run-dir <veriharness_run_dir> \
-  --out-dir official_runs/mlagentbench/manifests/H4 \
-  --variant H4
+  --out-dir official_runs/mlagentbench/manifests/typed-repair+retain \
+  --variant typed-repair+retain
 ```
 
 Generate an official MLAgentBench command plan:
@@ -105,14 +105,14 @@ Generate an official MLAgentBench command plan:
   --tasks cifar10,imdb \
   --python-bin <python_with_mlagentbench> \
   --task-python <task_python> \
-  --log-root official_runs/mlagentbench/logs/H4 \
-  --work-root official_runs/mlagentbench/workspace/H4 \
-  --eval-root official_runs/mlagentbench/eval/H4 \
+  --log-root official_runs/mlagentbench/logs/typed-repair+retain \
+  --work-root official_runs/mlagentbench/workspace/typed-repair+retain \
+  --eval-root official_runs/mlagentbench/eval/typed-repair+retain \
   --out-plan official_runs/mlagentbench/H4_plan.json \
   --execute
 ```
 
-The bridge can run official MLAgentBench prepare/runner/eval commands and archive VeriHarness plan artifacts. To claim an official MLAgentBench score for a VeriHarness policy, the remaining paper-critical step is an MLAgentBench agent shim that consumes the VeriHarness plan or delegates actions through VeriHarness inside the upstream runner. Without that shim, MLAgentBench official numbers should be described as upstream-runner/baseline numbers plus VeriHarness manifest evidence, not as full H4 policy scores.
+The bridge can run official MLAgentBench prepare/runner/eval commands and archive VeriHarness plan artifacts. To claim an official MLAgentBench score for a VeriHarness policy, the remaining paper-critical step is an MLAgentBench agent shim that consumes the VeriHarness plan or delegates actions through VeriHarness inside the upstream runner. Without that shim, MLAgentBench official numbers should be described as upstream-runner/baseline numbers plus VeriHarness manifest evidence, not as full typed-repair+retain policy scores.
 
 ## Local Evaluator Status
 
@@ -120,7 +120,7 @@ This Mac environment is `arm64`, has no `docker` command on `PATH`, and the curr
 
 ## Follow-up Official Run
 
-An actual SWE-bench Lite evaluation was run later through the official Modal path. The reference-patch bridge validation resolved `1/1`, while a CoreAI H4 model attempt produced an empty patch and should be counted as `0/1`.
+An actual SWE-bench Lite evaluation was run later through the official Modal path. The reference-patch bridge validation resolved `1/1`, while a CoreAI typed-repair+retain model attempt produced an empty patch and should be counted as `0/1`.
 
 Report:
 

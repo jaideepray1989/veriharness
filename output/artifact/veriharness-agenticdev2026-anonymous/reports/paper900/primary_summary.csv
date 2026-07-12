@@ -1,0 +1,9 @@
+model,variant,success,n,success_rate,calls,avg_calls,action_invalid_final_rows
+Qwen2.5-Coder-14B-AWQ/L4,generic+diagnostics,14,50,0.28,164,3.28,35
+Qwen2.5-Coder-14B-AWQ/L4,location-observed,18,50,0.36,155,3.1,26
+Qwen2.5-Coder-14B-AWQ/L4,same-info-natural,35,50,0.7,147,2.94,2
+Qwen2.5-Coder-14B-AWQ/L4,typed-fields,36,50,0.72,130,2.6,8
+Llama-3.1-8B-AWQ/T4,generic+diagnostics,8,50,0.16,179,3.58,41
+Llama-3.1-8B-AWQ/T4,location-observed,9,50,0.18,174,3.48,39
+Llama-3.1-8B-AWQ/T4,same-info-natural,29,50,0.58,161,3.22,4
+Llama-3.1-8B-AWQ/T4,typed-fields,29,50,0.58,149,2.98,6

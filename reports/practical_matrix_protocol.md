@@ -20,7 +20,7 @@ but hidden benchmark oracles are used only post-hoc to score results.
 | Long-horizon workflow tasks | 30 per seed |
 | Seeds | 1, 2, 3 |
 | Models | 3 local models from distinct family/capability groups |
-| Variants | H0, H3, generic-retry, H4 |
+| Variants | self-accept, gated-resample, generic-retry, typed-repair+retain |
 | Call budgets | 1, 2, 4 leaf calls per task |
 | Primary acceptance | Oracle-blind |
 | Upper bound | Oracle-guided runs reported separately only as an upper bound |
@@ -44,17 +44,17 @@ The configured 30 workflow tasks per seed use `mini_workflow`.
 
 | Variant | Meaning |
 |---|---|
-| H0 | Full/raw context, leaf self-acceptance, oracle post-hoc only. |
-| H3 | State context with external non-oracle gates; no failure-conditioned repair. Extra call budget permits resampling under gates. |
+| self-accept | Full/raw context, leaf self-acceptance, oracle post-hoc only. |
+| gated-resample | State context with external non-oracle gates; no failure-conditioned repair. Extra call budget permits resampling under gates. |
 | generic-retry | State context with external non-oracle gates and generic retry feedback. The retry does not expose typed gate failures or oracle failures. |
-| H4 | State context with external non-oracle gates, candidate selection, and typed failure-conditioned repair. |
+| typed-repair+retain | State context with external non-oracle gates, candidate selection, and typed failure-conditioned repair. |
 
 ## Call Budget
 
-`budget.max_leaf_calls_per_task` is the equal-compute control. H4 may spend that
+`budget.max_leaf_calls_per_task` is the equal-compute control. typed-repair+retain may spend that
 budget on multiple candidates and typed repair attempts. `generic-retry` spends
-the same budget on sequential generic retries. H3 may spend the budget on gated
-resampling without repair feedback. H0 ignores budgets above 1 because leaf
+the same budget on sequential generic retries. gated-resample may spend the budget on gated
+resampling without repair feedback. self-accept ignores budgets above 1 because leaf
 self-acceptance has no retry controller.
 
 ## Model Set
@@ -105,8 +105,8 @@ The paper claim should follow the matrix result, not the intended mechanism:
 
 | Result pattern | Paper framing |
 |---|---|
-| H4 beats generic-retry under equal call budget | Lead with typed failure-conditioned repair. |
-| H3 wins but H4 does not | Lead with separation of generation and acceptance. |
+| typed-repair+retain beats generic-retry under equal call budget | Lead with typed failure-conditioned repair. |
+| gated-resample wins but typed-repair+retain does not | Lead with separation of generation and acceptance. |
 | Gains occur mostly on executable/artifact tasks | Narrow scope to verifiable code and artifact workflows. |
 | Repair helps only stronger models | Lead with a capability-threshold result. |
 | Structured state does not win the direct context experiment | Remove or soften the context-bloat claim. |

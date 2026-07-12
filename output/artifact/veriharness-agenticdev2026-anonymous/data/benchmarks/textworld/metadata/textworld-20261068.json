@@ -1,0 +1,8 @@
+{
+  "description": "-= Shower =-\nYou arrive in a shower. An usual kind of place. Okay, just remember what you're here to do, and everything will go great.\n\nYou rest your hand against a wall, but you miss the wall and fall onto a box. You make out an opened drawer in the room. The drawer contains a latchkey.\n\nThere is an unblocked exit to the west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261068.z8",
+  "game_seed": 20261068,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, take the latchkey from the drawer. And then, insert the latchkey into the box's lock to unlock it. Once that's all handled, you can stop!"
+}

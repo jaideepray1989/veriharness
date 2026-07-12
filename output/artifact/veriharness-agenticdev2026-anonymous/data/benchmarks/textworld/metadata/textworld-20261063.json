@@ -1,0 +1,8 @@
+{
+  "description": "-= Studio =-\nGuess what, you are in the place we're calling the studio. You try to gain information on your surroundings by using a technique you call \"looking.\"\n\n\n\nYou don't like doors? Why not try going east, that entranceway is unblocked. There is an unguarded exit to the north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261063.z8",
+  "game_seed": 20261063,
+  "inventory": "You are carrying: a Quote of the Day Calendar.",
+  "max_score": 1,
+  "objective": "Welcome to TextWorld! Here is your task for today. Your first objective is to venture east. Then, recover the top hat from the workbench in the pantry. Got that? Good!"
+}

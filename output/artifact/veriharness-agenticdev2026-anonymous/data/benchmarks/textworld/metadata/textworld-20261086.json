@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedroom =-\nYou are in a bedroom. A standard kind of place. You begin to take stock of what's here.\n\n\n\nYou need an unguarded exit? You should try going east. There is an unguarded exit to the north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261086.z8",
+  "game_seed": 20261086,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Who's got a virtual machine and is about to play through an life changing round of TextWorld? You do! Here is your task for today. Your first objective is to try to move east. With that over with, recover the teaspoon from the board in the kitchen. That's it!"
+}

@@ -3,7 +3,7 @@ benchmarks:
   - name: ds1000
     n_tasks: 100
     seeds: [1]
-variants: [H0, H3, generic-retry, H4]
+variants: [self-accept, gated-resample, generic-retry, typed-repair+retain]
 model:
   client: coreai_freeform
 evaluation:

@@ -1,0 +1,8 @@
+{
+  "description": "-= Playroom =-\nYou've just shown up in a playroom.\n\n\n\nYou don't like doors? Why not try going east, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261079.z8",
+  "game_seed": 20261079,
+  "inventory": "You are carrying: a sandwich and a passkey.",
+  "max_score": 1,
+  "objective": "I hope you're ready to go into rooms and interact with objects, because you've just entered TextWorld! Your task for today is to eat the sandwich."
+}

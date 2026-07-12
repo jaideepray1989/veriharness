@@ -1,0 +1,8 @@
+{
+  "description": "-= Washroom =-\nYou find yourself in a washroom. An ordinary one.\n\n\n\nYou don't like doors? Why not try going east, that entranceway is unguarded. You need an unguarded exit? You should try going south.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261098.z8",
+  "game_seed": 20261098,
+  "inventory": "You are carrying: a keyboard.",
+  "max_score": 1,
+  "objective": "You are now playing a profound episode of TextWorld! Here is your task for today. First step, take a trip east. And then, retrieve the lightbulb from the rack in the pantry. Once that's all handled, you can stop!"
+}

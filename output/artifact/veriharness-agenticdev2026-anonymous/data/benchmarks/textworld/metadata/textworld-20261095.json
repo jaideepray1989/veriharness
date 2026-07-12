@@ -1,0 +1,8 @@
+{
+  "description": "-= Study =-\nYou find yourself in a study. An ordinary kind of place. The room seems oddly familiar, as though it were only superficially different from the other rooms in the building.\n\nYou can see a type G box. Now why would someone leave that there?\n\nYou don't like doors? Why not try going east, that entranceway is unguarded. There is an exit to the north. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261095.z8",
+  "game_seed": 20261095,
+  "inventory": "You are carrying: a type G passkey.",
+  "max_score": 1,
+  "objective": "Welcome to TextWorld! First stop, go to the east. With that accomplished, retrieve the desktop computer from the floor of the studio. That's it!"
+}

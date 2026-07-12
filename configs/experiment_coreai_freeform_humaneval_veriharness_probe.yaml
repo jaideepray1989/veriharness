@@ -3,7 +3,7 @@ benchmarks:
   - name: humaneval
     n_tasks: 20
     seeds: [1]
-variants: [H3, H4]
+variants: [gated-resample, typed-repair+retain]
 model:
   client: coreai_freeform
 budget:

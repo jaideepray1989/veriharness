@@ -18,7 +18,7 @@ benchmarks:
   - name: trec_qc
     n_tasks: 3
     seeds: [1]
-variants: [H0, H3, H4]
+variants: [self-accept, gated-resample, typed-repair+retain]
 model:
   client: coreai_freeform
 budget:

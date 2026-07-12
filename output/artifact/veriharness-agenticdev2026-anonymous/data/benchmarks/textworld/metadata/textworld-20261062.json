@@ -1,0 +1,8 @@
+{
+  "description": "-= Basement =-\nYou are in a basement. A normal kind of place.\n\n\n\nThere is an unblocked exit to the east. You don't like doors? Why not try going north, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261062.z8",
+  "game_seed": 20261062,
+  "inventory": "You are carrying: a rectangular key.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First stop, try to take a trip east. And then, lift the nest of insects from the floor of the parlor. Got that? Good!"
+}

@@ -1,0 +1,58 @@
+experiment_id: paper_baseline_completion_budget_4
+benchmarks:
+  - name: boolq
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: squad
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: sciq
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: arc_easy
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_sst2
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_rte
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: glue_mrpc
+    n_tasks: 20
+    seeds: [1, 2, 3]
+  - name: trec_qc
+    n_tasks: 10
+    seeds: [1, 2, 3]
+  - name: mini_workflow
+    n_tasks: 30
+    seeds: [1, 2, 3]
+  - name: ds1000
+    n_tasks: 20
+    seeds: [1]
+variants:
+  - self-accept
+  - gated-resample
+  - generic-retry
+  - generic+diagnostics
+  - natural-retry
+  - best-of-n-gated
+  - langgraph-validator-retry
+  - typed-repair+retain
+model:
+  client: local
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: primary_oracle_blind
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 604800
+metadata:
+  matrix_purpose: paper_baseline_completion
+  call_budget: 4
+  note: >
+    Full requested paper evidence matrix. Run with run-model-matrix over
+    local_ollama_qwen_coder_14b, local_ollama_qwen or local_ollama_llama,
+    and coreai_freeform.

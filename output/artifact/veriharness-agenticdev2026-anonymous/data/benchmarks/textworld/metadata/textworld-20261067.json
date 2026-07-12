@@ -1,0 +1,8 @@
+{
+  "description": "-= Attic =-\nYou find yourself in an attic. An usual one.\n\nYou can make out an opened box. The box is empty, what a horrible day! Oh wow! Is that what I think it is? It is! It's a toolbox. The toolbox contains a scarf.\n\nThere is an unblocked exit to the north. There is an exit to the west. Don't worry, it is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261067.z8",
+  "game_seed": 20261067,
+  "inventory": "You are carrying: a key.",
+  "max_score": 1,
+  "objective": "Welcome to another life changing game of TextWorld! Here is how to play! First off, take the scarf from the toolbox inside the attic. After that, you can place the scarf inside the box inside the attic. Once that's all handled, you can stop!"
+}

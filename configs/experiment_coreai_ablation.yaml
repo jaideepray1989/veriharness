@@ -7,7 +7,7 @@ benchmarks:
   - name: provenance_bias
     n_tasks: 8
     seeds: [1]
-variants: [H0, H1, H2, H3, H4]
+variants: [self-accept, H1, H2, gated-resample, typed-repair+retain]
 model:
   client: coreai
 budget:

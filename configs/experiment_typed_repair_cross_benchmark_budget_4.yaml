@@ -1,0 +1,47 @@
+experiment_id: typed_repair_cross_benchmark_budget_4
+benchmarks:
+  - name: humaneval
+    n_tasks: 164
+    seeds: [1]
+  - name: textworld
+    n_tasks: 200
+    seeds: [1]
+  - name: mini_workflow_heldout
+    n_tasks: 200
+    seeds: [1]
+  - name: ds1000
+    n_tasks: 100
+    seeds: [1]
+variants:
+  - generic+diagnostics
+  - typed-fields
+  - typed-repair+retain
+model:
+  client: local
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: cross_benchmark_primary_oracle_blind
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 1209600
+metadata:
+  study: typed_repair_cross_benchmark_v1
+  fixed_textworld_seed_manifest: textworld-preregistered-v1
+  task_counts:
+    humaneval: 164
+    textworld: 200
+    mini_workflow_heldout: 200
+    ds1000: 100
+  online_validation:
+    - MiniWorkflow evidence, artifact, and deterministic gates
+    - TextWorld fresh-state environment execution gate
+    - HumanEval and DS-1000 syntax and output-contract gate
+  posthoc_scoring:
+    - HumanEval official tests
+    - DS-1000 benchmark test_execution
+  note: >
+    The primary comparison is generic+diagnostics versus typed-fields versus
+    typed-repair+retain under identical maximum call budget. Official HumanEval
+    and DS-1000 tests are post-hoc scores and are not exposed to repair.

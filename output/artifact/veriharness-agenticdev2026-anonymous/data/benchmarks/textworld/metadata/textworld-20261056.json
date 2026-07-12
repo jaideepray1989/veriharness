@@ -1,0 +1,8 @@
+{
+  "description": "-= Garage =-\nYou're now in the garage.\n\nYou see a workbench. On the workbench you can see a butterfly.\n\nThere is an unguarded exit to the north. You don't like doors? Why not try going west, that entranceway is unguarded.\n\nThere is a shadfly on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261056.z8",
+  "game_seed": 20261056,
+  "inventory": "You are carrying: a chocolate bar.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First step, retrieve the shadfly from the floor of the garage. And then, place the shadfly on the workbench. Once that's all handled, you can stop!"
+}

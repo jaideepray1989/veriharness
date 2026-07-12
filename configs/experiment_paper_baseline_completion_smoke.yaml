@@ -1,0 +1,31 @@
+experiment_id: paper_baseline_completion_smoke
+benchmarks:
+  - name: boolq
+    n_tasks: 2
+    seeds: [1]
+  - name: sciq
+    n_tasks: 2
+    seeds: [1]
+  - name: mini_workflow
+    n_tasks: 2
+    seeds: [1]
+variants:
+  - self-accept
+  - gated-resample
+  - generic-retry
+  - generic+diagnostics
+  - natural-retry
+  - best-of-n-gated
+  - langgraph-validator-retry
+  - typed-repair+retain
+model:
+  client: dummy
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: strategy_smoke
+budget:
+  max_retries: 2
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+metadata:
+  matrix_purpose: paper_baseline_strategy_smoke

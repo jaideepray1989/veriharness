@@ -1,0 +1,8 @@
+{
+  "description": "-= Attic =-\nYou arrive in an attic. An usual one. You try to gain information on your surroundings by using a technique you call \"looking.\"\n\nYou see a TextWorld style chest. What a letdown! The TextWorld style chest is empty!\n\nThere is an exit to the west. Don't worry, it is unblocked.\n\nThere is an insect and a lightbulb on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261093.z8",
+  "game_seed": 20261093,
+  "inventory": "You are carrying: a TextWorld style key.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, recover the insect from the floor of the attic. After that, deposit the insect inside the TextWorld style chest. And if you do that, you're the winner!"
+}

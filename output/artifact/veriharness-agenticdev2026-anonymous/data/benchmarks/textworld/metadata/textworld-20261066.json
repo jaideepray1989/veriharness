@@ -1,0 +1,8 @@
+{
+  "description": "-= Attic =-\nAh, the attic. This is some kind of attic, really great normal vibes in this place, a wonderful normal atmosphere. And now, well, you're in it.\n\nYou rest your hand against a wall, but you miss the wall and fall onto a shelf. But the thing is empty, unfortunately. You rest your hand against a wall, but you miss the wall and fall onto a table. On the table you can make out a broom.\n\nThere is an exit to the north. Don't worry, it is unguarded. There is an unguarded exit to the west.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261066.z8",
+  "game_seed": 20261066,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "You are now playing a profound session of TextWorld! First off, if it's not too much trouble, I need you to recover the broom from the table. Having picked up the broom, place the broom on the shelf. And once you've done that, you win!"
+}

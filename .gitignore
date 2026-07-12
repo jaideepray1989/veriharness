@@ -4,6 +4,7 @@ __pycache__/
 .ruff_cache/
 *.egg-info/
 .venv/
+.textworld-venv/
 .venv-swebench/
 .veriharness_cache/
 .DS_Store
@@ -13,3 +14,5 @@ runs/
 logs/
 official_runs/
 artifacts/leaves/
+data/benchmarks/textworld/games/
+data/benchmarks/textworld/metadata/

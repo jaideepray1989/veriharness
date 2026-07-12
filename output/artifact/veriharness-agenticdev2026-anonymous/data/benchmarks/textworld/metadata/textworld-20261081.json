@@ -1,0 +1,8 @@
+{
+  "description": "-= Attic =-\nYou've just sauntered into an attic.\n\nYou see a crate.\n\nThere is an unblocked exit to the east. You need an unguarded exit? You should try going north.\n\nThere is a golf tee on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261081.z8",
+  "game_seed": 20261081,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "It's time to explore the amazing world of TextWorld! Here is how to play! First step, attempt to take a trip east. After that, make absolutely sure that the chest is shut. That's it!"
+}

@@ -1,0 +1,28 @@
+experiment_id: reviewer_extension_smoke
+benchmarks:
+  - name: textworld
+    n_tasks: 1
+    seeds: [151]
+  - name: humaneval_public
+    n_tasks: 1
+    seeds: [1]
+variants:
+  - generic+diagnostics
+  - same-info-natural
+  - location-observed
+  - typed-fields
+  - typed-preserve
+  - typed-repair+retain
+model:
+  client: local
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: reviewer_extension_smoke
+budget:
+  max_retries: 1
+  veriharness_k: 2
+  max_leaf_calls_per_task: 2
+  max_wall_time_seconds: 1800
+metadata:
+  study: reviewer_extension_v1
+  purpose: Validate new feedback controls and public-test lane before the full run.

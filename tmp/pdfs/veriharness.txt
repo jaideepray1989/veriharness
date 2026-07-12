@@ -1,0 +1,782 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+VeriHarness: What Should a Validator Tell an Agent?
+Anonymous Author(s)
+ABSTRACT
+Agentic software systems often respond to a failed validator by ask-
+ing a large language model (LLM) to try again. We study what the
+validator should return to the next call. VeRiHaRness is a code-as-
+harness prototype in which LLMs generate every leaf action while
+code controls validation, acceptance, budgets, and traces. We com-
+pare raw diagnostics with feedback that exposes a failure location,
+expected alternatives, and the observed value.
+Our primary experiment contains 400 oracle-blind rows: four re-
+pair policies, 50 paired TextWorld games, two model families, and
+a four-call cap. Actionable feedback raises success from 14/50 to
+36/50 for Qwen2.5-Coder-14B (+44 points, 95% paired-bootstrap in-
+terval 28–60) and from 8/50 to 29/50 for Llama-3.1-8B (+42 points,
+28–56). However, rendering the same information as untyped
+prose yields 35/50 and 29/50. Typed structure itself changes suc-
+cess by only +2 and 0 points. Removing expected alternatives
+largely removes the gain. The ordering persists across call budgets
+and sampled decoding, but not on a small public-test HumanEval
+scope check. Across 880 rows and 2,652 LLM calls, the evidence
+supports a narrow principle: make validator feedback local and
+actionable; do not attribute the benefit to typing alone.
+CCS CONCEPTS
+• Software and its engineering→ Software testing and debug-
+ging; • Computing methodologies → Intelligent agents.
+KEYWORDS
+LLM agents, verifier feedback, repair, agent harnesses, TextWorld
+ACM Reference Format:
+Anonymous Author(s). 2026. VeriHarness: What Should a Validator Tell
+an Agent?. In International Workshop on Agentic AI for Next-Generation
+Software Development (AgenticDev ’26), October 12, 2026, Munich, Germany.
+ACM, New York, NY, USA, 4 pages.
+1 INTRODUCTION
+An LLM agent for software development writes a patch or plan,
+invokes a test or execution environment, and reacts to failure. Re-
+Act, Reflexion, Self-Refine, and self-debugging establish the value
+of iterative feedback [1, 6, 7, 9]. Coding agents also benefit from
+purpose-built interfaces [8]. Yet one interface remains underspeci-
+fied: what exactly should a validator tell the next model call?
+Suppose command 1 in a plan is invalid. A raw retry sees “Com-
+mand 1 is not admissible. ” A repair interface can additionally ex-
+pose the observed command and the commands admissible at that
+state. This may help because the information is actionable, because
+the locus is explicit, or because a typed record is easier to parse.
+Prior evidence did not separate these explanations.
+We use VeRiHaRness, a code-as-harness prototype, to ask:
+RQ1. Does localized feedback with expected alternatives im-
+prove repair over raw diagnostics under equal compute?
+Task + compact state→ LLM worker → candidate
+↓ ↓
+budget + trace external gates
+↑ ↓
+repair feedback← failure encoder
+Figure 1: LLMs generate leaf candidates; code controls state,
+validation, acceptance, budgets, and traces.
+RQ2. Is any gain caused by typed structure, actionable con-
+tent, or both?
+RQ3. Does the result persist across models, call budgets, de-
+coding, and a public-test code scope check?
+Our answer is deliberately narrow. Actionable content produces
+a large, replicated gain on verifier-rich TextWorld plans. Typed
+JSON and information-matched prose have indistinguishable suc-
+cess. A location without expected alternatives is insufficient. The
+main contribution is therefore an empirical decomposition of val-
+idator feedback, plus a reproducible harness for testing it.
+2 BACKGROUND AND SYSTEM
+Reflexion stores verbal feedback, while Self-Refine lets an LLM pro-
+duce and use its own critique [ 6, 7]. Execution-guided methods
+reuse failed programs and test messages [1]. SWE-bench and SWE-
+agent show the importance of executable evaluation and agent–
+computer interfaces [5, 8]. VeRiHaRness studies a complementary
+boundary: deterministic validator output passed to the next prob-
+abilistic leaf.
+2.1 Code as the Control Plane
+VeRiHaRness separates generation from acceptance (Fig. 1). A
+principal orchestrator builds a compact state pack and dispatches
+bounded LLM workers. Each worker returns a structured candi-
+date. External gates check schema, artifacts, and environment be-
+havior. Only gates accept a candidate; a worker’s self-assessment
+cannot do so. Every prompt, raw response, parsed output, gate
+result, model setting, and elapsed time is persisted before the next
+call.
+The failure encoder maps gate-specific details to a common in-
+terface. For an invalid TextWorld action it can expose a stable label,
+the command index, the admissible actions in environment order,
+and the rejected action. Oracle-blind evaluation excludes hidden
+post-hoc outcomes from repair feedback.
+2.2 Feedback Policies
+All policies receive the same task state, rejected answer, gate,
+model, and call cap. They differ only after a failed candidate (Ta-
+ble1).
+1
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+AgenticDev ’26, October 12, 2026, Munich, Germany Anon.
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+Table 1: Feedback controls used in the primary experiment.
+Policy Feedback after failure
+RawDiag Raw validation message.
+SameNL Exact location, expected alternatives, and observed
+value in ordinary prose, without typed labels or
+keys.
+LocObs Typed label, location, and observed value; no ex-
+pected alternatives.
+TypedFields Typed label, location, expected alternatives, and ob-
+served value.
+SameNL and TypedFields contain the same actionable field
+values; their contrast isolates representation. LocObs and Typed-
+Fields share typed structure; their contrast isolates expected alter-
+natives. RawDiag versus SameNL measures the value of adding
+explicit actionable content to the raw message.
+3 STUDY DESIGN
+Primary tasks. We generate 50 fixed TextWorld games [2], with
+seeds 20261051–20261100. Each has three rooms, four objects, and
+a two-step quest. A candidate is a JSON plan of at most four com-
+mands, executed from fresh state. Success requires a terminal win.
+Invalid actions return their index and up to the first 12 admissible
+commands in the environment’s deterministic order; we neither
+rank nor randomize this list. The primary matrix is 50 games ×
+four policies× two models, or 400 rows.
+Models and decoding. We use Qwen2.5-Coder-14B-Instruct-
+A WQ [4] on an NVIDIA L4 and Llama-3.1-8B-Instruct-A WQ [3] on
+a T4, served by vLLM. Primary decoding is greedy with 512 out-
+put tokens and a four-call cap. Model conditions are never mixed
+across serving backends.
+Robustness lanes. First, on the same 15-game subset and both
+models, we compare RawDiag and TypedFields at budgets 2, 4, 6,
+and 8. Budget-4 rows are reused from the primary matrix. Second,
+Qwen runs 20 games at temperature 0.3, top- 𝑝 0.9, and three in-
+ference seeds; this lane compares RawDiag, SameNL, and Typed-
+Fields. Third, a 15-task HumanEval scope check exposes one de-
+terministically selected public assertion to the repair gate while re-
+taining the complete official tests for post-hoc success. These lanes
+contribute 480 additional rows, for 880 total and 2,652 realized LLM
+calls.
+Analysis. Games are paired by seed. Primary success differ-
+ences use 10,000 paired bootstrap samples and two-sided exact Mc-
+Nemar tests. We apply Holm correction to four planned contrasts
+within each model. Sampled-decoding intervals resample 20 game
+clusters, retaining all three repeats;𝑝-values use 100,000 game-
+level sign flips and Holm correction. Budget and HumanEval lanes
+are small robustness checks, so we emphasize counts and intervals
+rather than dichotomizing their𝑝-values. Saved-transcript white-
+space counts are a prompt size proxy, not tokenizer or billing to-
+kens.
+Table 2: Primary TextWorld results: 50 paired games per
+model, budget 4.
+Qwen-14B/L4 Llama-8B/T4
+Policy Solved Calls Solved Calls
+RawDiag 14 (28%) 164 8 (16%) 179
+LocObs 18 (36%) 155 9 (18%) 174
+SameNL 35 (70%) 147 29 (58%) 161
+TypedFields 36 (72%) 130 29 (58%) 149
+Table 3: Paired contrasts. CIs are paired bootstrap; 𝑝𝐻 is
+Holm-adjusted exact McNemar within model.
+Model Treatment vs. baseline Δ 95% CI 𝑝𝐻
+Qwen SameNL vs. raw +42 [28,56] 3.8×10−6
+Qwen Typed vs. SameNL +2 [ −8,12] 1.0
+Qwen Typed vs. LocObs +36 [20,52] 2.4×10−4
+Llama SameNL vs. raw +42 [28,56] 3.8×10−6
+Llama Typed vs. SameNL 0 [ −12,12] 1.0
+Llama Typed vs. LocObs +40 [26,54] 2.2×10−5
+4 RESULTS
+4.1 Actionable Content Produces the Gain
+Table2 reports terminal success. TypedFields improves over Raw-
+Diag by 44 points for Qwen (95% interval 28–60; Holm-adjusted ex-
+act𝑝 = 3.15×10−5) and 42 points for Llama (28–56;𝑝 = 3.81×10−6).
+The result therefore replicates across a coder model and a smaller
+general model.
+The ablations identify the active information (Table3). SameNL
+beats RawDiag by 42 points on both models, with no baseline-
+only successes. In contrast, TypedFields versus the information-
+matched SameNL is only +2 points for Qwen and 0 for Llama;
+both intervals include zero and both adjusted𝑝-values are 1. Typed
+structure does not explain success.
+Expected alternatives do. LocObs, which retains typed label, lo-
+cation, and observation but omits alternatives, is near RawDiag.
+Adding alternatives raises success by 36 points for Qwen and 40
+for Llama. Final invalid-action episodes fall from 35 to 2 (raw to
+same-information prose) for Qwen and from 41 to 4 for Llama. A
+location says where repair is needed; admissible alternatives say
+what repair is possible.
+Typing has a smaller efficiency effect. At equal success, Typed-
+Fields uses 17 fewer calls than SameNL for Qwen (paired mean
+−0.34 calls/game, interval−0.60 to −0.06) and 12 fewer for Llama
+(−0.24, −0.44 to −0.04). Average retry prompts are similar: 701 ver-
+sus 716 words for Qwen and 706 versus 722 for Llama. Total re-
+alized prompt words are 14% and 10% lower for typed feedback
+because it reaches stopping conditions sooner, not because each
+repair prompt is dramatically smaller.
+4.2 Budgets and Sampled Decoding
+The budget result is progressive rather than a universal step at call
+four (Table 4). On 15 paired games, typed-minus-raw gains rise
+from 20 and 27 points at budget 2 to 47 points for both models at
+2
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+VeriHarness: What Should a Validator Tell an Agent? AgenticDev ’26, October 12, 2026, Munich, Germany
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+Table 4: Budget sensitivity on the same 15 games. Cells are
+raw/typed wins.
+Model 𝐵 = 2 𝐵 = 4 𝐵 = 6 𝐵 = 8
+Qwen 5/8 4/11 4/11 4/12
+Llama 1/5 2/9 2/11 2/11
+budget 4. Qwen then plateaus near 47–53 points; Llama reaches 60
+points at budgets 6 and 8. More calls do not rescue raw retry: its
+Qwen count is 4/15 at budgets 4–8 and its Llama count is 2/15. The
+repair interface uses extra compute more effectively.
+Sampled Qwen decoding gives the same ordering. Across seeds
+3101–3103, RawDiag solves 6, 6, and 5 of 20 games; SameNL solves
+14, 13, and 14; and TypedFields solves 14, 16, and 14. Clustered
+across games, typed versus raw is +45 points (95% interval 23–67;
+Holm 𝑝 = .0053), while typed versus information-matched prose
+is +5 points (−3 to 15; 𝑝 = .499). The primary conclusion is not an
+artifact of greedy repetition.
+4.3 Public-Test Code Scope Check
+The 15-task HumanEval lane does not show a repair-policy advan-
+tage. Qwen passes 14/15 hidden suites under every policy; every
+candidate passes the public gate on its first call, leaving no repair
+opportunity. Llama passes 10/15 under raw, same-information,
+and location-only feedback and 9/15 under typed feedback. Public-
+gate acceptance ranges from 11/15 to 12/15. This is useful negative
+evidence: repair interfaces cannot improve cases that already pass,
+and one public assertion may not diagnose failures on hidden tests.
+We do not generalize the TextWorld effect to code repair from this
+small, ceiling-limited lane.
+5 IMPLICATIONS
+Treat validators as repair APIs. A validator should expose a sta-
+ble repair locus, the observed value, and actionable expectations
+when available. For software, these may be a file and line, failing as-
+sertion, expected type or behavior, and observed exception. When
+a test cannot enumerate alternatives, the interface should report
+what it knows rather than fabricate them.
+Content before syntax. JSON is useful for logging, routing,
+and cross-gate tooling, and our typed condition uses modestly
+fewer calls. But the same information in prose achieves the same
+success. Claims that machine-readable feedback inherently im-
+proves reasoning would overstate our evidence.
+Budget repair, not repetition. Increasing a call cap helps only
+when later calls receive information that changes the candidate.
+Raw retry remains flat after four calls, while actionable feedback
+continues to benefit the weaker model through six calls.
+6 THREATS TO V ALIDITY
+The primary tasks are 50 short generated games, not repositories or
+industrial deployments. The two models are quantized, share one
+serving stack, and are not independent samples of all LLMs. The
+HumanEval scope check has only 15 tasks and one public assertion;
+its ceiling limits repair comparisons. Sampled decoding uses one
+model and three seeds.
+Our same-information prose control matches location, expected,
+and observed values, but wording and delimiters inevitably differ
+from JSON. LocObs isolates expected alternatives within typed
+feedback, yet admissible lists are capped at 12 in deterministic envi-
+ronment order. We did not test ranking, truncation, or randomiza-
+tion. Transcript words approximate prompt size, not model tokens
+or monetary cost.
+TextWorld execution is deterministic and each candidate starts
+fresh. Real test tools may be flaky or incomplete; production gates
+need reruns, quarantine, and non-oscillation safeguards. Four pri-
+mary contrasts per model use Holm correction, while the small
+budget and code lanes remain robustness checks. One transient
+serving error was quarantined and rerun with identical settings;
+the replacement failed normally at the environment gate, and the
+quarantined row is excluded.
+7 ARTIFACT AND CONCLUSION
+The artifact contains source, deterministic task rules, 880 row-
+level results, 2,652 per-call traces, model and decoding settings,
+the quarantined transient row, and a script that regenerates all
+tables, 10,000-sample bootstrap intervals, exact McNemar tests,
+Holm corrections, and clustered sampling analysis.
+Validator feedback is an agent interface, not incidental log-
+ging. Across two models, actionable location and alternatives
+more than double TextWorld repair success over raw diagnostics.
+Information-matched prose performs equally well, so typing is
+not the causal success mechanism. For agentic development, the
+practical lesson is precise: make failures local and actionable first;
+choose a typed representation for systems reasons, not because
+this study shows that JSON itself makes an LLM reason better.
+REFERENCES
+[1] Xinyun Chen, Maxwell Lin, Nathanael Schaerli, and Denny Zhou. 2024. Teach-
+ing Large Language Models to Self-Debug. InInternational Conference on Learn-
+ing Representations . https://proceedings.iclr.cc/paper_files/paper/2024/hash/
+2460396f2d0d421885997dd1612ac56b-Abstract-Conference.html
+[2] Marc-Alexandre Côté, Àkos Kádár, Xingdi Yuan, Ben Kybartas, Tavian Barnes,
+Emery Fine, James Moore, Ruo Yu Tao, Matthew Hausknecht, Layla El Asri,
+Mahmoud Adada, Wendy Tay, and Adam Trischler. 2018. TextWorld: A Learn-
+ing Environment for Text-Based Games. CoRR abs/1806.11532 (2018). https:
+//arxiv.org/abs/1806.11532
+[3] Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad
+Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Amy Yang, Angela Fan,
+et al. 2024. The Llama 3 Herd of Models. CoRR abs/2407.21783 (2024). https:
+//arxiv.org/abs/2407.21783
+[4] Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu
+Liu, Jiajun Zhang, Bowen Yu, Kai Dang, An Yang, Rui Men, Fei Huang, Xingzhang
+Ren, Xuancheng Ren, Jingren Zhou, and Junyang Lin. 2024. Qwen2.5-Coder Tech-
+nical Report.CoRR abs/2409.12186 (2024). https://arxiv.org/abs/2409.12186
+[5] Carlos E. Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir
+Press, and Karthik Narasimhan. 2024. SWE-bench: Can Language Models Re-
+solve Real-World GitHub Issues?. InInternational Conference on Learning Repre-
+sentations. https://arxiv.org/abs/2310.06770
+[6] Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao,
+Sarah Wiegreffe, Uri Alon, Nouha Dziri, Shrimai Prabhumoye, Yiming Yang,
+Shashank Gupta, Bodhisattwa Prasad Majumder, Katherine Hermann, Sean
+Welleck, Amir Yazdanbakhsh, and Peter Clark. 2023. Self-Refine: Iterative
+Refinement with Self-Feedback. In Advances in Neural Information Processing
+Systems, Vol. 36. https://proceedings.neurips.cc/paper_files/paper/2023/hash/
+91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html
+[7] Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik
+Narasimhan, and Shunyu Yao. 2023. Reflexion: Language Agents with Verbal
+Reinforcement Learning. InAdvances in Neural Information Processing Systems ,
+Vol. 36. https://arxiv.org/abs/2303.11366
+3
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+AgenticDev ’26, October 12, 2026, Munich, Germany Anon.
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+[8] John Yang, Carlos E. Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao,
+Karthik Narasimhan, and Ofir Press. 2024. SWE-agent: Agent-Computer Inter-
+faces Enable Automated Software Engineering. InAdvances in Neural Informa-
+tion Processing Systems , Vol. 37. https://papers.nips.cc/paper_files/paper/2024/
+hash/5a7c947568c1b1328ccc5230172e1e7c-Abstract-Conference.html
+[9] Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan,
+and Yuan Cao. 2023. ReAct: Synergizing Reasoning and Acting in Language Mod-
+els. InInternational Conference on Learning Representations. https://arxiv.org/abs/
+2210.03629
+4

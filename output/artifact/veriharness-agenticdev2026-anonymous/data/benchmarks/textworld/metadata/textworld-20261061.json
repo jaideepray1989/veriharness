@@ -1,0 +1,8 @@
+{
+  "description": "-= Scullery =-\nYou find yourself in a scullery. An usual one.\n\nYou make out a type 9 chest. You make out a closed fridge nearby.\n\nYou don't like doors? Why not try going west, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261061.z8",
+  "game_seed": 20261061,
+  "inventory": "You are carrying: a type 9 passkey and a mat.",
+  "max_score": 1,
+  "objective": "You are now playing a life changing game of TextWorld! First of all, make it so that the type 9 chest in the scullery is unlocked. Then, ensure that the type 9 chest is open. That's it!"
+}

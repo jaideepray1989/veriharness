@@ -3,7 +3,7 @@ benchmarks:
   - name: swebench_lite
     n_tasks: 1
     seeds: [1]
-variants: [H4]
+variants: [typed-repair+retain]
 model:
   client: coreai_freeform
   max_output_tokens: 2048

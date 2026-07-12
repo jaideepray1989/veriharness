@@ -1,0 +1,8 @@
+{
+  "description": "-= Chamber =-\nYou're now in the chamber. You decide to just list off a complete list of everything you see in the room, because hey, why not?\n\n\n\nThere is an unblocked exit to the east. There is an exit to the south. Don't worry, it is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261074.z8",
+  "game_seed": 20261074,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Who's got a virtual machine and is about to play through an exciting round of TextWorld? You do! First step, try to take a trip east. With that done, retrieve the shadfly from the floor of the shower. And once you've done that, you win!"
+}

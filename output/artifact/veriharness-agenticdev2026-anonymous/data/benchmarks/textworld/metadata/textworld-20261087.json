@@ -1,0 +1,8 @@
+{
+  "description": "-= Bedroom =-\nYou are in a bedroom. A standard one.\n\nIf you haven't noticed it already, there seems to be something there by the wall, it's a couch. The couch is usual. On the couch you can see a blanket and a monitor. You can't wait to tell the folks at home about this!\n\nThere is an exit to the west. Don't worry, it is unguarded.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261087.z8",
+  "game_seed": 20261087,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "I hope you're ready to go into rooms and interact with objects, because you've just entered TextWorld! Here is how to play! First of all, retrieve the blanket from the couch in the bedroom. And then, deposit the blanket on the floor of the bedroom. And if you do that, you're the winner!"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Cookery =-\nYou find yourself in a cookery. A normal one. You begin looking for stuff.\n\nYou smell a sickening smell, and follow it to a cabinet. Hmmm... what else, what else? Empty! What kind of nightmare TextWorld is this?\n\nThere is an exit to the east. Don't worry, it is unguarded. You need an unguarded exit? You should try going south.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261058.z8",
+  "game_seed": 20261058,
+  "inventory": "You are carrying: a spherical passkey.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, try to venture east. Next, assure that the spherical chest is unlocked. And once you've done that, you win!"
+}

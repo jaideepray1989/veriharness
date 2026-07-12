@@ -1,0 +1,8 @@
+{
+  "description": "-= Shower =-\nYou've entered a shower. You start to take note of what's in the room.\n\nYou can see a locked drawer.\n\nYou need an unguarded exit? You should try going east. You need an unblocked exit? You should try going north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261085.z8",
+  "game_seed": 20261085,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "I hope you're ready to go into rooms and interact with objects, because you've just entered TextWorld! Here is how to play! First off, if it's not too much trouble, I need you to go to the east. Next, close the safe inside the bedchamber. Alright, thanks!"
+}

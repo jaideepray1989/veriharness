@@ -1,0 +1,8 @@
+{
+  "description": "-= Spare Room =-\nYou are in a spare room. An ordinary kind of place. I guess you better just go and list everything you see here.\n\n\n\nThere is an unguarded exit to the east. You need an unguarded exit? You should try going north.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261053.z8",
+  "game_seed": 20261053,
+  "inventory": "You are carrying: a keycard.",
+  "max_score": 1,
+  "objective": "Get ready to pick stuff up and put it in places, because you've just entered TextWorld! First off, if it's not too much trouble, I need you to make an effort to take a trip east. With that done, look and see the box is locked. Once that's all handled, you can stop!"
+}

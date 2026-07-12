@@ -1,0 +1,8 @@
+{
+  "description": "-= Sauna =-\nThis is going to sound unbelievable, but you've just entered a sauna.\n\n\n\nYou need an unblocked exit? You should try going east.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261100.z8",
+  "game_seed": 20261100,
+  "inventory": "You are carrying: a scarf.",
+  "max_score": 1,
+  "objective": "It's time to explore the amazing world of TextWorld! Your first objective is to try to go to the east. After that, make absolutely sure that the formless safe in the scullery is shut. Alright, thanks!"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "-= Washroom =-\nYou're now in the washroom. You begin to take stock of what's in the room.\n\n\n\nYou need an unblocked exit? You should try going south.\n\nThere is a fondue on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261064.z8",
+  "game_seed": 20261064,
+  "inventory": "You are carrying: a book.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First of all, make an effort to venture south. With that over with, retrieve the textbook from the floor of the recreation zone. Alright, thanks!"
+}

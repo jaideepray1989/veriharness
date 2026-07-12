@@ -1,0 +1,10 @@
+sampling_seed,variant,success,n,success_rate,calls,avg_calls,action_invalid_final_rows
+3101,generic+diagnostics,6,20,0.3,64,3.2,14
+3101,same-info-natural,14,20,0.7,57,2.85,1
+3101,typed-fields,14,20,0.7,54,2.7,5
+3102,generic+diagnostics,6,20,0.3,63,3.15,14
+3102,same-info-natural,13,20,0.65,60,3.0,1
+3102,typed-fields,16,20,0.8,52,2.6,2
+3103,generic+diagnostics,5,20,0.25,68,3.4,14
+3103,same-info-natural,14,20,0.7,61,3.05,2
+3103,typed-fields,14,20,0.7,57,2.85,3

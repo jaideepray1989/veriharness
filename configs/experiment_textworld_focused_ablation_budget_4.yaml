@@ -1,0 +1,40 @@
+experiment_id: textworld_focused_ablation_budget_4
+benchmarks:
+  - name: textworld
+    n_tasks: 50
+    seeds: [151]
+variants:
+  - generic+diagnostics
+  - typed-fields
+  - typed-preserve
+  - typed-repair+retain
+model:
+  client: local
+evaluation:
+  oracle_guided_acceptance: false
+  result_role: focused_external_verifier_ablation
+budget:
+  max_retries: 3
+  veriharness_k: 2
+  max_leaf_calls_per_task: 4
+  max_wall_time_seconds: 172800
+metadata:
+  study: textworld_focused_ablation_v1
+  subset_status: fixed_before_focused_run_not_preregistered
+  subset_rule: final_50_seeds_from_textworld_preregistered_v1
+  game_seed_start: 20261051
+  game_seed_end: 20261100
+  task_count: 50
+  primary_comparison: typed-repair+retain_vs_generic+diagnostics
+  secondary_comparisons:
+    - typed-fields_vs_generic+diagnostics
+    - typed-preserve_vs_typed-fields
+    - typed-repair+retain_vs_typed-preserve
+  online_validation:
+    - Fresh TextWorld state for every candidate
+    - Command validity with typed location and admissible actions
+    - Terminal win state within four commands
+  note: >
+    This focused run follows a stopped 200-game broad sweep. The deterministic
+    seed rule was fixed before launching this ablation, but the study is not an
+    external preregistration and should not be described as one.

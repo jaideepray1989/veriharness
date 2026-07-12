@@ -1,0 +1,8 @@
+{
+  "description": "-= Recreation Zone =-\nYou've entered a recreation zone. You begin to take stock of what's here.\n\nYou can make out an opened formless chest in the room. The formless chest is empty, what a horrible day! You scan the room, seeing a recliner. But the thing is empty. Oh! Why couldn't there just be stuff on it?\n\nYou need an unblocked exit? You should try going north. There is an exit to the west. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261099.z8",
+  "game_seed": 20261099,
+  "inventory": "You are carrying: a formless keycard and a glass.",
+  "max_score": 1,
+  "objective": "Who's got a virtual machine and is about to play through an exciting round of TextWorld? You do! Here is how to play! First step, look and see that the formless chest inside the recreation zone is shut. Then, lock the formless chest inside the recreation zone with the formless keycard. Alright, thanks!"
+}

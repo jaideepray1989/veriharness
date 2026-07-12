@@ -1,0 +1,8 @@
+{
+  "description": "-= Laundromat =-\nYou're now in a laundromat. Okay, just remember what you're here to do, and everything will go great.\n\nYou can see a type A safe. Hmm. You always thought you'd be more excited to see a type A safe in a room.\n\nYou need an unblocked exit? You should try going west.\n\nThere is a type A latchkey on the floor.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261077.z8",
+  "game_seed": 20261077,
+  "inventory": "You are carrying: an insect.",
+  "max_score": 1,
+  "objective": "Hey, thanks for coming over to the TextWorld today, there is something I need you to do for me. First off, open the type A safe within the laundromat. And then, retrieve the sock from the type A safe in the laundromat. Got that? Good!"
+}

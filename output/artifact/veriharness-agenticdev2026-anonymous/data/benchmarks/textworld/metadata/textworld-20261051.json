@@ -1,0 +1,8 @@
+{
+  "description": "-= Study =-\nYou find yourself in a study. A normal one. I guess you better just go and list everything you see here.\n\nIf you haven't noticed it already, there seems to be something there by the wall, it's a non-euclidean chest. You can see a mantelpiece. Looks like someone's already been here and taken everything off it, though.\n\nThere is an unblocked exit to the east. There is an exit to the south. Don't worry, it is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261051.z8",
+  "game_seed": 20261051,
+  "inventory": "You are carrying: a non-euclidean latchkey.",
+  "max_score": 1,
+  "objective": "Welcome to another fast paced round of TextWorld! First thing I need you to do is to make an attempt to move east. If you can get through with that, lift the worm from the floor of the bedroom. Got that? Good!"
+}

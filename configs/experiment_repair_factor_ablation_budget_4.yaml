@@ -28,13 +28,13 @@ benchmarks:
     n_tasks: 30
     seeds: [1, 2, 3]
 variants:
-  - H3
+  - gated-resample
   - generic-retry
   - natural-retry
   - retain+generic
   - targeted+untyped
   - typed+no-retain
-  - H4
+  - typed-repair+retain
 model:
   client: coreai_freeform
 evaluation:
@@ -51,7 +51,7 @@ metadata:
   workflow_tasks_per_seed: 30
   call_budget: 4
   factors:
-    candidate_retention: [retain+generic, H4]
-    typed_failure_payloads: [typed+no-retain, H4]
+    candidate_retention: [retain+generic, typed-repair+retain]
+    typed_failure_payloads: [typed+no-retain, typed-repair+retain]
     targeted_locus_selection: [targeted+untyped]
     natural_language_gate_error: [natural-retry, targeted+untyped]

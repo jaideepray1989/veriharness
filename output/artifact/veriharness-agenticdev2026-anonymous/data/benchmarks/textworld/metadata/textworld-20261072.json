@@ -1,0 +1,8 @@
+{
+  "description": "-= Studio =-\nLook around you. Take it all in. It's not every day someone gets to be in a studio.\n\nYou see an opened suitcase in the corner. The suitcase contains a folder. You check the price tag that hangs off the suitcase. Sixty big ones?! That's ridiculous! You know, I know a person who works for the government who could get you one of those for 95 bucks! You smell an interesting smell, and follow it to a shelf. However, the shelf, like an empty shelf, has nothing on it. Aw, here you were, all excited for there to be things on it!\n\nYou don't like doors? Why not try going west, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261072.z8",
+  "game_seed": 20261072,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Get ready to pick stuff up and put it in places, because you've just entered TextWorld! Here is how to play! First off, retrieve the folder from the suitcase inside the studio. Then, throw the folder on the floor of the studio. Alright, thanks!"
+}

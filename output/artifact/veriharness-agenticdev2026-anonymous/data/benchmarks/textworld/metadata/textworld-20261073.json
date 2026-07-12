@@ -1,0 +1,8 @@
+{
+  "description": "-= Laundry Place =-\nYou're now in the laundry place. You begin to take stock of what's in the room.\n\nYou make out a bench. What a coincidence, weren't you just thinking about a bench? However, the bench, like an empty bench, has nothing on it. Aw, here you were, all excited for there to be things on it!\n\nYou need an unguarded exit? You should try going east. You don't like doors? Why not try going north, that entranceway is unblocked.",
+  "game_path": "<REPOSITORY_ROOT>/data/benchmarks/textworld/games/textworld-20261073.z8",
+  "game_seed": 20261073,
+  "inventory": "You are carrying nothing.",
+  "max_score": 1,
+  "objective": "Who's got a virtual machine and is about to play through an exciting round of TextWorld? You do! Here is how to play! First step, head east. Next, pick up the pillow from the recliner. That's it!"
+}
