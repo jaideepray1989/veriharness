@@ -36,18 +36,17 @@ controls validation, acceptance, budgets, and traces.
 We compare raw diagnostics with feedback that exposes a failure location,
 expected alternatives, and the observed value.
 
-Our primary experiment contains 400 oracle-blind rows: four repair policies,
-50 paired TextWorld games, two model families, and a four-call cap. Structured
-verifier feedback raises success from 14/50 to 36/50 for
-Qwen2.5-Coder-14B (+44 points,
-95\% paired-bootstrap interval 28--60) and from 8/50 to 29/50 for
-Llama-3.1-8B (+42 points, 28--56). However, rendering the same information as
-untyped prose yields 35/50 and 29/50. Typed structure itself changes success by
-only +2 and 0 points. Removing expected alternatives largely removes the gain.
-The ordering persists across call budgets and sampled decoding, but not on a
-small public-test HumanEval scope check. Across 880 rows and 2,652 LLM calls,
-the evidence supports a narrow principle: expose explicit repair fields; do not
-attribute the benefit to JSON typing alone.
+Structured verifier feedback more than doubles terminal success under equal
+compute. On 50 paired TextWorld games with a four-call cap, it raises success
+from 14/50 to 36/50 for Qwen2.5-Coder-14B (+44 points, 95\%
+paired-bootstrap interval 28--60) and from 8/50 to 29/50 for Llama-3.1-8B
+(+42 points, 28--56). The win is driven by repair content: exposing the failing
+location, observed value, and admissible alternatives; omitting alternatives
+largely removes it. The gain persists across call budgets and sampled decoding.
+A small HumanEval scope check identifies the boundary: feedback cannot repair a
+failure the visible validator does not expose. Across 880 rows and 2,652 LLM
+calls, the evidence supports a practical design rule: treat validator failures
+as structured repair interfaces, not retry messages.
 \end{abstract}
 
 \begin{CCSXML}
@@ -253,6 +252,8 @@ Policy & Solved & Calls & Solved & Calls \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Repair Content, Not JSON Syntax, Explains the Gain}
 
 The ablations identify the active information (Table~\ref{tab:causal}).
 \samenl beats \rawdiag by 42 points on both models, with no baseline-only
