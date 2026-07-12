@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import threading
 import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -74,11 +75,13 @@ class Orchestrator:
         raw_config: Optional[Dict[str, Any]] = None,
         client: Optional[LLMClient] = None,
         run_manager: Optional[RunManager] = None,
+        concurrency: int = 1,
     ) -> None:
         self.config = config
         self.raw_config = raw_config or config.model_dump()
         self.client = client or make_client(config)
         self.run_manager = run_manager or RunManager()
+        self.concurrency = max(1, int(concurrency))
         self.gates = GateStack(include_oracle=config.evaluation.oracle_guided_acceptance)
 
     def run(self) -> Path:
@@ -86,14 +89,50 @@ class Orchestrator:
         run_id, run_dir, store, event_log, state = self.run_manager.create(self.config, self.raw_config)
         event_log.append("experiment_started", payload={"tasks": len(tasks), "variants": [v.value for v in self.config.variants]})
         results_path = run_dir / "results.jsonl"
-        for variant, task in schedule_tasks(tasks, self.config.variants):
-            result = self.run_task_variant(task, variant, store, event_log, state)
-            with results_path.open("a", encoding="utf-8") as handle:
-                handle.write(result.model_dump_json() + "\n")
-            state.append_leaderboard_row(result.model_dump())
+        schedule = list(schedule_tasks(tasks, self.config.variants))
+        if self.concurrency > 1:
+            self._run_schedule_parallel(schedule, results_path, store, event_log, state)
+        else:
+            for variant, task in schedule:
+                result = self.run_task_variant(task, variant, store, event_log, state)
+                with results_path.open("a", encoding="utf-8") as handle:
+                    handle.write(result.model_dump_json() + "\n")
+                state.append_leaderboard_row(result.model_dump())
         aggregate = write_aggregate(run_dir)
         event_log.append("experiment_completed", payload={"aggregate": aggregate})
         return run_dir
+
+    def _run_schedule_parallel(
+        self,
+        schedule: List[Tuple[HarnessVariant, TaskSpec]],
+        results_path: Path,
+        store: ArtifactStore,
+        event_log: EventLog,
+        state: StateStore,
+    ) -> None:
+        """Run task-variant pairs concurrently.
+
+        Safe because each (variant, task) is independent: no cross-task shared
+        state is read/written during execution, the LLM client is stateless per
+        call, gates are pure over their inputs, and artifacts are written to
+        per-leaf paths. The only shared writers are the results file (guarded
+        here), plus StateStore and EventLog (internally locked).
+        """
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        write_lock = threading.Lock()
+
+        def _work(variant: HarnessVariant, task: TaskSpec):
+            return self.run_task_variant(task, variant, store, event_log, state)
+
+        with ThreadPoolExecutor(max_workers=self.concurrency) as pool:
+            futures = [pool.submit(_work, variant, task) for variant, task in schedule]
+            for future in as_completed(futures):
+                result = future.result()
+                with write_lock:
+                    with results_path.open("a", encoding="utf-8") as handle:
+                        handle.write(result.model_dump_json() + "\n")
+                state.append_leaderboard_row(result.model_dump())
 
     def resume(self, run_dir: Path) -> Dict[str, Any]:
         run_dir = Path(run_dir)
@@ -121,17 +160,23 @@ class Orchestrator:
             },
         )
 
-        resumed_rows = 0
-        for variant, task in schedule_tasks(tasks, self.config.variants):
-            key = self._task_result_key(variant, task)
-            if key in completed_keys:
-                continue
-            result = self.run_task_variant(task, variant, store, event_log, state)
-            with results_path.open("a", encoding="utf-8") as handle:
-                handle.write(result.model_dump_json() + "\n")
-            state.append_leaderboard_row(result.model_dump())
-            completed_keys.add(key)
-            resumed_rows += 1
+        remaining_schedule = [
+            (variant, task)
+            for variant, task in schedule_tasks(tasks, self.config.variants)
+            if self._task_result_key(variant, task) not in completed_keys
+        ]
+        if self.concurrency > 1:
+            self._run_schedule_parallel(remaining_schedule, results_path, store, event_log, state)
+            resumed_rows = len(remaining_schedule)
+        else:
+            resumed_rows = 0
+            for variant, task in remaining_schedule:
+                result = self.run_task_variant(task, variant, store, event_log, state)
+                with results_path.open("a", encoding="utf-8") as handle:
+                    handle.write(result.model_dump_json() + "\n")
+                state.append_leaderboard_row(result.model_dump())
+                completed_keys.add(self._task_result_key(variant, task))
+                resumed_rows += 1
 
         aggregate = write_aggregate(run_dir)
         event_log.append(

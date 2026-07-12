@@ -70,8 +70,14 @@ def generate_tasks(
 def run(
     config: Path = typer.Option(..., help="Experiment config YAML."),
     backend: str = typer.Option("local", help="Execution backend: local or modal."),
+    concurrency: int = typer.Option(
+        1,
+        help="Number of task-variants to run in parallel (local backend). "
+        "Default 1 = sequential. Use >1 to exploit a batching-capable endpoint "
+        "(e.g. an Ollama or vLLM server).",
+    ),
 ) -> None:
-    run_dir = run_config(config, backend=backend)
+    run_dir = run_config(config, backend=backend, concurrency=concurrency)
     console.print(f"Run complete: {run_dir}")
 
 
@@ -90,14 +96,19 @@ def run_replay_repair(
 
 
 @app.command("resume-run")
-def resume_run(run_dir: Path = typer.Option(..., help="Existing run directory.")) -> None:
+def resume_run(
+    run_dir: Path = typer.Option(..., help="Existing run directory."),
+    concurrency: int = typer.Option(
+        1, help="Number of task-variants to run in parallel while resuming. Default 1 = sequential."
+    ),
+) -> None:
     """Resume an interrupted local run by skipping persisted result rows."""
     run_dir = _resolve_run_dir(run_dir)
     config_path = run_dir / "config.yaml"
     if not config_path.exists():
         raise typer.BadParameter(f"missing run config: {config_path}")
     config, raw = load_config(config_path)
-    summary = Orchestrator(config, raw_config=raw).resume(run_dir)
+    summary = Orchestrator(config, raw_config=raw, concurrency=concurrency).resume(run_dir)
     console.print(json.dumps(summary, indent=2, sort_keys=True))
 
 

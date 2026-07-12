@@ -15,11 +15,11 @@ def load_config(path: Path) -> tuple[ExperimentConfig, Dict[str, Any]]:
     return config, raw
 
 
-def run_config(path: Path, backend: str = "local") -> Path:
+def run_config(path: Path, backend: str = "local", concurrency: int = 1) -> Path:
     config, raw = load_config(path)
     config.backend = backend
     if backend == "modal":
         from veriharness.modal.modal_batch import run_modal_batch
 
         return run_modal_batch(config, raw)
-    return Orchestrator(config, raw_config=raw).run()
+    return Orchestrator(config, raw_config=raw, concurrency=concurrency).run()
