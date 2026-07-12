@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeriHarness Deep Interactive Explainer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Charter, "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      background: radial-gradient(1300px 700px at 20% -10%, #122246 0%, #070b16 55%);
+      color: #f2f6ff;
+    }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 24px 18px 80px; }
+    h1 { margin: 0 0 8px; font-size: 2.3rem; }
+    h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    h3 { margin: 0 0 8px; font-size: 1.18rem; }
+    p { margin: 0 0 12px; line-height: 1.55; color: #afbfdd; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: #0d1530;
+      border: 1px solid #26365d;
+      border-radius: 6px;
+      padding: 1px 5px;
+      color: #d6e6ff;
+      font-size: .9em;
+    }
+    .card {
+      background: linear-gradient(180deg, #0f162a 0%, #0d1427 100%);
+      border: 1px solid #2a3a63;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .col-12 { grid-column: span 12; }
+    .col-8 { grid-column: span 8; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-3 { grid-column: span 3; }
+    @media (max-width: 1050px) {
+      .col-8, .col-6, .col-4, .col-3 { grid-column: span 12; }
+    }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .tab {
+      border: 1px solid #30477b;
+      background: #132040;
+      color: #d5e5ff;
+      border-radius: 8px;
+      padding: 7px 10px;
+      cursor: pointer;
+      font-size: .95rem;
+    }
+    .tab.active { background: #1d3970; border-color: #6ba6ff; color: #fff; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .flow {
+      background: #0b1328;
+      border: 1px solid #243865;
+      border-radius: 10px;
+      padding: 10px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #dbe9ff;
+      line-height: 1.35;
+      font-size: .88rem;
+      margin-bottom: 10px;
+    }
+    .pill {
+      display: inline-block;
+      border: 1px solid #35508a;
+      background: #172849;
+      color: #cbe0ff;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin: 4px 6px 0 0;
+      font-size: .84rem;
+    }
+    .kpi { font-size: 2rem; font-weight: 700; margin: 0 0 5px; }
+    .small { font-size: .9rem; color: #afbfdd; }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+    select, button, input {
+      border: 1px solid #30477b;
+      background: #0f1a34;
+      color: #f2f6ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: .92rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+      margin-top: 8px;
+    }
+    th, td {
+      border: 1px solid #2a3a63;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #132040; color: #dfebff; }
+    .bar {
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid #2a3a63;
+      background: #0b1328;
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform .35s ease;
+      background: linear-gradient(90deg, #4d87fc, #76e0ff);
+    }
+    .ok { color: #38d39f; font-weight: 700; }
+    .warn { color: #ffcc66; font-weight: 700; }
+    .bad { color: #ff7a7a; font-weight: 700; }
+    .list-tight li { margin-bottom: 6px; color: #afbfdd; }
+    details {
+      border: 1px solid #2a3a63;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin: 8px 0;
+      background: #0d1530;
+    }
+    summary { cursor: pointer; color: #dbe9ff; font-weight: 700; }
+    .snippet {
+      margin-top: 8px;
+      background: #080f21;
+      border: 1px solid #23365f;
+      border-radius: 8px;
+      padding: 10px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .84rem;
+      line-height: 1.35;
+      color: #d8e7ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>VeriHarness: Deep Interactive Explainer</h1>
+    <p>
+      This page is intentionally self-sufficient: it explains the paper’s claim, the exact runtime structure in this repository,
+      how each policy variant behaves, how data is produced, and where to contribute first.
+    </p>
+
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" data-tab="thesis">1) Thesis & Scope</button>
+        <button class="tab" data-tab="runtime">2) Runtime Control Plane</button>
+        <button class="tab" data-tab="repair">3) Gates & Repair Policies</button>
+        <button class="tab" data-tab="results">4) Result / Budget Explorer</button>
+        <button class="tab" data-tab="benchmarks">5) Benchmarks & Config Matrix</button>
+        <button class="tab" data-tab="guarantees">6) Test-backed Guarantees</button>
+        <button class="tab" data-tab="contrib">7) Contribution Paths</button>
+      </div>
+
+      <section id="thesis" class="panel active">
+        <h2>Paper thesis in one view</h2>
+        <p>
+          VeriHarness separates generation from acceptance. The leaf model proposes outputs; code-owned gates decide acceptance.
+          On failure, the controller can retry with either untyped feedback or typed failure-conditioned repair.
+        </p>
+        <div>
+          <span class="pill">H0: full trace + self accept</span>
+          <span class="pill">H3: state context + external gates</span>
+          <span class="pill">generic-retry: external gates + untyped retry</span>
+          <span class="pill">H4: external gates + typed repair + candidate retention</span>
+        </div>
+        <div class="flow" style="margin-top:10px">Key practical conclusion:
+- Typed repair is NOT a blanket replacement for generic retry.
+- Under low call budgets (1-2), gains are small.
+- Under sufficient budget (4), typed repair can be large, mostly on multi-step verifiable workflows.
+- Single-step controls show little uplift.</div>
+      </section>
+
+      <section id="runtime" class="panel">
+        <h2>Runtime control plane (actual repo structure)</h2>
+        <div class="grid">
+          <div class="col-8">
+            <div class="flow">Orchestrator.run()
+  -> _load_tasks()
+  -> schedule_tasks(variant-major)
+  -> run_task_variant(task, variant)
+       if variant.uses_external_gates:
+         _run_gated()
+           for attempt in range(max_retries+1):
+             if leaf_calls >= call_budget: break
+             context = build_context_pack(..., retry_feedback)
+             candidates = min(_candidate_count(variant), remaining_budget)
+             for candidate in candidates:
+               output = _run_leaf()
+               passed, gate_results = _run_gates()
+               if passed: return success
+             retry_feedback = _repair_feedback(...)
+       else:
+         _run_self_accept()
+  -> ExperimentResult row appended to results.jsonl</div>
+          </div>
+          <div class="col-4">
+            <h3>Core anchors</h3>
+            <ul class="list-tight">
+              <li><code>veriharness/core/orchestrator.py</code></li>
+              <li><code>veriharness/core/types.py</code></li>
+              <li><code>veriharness/core/context_pack.py</code></li>
+              <li><code>veriharness/leaves/leaf_runner.py</code></li>
+              <li><code>veriharness/gates/gate_stack.py</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <details open>
+          <summary>Oracle-blind vs oracle-guided acceptance (critical)</summary>
+          <p>
+            In oracle-blind mode (<code>evaluation.oracle_guided_acceptance=false</code>), oracle is post-hoc only.
+            The orchestrator explicitly filters post-hoc oracle failures out of retry feedback.
+          </p>
+          <div class="snippet"># orchestrator.py (conceptual)
+if not oracle_guided_acceptance:
+  oracle_result = evaluate_oracle(task, output)
+  oracle_result.metadata["used_for_acceptance"] = False
+  oracle_result.metadata["evaluation"] = "posthoc_oracle_blind"
+  results = results + [oracle_result]
+
+def _repair_visible_results(results):
+  # drop posthoc oracle result from repair feedback in blind mode
+  ...</div>
+        </details>
+
+        <details>
+          <summary>Variant feature flags (from <code>types.py</code>)</summary>
+          <table>
+            <thead><tr><th>Variant</th><th>External gates</th><th>Typed repair</th><th>Candidate retention</th><th>Retry style</th></tr></thead>
+            <tbody>
+              <tr><td>H0</td><td>No</td><td>No</td><td>No</td><td>Self-accept only</td></tr>
+              <tr><td>H3</td><td>Yes</td><td>No</td><td>No</td><td>No retry payload logic</td></tr>
+              <tr><td>generic-retry</td><td>Yes</td><td>No</td><td>No</td><td>Untyped generic feedback</td></tr>
+              <tr><td>natural-retry</td><td>Yes</td><td>No</td><td>No</td><td>Natural-language gate messages</td></tr>
+              <tr><td>targeted+untyped</td><td>Yes</td><td>No</td><td>No</td><td>Single highest-priority locus</td></tr>
+              <tr><td>typed+no-retain</td><td>Yes</td><td>Yes</td><td>No</td><td>Typed failures, 1 candidate</td></tr>
+              <tr><td>H4</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Typed failures + k candidates</td></tr>
+            </tbody>
+          </table>
+        </details>
+      </section>
+
+      <section id="repair" class="panel">
+        <h2>Gates, failure taxonomy, and what the leaf sees</h2>
+        <div class="grid">
+          <div class="col-6">
+            <h3>Gate stack semantics</h3>
+            <table>
+              <thead><tr><th>Gate</th><th>Hard?</th><th>Examples of failure codes</th></tr></thead>
+              <tbody>
+                <tr><td>SchemaGate</td><td>Yes</td><td><code>schema_invalid</code>, <code>empty_answer</code>, <code>task_id_mismatch</code></td></tr>
+                <tr><td>ArtifactGate</td><td>Yes</td><td><code>artifact_missing</code></td></tr>
+                <tr><td>EvidenceGate</td><td>Yes</td><td><code>claim_without_evidence</code></td></tr>
+                <tr><td>DeterministicGate</td><td>Yes</td><td><code>expected_substring_missing</code>, <code>json_field_mismatch</code></td></tr>
+                <tr><td>OracleGate</td><td>Yes*</td><td><code>answer_mismatch</code>, <code>wrong_claim_accepted</code>, etc.</td></tr>
+                <tr><td>LLMVerifierGate</td><td>No</td><td><code>verifier_risk</code> (soft)</td></tr>
+              </tbody>
+            </table>
+            <p class="small">*Oracle is hard only in oracle-guided online mode.</p>
+          </div>
+          <div class="col-6">
+            <h3>Repair mode behavior</h3>
+            <table>
+              <thead><tr><th>Mode</th><th>Model sees typed codes?</th><th>Targeting</th></tr></thead>
+              <tbody>
+                <tr><td>generic-retry</td><td>No</td><td>Broad “try again”</td></tr>
+                <tr><td>natural-retry</td><td>No</td><td>Broad readable errors</td></tr>
+                <tr><td>targeted+untyped</td><td>No</td><td>Highest-priority locus only</td></tr>
+                <tr><td>typed+no-retain</td><td>Yes</td><td>All visible failures</td></tr>
+                <tr><td>H4</td><td>Yes</td><td>All visible failures + candidate retention</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <details open>
+          <summary>Example: failure -> feedback -> expectation</summary>
+          <div class="snippet">Case: artifact missing
+- Gate emits: artifact_missing
+- generic-retry feedback: "Previous attempt failed acceptance checks. Try again..."
+- typed feedback (H4): includes explicit gate code + required artifact family guidance
+Expected next attempt:
+1) include artifact in output.artifacts
+2) write artifact file in leaf directory</div>
+        </details>
+
+        <details>
+          <summary>Prompt injection point for retry feedback</summary>
+          <div class="snippet"># leaves/prompts.py (conceptual)
+Repair guidance from external gates:
+- <feedback item 1>
+- <feedback item 2>
+...
+- Treat every repair item as a hard requirement for this attempt.</div>
+        </details>
+      </section>
+
+      <section id="results" class="panel">
+        <h2>Interactive budget/task-family result explorer</h2>
+        <p>Use this to internalize when typed repair helps and when it does not.</p>
+        <div class="controls">
+          <label>Budget
+            <select id="budget">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3 (config present; illustrative interpolation here)</option>
+              <option value="4" selected>4</option>
+            </select>
+          </label>
+          <label>Task family
+            <select id="family">
+              <option value="all" selected>All tasks (540)</option>
+              <option value="workflow">MiniWorkflow (90)</option>
+              <option value="controls">Single-step controls (450)</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid" style="margin-top:10px">
+          <div class="card col-4">
+            <h3>generic-retry</h3>
+            <div class="kpi" id="genericVal">-</div>
+            <div class="bar"><div id="genericBar" class="fill"></div></div>
+          </div>
+          <div class="card col-4">
+            <h3>H4</h3>
+            <div class="kpi" id="h4Val">-</div>
+            <div class="bar"><div id="h4Bar" class="fill"></div></div>
+          </div>
+          <div class="card col-4">
+            <h3>Delta</h3>
+            <div class="kpi" id="deltaVal">-</div>
+            <div class="small" id="deltaInterpret">-</div>
+          </div>
+        </div>
+        <details style="margin-top:8px">
+          <summary>Data notes</summary>
+          <p>
+            Budgets 1/2/4 are from the workshop report in this repo.
+            Budget 3 values are marked as illustrative midpoint placeholders to keep interaction continuous; run
+            <code>configs/experiment_practical_matrix_budget_3.yaml</code> to replace them with measured numbers.
+          </p>
+        </details>
+      </section>
+
+      <section id="benchmarks" class="panel">
+        <h2>Benchmarks, matrix design, and row production</h2>
+        <div class="grid">
+          <div class="col-6">
+            <h3>Task families</h3>
+            <ul class="list-tight">
+              <li><code>context_trace</code>: invariant retention under distractors.</li>
+              <li><code>provenance_bias</code>: reject/repair wrong claims under provenance framing.</li>
+              <li><code>mini_workflow</code>: artifact + invariant preserving workflows.</li>
+              <li>Public NLP controls: BoolQ, SQuAD, SciQ, ARC-Easy, GLUE SST-2/RTE/MRPC, TREC-QC.</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3>Practical matrix per budget config</h3>
+            <ul class="list-tight">
+              <li>Per seed: <strong>150 leaf + 30 workflow = 180 tasks</strong></li>
+              <li>Seeds: <strong>3</strong> → <strong>540 tasks</strong></li>
+              <li>Variants: <strong>4</strong> (H0, H3, generic-retry, H4)</li>
+              <li>Rows per budget run: <strong>2160</strong></li>
+              <li>Oracle-blind primary path by config flag</li>
+            </ul>
+          </div>
+        </div>
+
+        <details open>
+          <summary>How one <code>results.jsonl</code> row is produced</summary>
+          <div class="flow">1) Load config + generate tasks from benchmark generators
+2) Scheduler emits (variant, task)
+3) Orchestrator runs task variant (self-accept or gated/retry)
+4) Build ExperimentResult with:
+   - success flags
+   - retry/call counts
+   - failure reasons
+   - model + budget metadata
+5) Append row to run_dir/results.jsonl</div>
+        </details>
+
+        <details>
+          <summary>CLI command reference</summary>
+          <div class="snippet">python -m veriharness.cli.main run &lt;config-yaml&gt;
+python -m veriharness.cli.main inspect-run &lt;run-dir&gt;
+python -m veriharness.cli.main aggregate &lt;run-dir&gt;
+python -m veriharness.cli.main plot &lt;run-dir&gt;
+python -m veriharness.cli.main resume-run &lt;run-dir&gt;</div>
+        </details>
+      </section>
+
+      <section id="guarantees" class="panel">
+        <h2>Test-backed guarantees (what behavior is locked)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Guarantee</th>
+              <th>Implementation</th>
+              <th>Test evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hard gate failures reject outputs</td>
+              <td><code>gates/gate_stack.py</code></td>
+              <td><code>tests/test_gates.py</code></td>
+            </tr>
+            <tr>
+              <td>LLM verifier is soft (non-blocking)</td>
+              <td><code>gates/llm_verifier_gate.py</code></td>
+              <td><code>tests/test_gates.py::test_llm_verifier_cannot_override_deterministic_failure</code></td>
+            </tr>
+            <tr>
+              <td>Oracle-blind excludes oracle from acceptance influence</td>
+              <td><code>core/orchestrator.py::_run_gates</code></td>
+              <td><code>tests/test_experiment_runner.py::test_oracle_blind_gates_do_not_use_oracle_for_acceptance</code></td>
+            </tr>
+            <tr>
+              <td>Candidate retention can recover passing candidate</td>
+              <td><code>core/orchestrator.py::_run_gated</code></td>
+              <td><code>tests/test_experiment_runner.py::test_h4_selects_passing_veriharness_candidate</code></td>
+            </tr>
+            <tr>
+              <td>Call budget caps retries/candidates</td>
+              <td><code>max_leaf_calls_per_task</code> enforcement</td>
+              <td><code>tests/test_experiment_runner.py::test_call_budget_caps_veriharness_candidates</code></td>
+            </tr>
+            <tr>
+              <td>Retry modes remain isolated</td>
+              <td><code>_repair_feedback</code> + <code>repair_policy.py</code></td>
+              <td><code>tests/test_experiment_runner.py</code> + <code>tests/test_repair_policy.py</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="contrib" class="panel">
+        <h2>High-impact contribution roadmap</h2>
+        <div class="grid">
+          <div class="col-6 card">
+            <h3>Code-first paths</h3>
+            <ol class="list-tight">
+              <li>Refine typed repair payload granularity in <code>core/repair_policy.py</code>.</li>
+              <li>Add new deterministic checks/gates for richer workflow verifiability.</li>
+              <li>Improve candidate selection heuristics while preserving budget fairness.</li>
+              <li>Add richer run metadata that explains why a retry path succeeded.</li>
+            </ol>
+          </div>
+          <div class="col-6 card">
+            <h3>Test-first paths</h3>
+            <ol class="list-tight">
+              <li>Add explicit oracle-guided metadata assertions.</li>
+              <li>Add tests for oracle filtering in blind-mode retry visibility.</li>
+              <li>Add H1 context-pack regression tests (summary vs raw trace).</li>
+              <li>Add multi-failure ordering tests for typed feedback stability.</li>
+              <li>Expand family-specific retry guidance assertions (e.g., SQuAD/MCQ).</li>
+            </ol>
+          </div>
+        </div>
+        <div class="flow">Suggested first PR (small, high-value):
+1) choose one failure code family (e.g., artifact/evidence)
+2) improve typed feedback text for one benchmark family
+3) add/adjust tests in test_repair_policy + test_experiment_runner
+4) verify behavior separation between generic-retry and H4 remains intact</div>
+      </section>
+    </div>
+
+    <div class="card">
+      <h3>Bottom line</h3>
+      <p id="bottomLine">
+        VeriHarness is best understood as a controllable runtime policy experiment: generation is model-side, acceptance is code-side, and typed repair is a conditional advantage when task structure and budget support repair.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const tabs = [...document.querySelectorAll(".tab")];
+    const panels = [...document.querySelectorAll(".panel")];
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        panels.forEach(p => p.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+
+    const measured = {
+      all: {
+        1: { generic: 426, h4: 426, total: 540, source: "measured" },
+        2: { generic: 426, h4: 429, total: 540, source: "measured" },
+        4: { generic: 426, h4: 502, total: 540, source: "measured" }
+      },
+      workflow: {
+        1: { generic: 18, h4: 18, total: 90, source: "measured" },
+        2: { generic: 17, h4: 18, total: 90, source: "measured" },
+        4: { generic: 17, h4: 90, total: 90, source: "measured" }
+      },
+      controls: {
+        1: { generic: 408, h4: 408, total: 450, source: "measured" },
+        2: { generic: 409, h4: 411, total: 450, source: "measured" },
+        4: { generic: 409, h4: 412, total: 450, source: "measured" }
+      }
+    };
+
+    function interpolateBudget3(family) {
+      // simple linear interpolation for UI continuity; explicitly labeled as illustrative
+      const b2 = measured[family][2], b4 = measured[family][4];
+      return {
+        generic: Math.round((b2.generic + b4.generic) / 2),
+        h4: Math.round((b2.h4 + b4.h4) / 2),
+        total: b2.total,
+        source: "illustrative"
+      };
+    }
+
+    const budgetEl = document.getElementById("budget");
+    const familyEl = document.getElementById("family");
+    const genericVal = document.getElementById("genericVal");
+    const h4Val = document.getElementById("h4Val");
+    const deltaVal = document.getElementById("deltaVal");
+    const deltaInterpret = document.getElementById("deltaInterpret");
+    const genericBar = document.getElementById("genericBar");
+    const h4Bar = document.getElementById("h4Bar");
+    const bottomLine = document.getElementById("bottomLine");
+
+    function pct(x, total) { return (100 * x / total).toFixed(1); }
+
+    function getRow(family, budget) {
+      if (budget === 3) return interpolateBudget3(family);
+      return measured[family][budget];
+    }
+
+    function renderResults() {
+      const family = familyEl.value;
+      const budget = Number(budgetEl.value);
+      const row = getRow(family, budget);
+      const gPct = Number(pct(row.generic, row.total));
+      const hPct = Number(pct(row.h4, row.total));
+      const dAbs = row.h4 - row.generic;
+      const dPts = (hPct - gPct).toFixed(1);
+
+      genericVal.textContent = `${row.generic}/${row.total} (${gPct}%)`;
+      h4Val.textContent = `${row.h4}/${row.total} (${hPct}%)`;
+      deltaVal.textContent = `${dAbs >= 0 ? "+" : ""}${dAbs} tasks (${dPts >= 0 ? "+" : ""}${dPts} pts)`;
+      genericBar.style.transform = `scaleX(${gPct / 100})`;
+      h4Bar.style.transform = `scaleX(${hPct / 100})`;
+
+      if (row.source === "illustrative") {
+        deltaInterpret.innerHTML = `<span class="warn">Budget 3 is illustrative</span> (run budget_3 config for measured values).`;
+      } else if (family === "workflow" && budget === 4) {
+        deltaInterpret.innerHTML = `<span class="ok">Large workflow lift</span>: typed repair + sufficient budget completes repair paths.`;
+      } else if (Math.abs(Number(dPts)) < 1.0) {
+        deltaInterpret.innerHTML = `<span class="warn">Near parity</span>: typed structure adds little here.`;
+      } else {
+        deltaInterpret.textContent = "Moderate separation; effect depends on failure structure and budget.";
+      }
+
+      if (family === "all") {
+        bottomLine.textContent = "Across all tasks, H4 separates strongly only at higher budget, and the gain is concentrated in workflow tasks.";
+      } else if (family === "workflow") {
+        bottomLine.textContent = "Workflow tasks are where typed, actionable failures materially change outcomes under enough call budget.";
+      } else {
+        bottomLine.textContent = "Single-step controls are already near ceiling for generic retry; typed repair contributes little additional signal.";
+      }
+    }
+
+    budgetEl.addEventListener("change", renderResults);
+    familyEl.addEventListener("change", renderResults);
+    renderResults();
+  </script>
+</body>
+</html>

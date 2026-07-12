@@ -1,0 +1,9 @@
+benchmark,variant,n,success_rate,context_bloat_proxy_rate,self_biased_acceptance_rate,wrong_claim_acceptance_rate,accepted_by_agent_rate,accepted_by_gate_rate,failure_taxonomy
+boolq,H0,30,0.6333333333333333,0.0,0.2,0.0,0.7333333333333333,0.0,"{""answer_mismatch"": 11}"
+boolq,H3,30,0.7333333333333333,0.0,0.23333333333333334,0.0,0.8333333333333334,1.0,"{""answer_mismatch"": 8}"
+boolq,H4,30,0.7666666666666667,0.0,0.23333333333333334,0.0,0.9,1.0,"{""answer_mismatch"": 7}"
+boolq,generic-retry,30,0.7,0.0,0.3,0.0,0.9333333333333333,1.0,"{""answer_mismatch"": 9}"
+mini_workflow,H0,90,0.0,0.0,0.5777777777777777,0.0,0.5777777777777777,0.0,"{""test_failed"": 90}"
+mini_workflow,H3,90,0.34444444444444444,0.06666666666666667,0.5,0.0,0.7888888888888889,0.34444444444444444,"{""artifact_missing"": 6, ""claim_without_evidence"": 67, ""client_error"": 6, ""empty_answer"": 6, ""expected_substring_missing"": 6, ""test_failed"": 6}"
+mini_workflow,H4,90,0.9888888888888889,0.0,0.0,0.0,0.7777777777777778,0.9888888888888889,"{""claim_without_evidence"": 2}"
+mini_workflow,generic-retry,90,0.2,0.1111111111111111,0.4777777777777778,0.0,0.6666666666666666,0.2,"{""artifact_missing"": 10, ""claim_without_evidence"": 80, ""client_error"": 10, ""empty_answer"": 10, ""expected_substring_missing"": 10, ""test_failed"": 10}"

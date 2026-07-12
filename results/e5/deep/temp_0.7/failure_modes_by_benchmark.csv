@@ -1,0 +1,9 @@
+benchmark,variant,n,success_rate,context_bloat_proxy_rate,self_biased_acceptance_rate,wrong_claim_acceptance_rate,accepted_by_agent_rate,accepted_by_gate_rate,failure_taxonomy
+boolq,H0,30,0.7666666666666667,0.0,0.16666666666666666,0.0,0.9,0.0,"{""answer_mismatch"": 7}"
+boolq,H3,30,0.7666666666666667,0.0,0.23333333333333334,0.0,0.9666666666666667,1.0,"{""answer_mismatch"": 7}"
+boolq,H4,30,0.8,0.0,0.2,0.0,0.9666666666666667,1.0,"{""answer_mismatch"": 6}"
+boolq,generic-retry,30,0.7666666666666667,0.0,0.23333333333333334,0.0,0.9333333333333333,1.0,"{""answer_mismatch"": 7}"
+mini_workflow,H0,90,0.0,0.0,0.4444444444444444,0.0,0.4444444444444444,0.0,"{""test_failed"": 90}"
+mini_workflow,H3,90,0.3,0.011111111111111112,0.5111111111111111,0.0,0.7888888888888889,0.3,"{""artifact_missing"": 1, ""claim_without_evidence"": 73, ""client_error"": 1, ""empty_answer"": 1, ""expected_substring_missing"": 1, ""test_failed"": 1}"
+mini_workflow,H4,90,1.0,0.0,0.0,0.0,0.8777777777777778,1.0,{}
+mini_workflow,generic-retry,90,0.17777777777777778,0.022222222222222223,0.5222222222222223,0.0,0.6888888888888889,0.17777777777777778,"{""artifact_missing"": 2, ""claim_without_evidence"": 87, ""client_error"": 2, ""empty_answer"": 2, ""expected_substring_missing"": 2, ""test_failed"": 2}"

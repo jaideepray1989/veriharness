@@ -1,0 +1,5 @@
+variant,wrong_claim_accepted,n,rate
+generic-retry,0,360,0.0
+H0,0,360,0.0
+H3,0,360,0.0
+H4,0,360,0.0

@@ -1,0 +1,9 @@
+benchmark,variant,n,success_rate,context_bloat_proxy_rate,self_biased_acceptance_rate,wrong_claim_acceptance_rate,accepted_by_agent_rate,accepted_by_gate_rate,failure_taxonomy
+boolq,H0,30,0.6666666666666666,0.0,0.2,0.0,0.8666666666666667,0.0,"{""answer_mismatch"": 10}"
+boolq,H3,30,0.5333333333333333,0.0,0.13333333333333333,0.0,0.6666666666666666,0.6666666666666666,"{""answer_mismatch"": 14, ""artifact_missing"": 10, ""client_error"": 10, ""empty_answer"": 10}"
+boolq,H4,30,0.8,0.0,0.2,0.0,1.0,1.0,"{""answer_mismatch"": 6}"
+boolq,generic-retry,30,0.0,0.0,0.0,0.0,0.0,0.0,"{""answer_mismatch"": 30, ""artifact_missing"": 30, ""client_error"": 30, ""empty_answer"": 30}"
+mini_workflow,H0,90,0.0,0.0,0.4,0.0,0.4,0.0,"{""test_failed"": 90}"
+mini_workflow,H3,90,0.18888888888888888,0.0,0.8111111111111111,0.0,1.0,0.18888888888888888,"{""claim_without_evidence"": 93}"
+mini_workflow,H4,90,0.6333333333333333,0.36666666666666664,0.0,0.0,0.6333333333333333,0.6333333333333333,"{""artifact_missing"": 33, ""claim_without_evidence"": 33, ""client_error"": 33, ""empty_answer"": 33, ""expected_substring_missing"": 33, ""test_failed"": 33}"
+mini_workflow,generic-retry,90,0.0,1.0,0.0,0.0,0.0,0.0,"{""artifact_missing"": 90, ""claim_without_evidence"": 90, ""client_error"": 90, ""empty_answer"": 90, ""expected_substring_missing"": 90, ""test_failed"": 90}"
